@@ -53,7 +53,7 @@ public class CustomerTest {
     assertEquals(1, violations.size());
     assertEquals("invalid email address", violations.iterator().next().getMessage());
     assertEquals("DummyEmail", violations.iterator().next().getInvalidValue());
-    assertEquals("{org.agoncal.book.Email.message}", violations.iterator().next().getMessageTemplate());
+    assertEquals("{org.agoncal.cdbookstore.Email.message}", violations.iterator().next().getMessageTemplate());
   }
 }
 // end::adocsnippet[]
