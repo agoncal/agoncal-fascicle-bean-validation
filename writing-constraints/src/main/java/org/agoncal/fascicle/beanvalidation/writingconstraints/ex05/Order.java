@@ -19,7 +19,7 @@ public class Order {
   private Date paymentDate;
   private Date deliveryDate;
 
-  // Constructors, Getters & Setters
+  // Constructors, getters, setters
   // tag::adocskip[]
 
   // ======================================

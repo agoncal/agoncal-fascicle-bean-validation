@@ -20,7 +20,7 @@ public class ItemServerConnection {
   private String ftpServerURL;
   private Date lastConnectionDate;
 
-  // Constructors, Getters & Setters
+  // Constructors, getters, setters
   // tag::adocskip[]
 
   public ItemServerConnection() {
