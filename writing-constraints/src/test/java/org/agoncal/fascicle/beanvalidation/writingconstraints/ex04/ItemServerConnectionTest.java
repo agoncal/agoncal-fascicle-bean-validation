@@ -1,8 +1,8 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex04;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -12,7 +12,8 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Antonio Goncalves
@@ -33,13 +34,13 @@ public class ItemServerConnectionTest {
   // =          Lifecycle Methods         =
   // ======================================
 
-  @BeforeClass
+  @BeforeAll
   public static void init() throws ParseException {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
-  @AfterClass
+  @AfterAll
   public static void close() {
     vf.close();
   }
@@ -103,13 +104,15 @@ public class ItemServerConnectionTest {
     assertEquals(3, violations.size());
   }
 
-  @Test(expected = javax.validation.ValidationException.class)
+  @Test
   public void shouldRaiseExceptionAsDateIsNotAURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
     itemServer.setLastConnectionDate(new Date());
 
-    validator.validate(itemServer, Error.class);
+    assertThrows(javax.validation.ValidationException.class, () -> {
+      validator.validate(itemServer, Error.class);
+    });
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {

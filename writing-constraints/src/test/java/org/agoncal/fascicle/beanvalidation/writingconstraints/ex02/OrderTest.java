@@ -1,8 +1,8 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex02;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Antonio Goncalves
@@ -38,7 +38,7 @@ public class OrderTest {
   // =          Lifecycle Methods         =
   // ======================================
 
-  @BeforeClass
+  @BeforeAll
   public static void init() throws ParseException {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
@@ -50,7 +50,7 @@ public class OrderTest {
     deliveryDate = dateFormat.parse("03/01/2010");
   }
 
-  @AfterClass
+  @AfterAll
   public static void close() {
     vf.close();
   }

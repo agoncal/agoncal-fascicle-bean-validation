@@ -1,8 +1,8 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex06;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -12,7 +12,7 @@ import javax.validation.executable.ExecutableValidator;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Antonio Goncalves
@@ -32,13 +32,13 @@ public class CardValidatorTest {
   // =          Lifecycle Methods         =
   // ======================================
 
-  @BeforeClass
+  @BeforeAll
   public static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
-  @AfterClass
+  @AfterAll
   public static void close() {
     vf.close();
   }
