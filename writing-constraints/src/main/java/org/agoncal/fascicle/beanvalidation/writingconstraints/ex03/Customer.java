@@ -10,7 +10,7 @@ import java.util.Date;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Customer {
 
   @Email
@@ -28,7 +28,7 @@ public class Customer {
   private Date creationDate;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   public Customer() {
   }
@@ -110,6 +110,6 @@ public class Customer {
   public void setCreationDate(Date creationDate) {
     this.creationDate = creationDate;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

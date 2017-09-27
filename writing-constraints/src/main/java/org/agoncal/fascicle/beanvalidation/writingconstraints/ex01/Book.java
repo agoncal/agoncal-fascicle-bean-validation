@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Book {
 
   @NotNull
@@ -25,7 +25,7 @@ public class Book {
 
   // Constructors, getters, setters
 
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   public Book() {
   }
@@ -108,6 +108,6 @@ public class Book {
     sb.append('}');
     return sb.toString();
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

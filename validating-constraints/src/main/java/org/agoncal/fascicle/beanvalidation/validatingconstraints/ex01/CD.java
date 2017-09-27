@@ -7,7 +7,7 @@ import javax.validation.constraints.*;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class CD {
 
   @NotNull
@@ -34,7 +34,7 @@ public class CD {
   public Float calculateVAT() {
     return price * 0.196f;
   }
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   // ======================================
   // =            Constructors            =
@@ -101,7 +101,7 @@ public class CD {
     sb.append('}');
     return sb.toString();
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
 

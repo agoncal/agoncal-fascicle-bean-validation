@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Address {
 
   @NotNull
@@ -22,7 +22,7 @@ public class Address {
   private String country;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   // ======================================
   // =            Constructors            =
@@ -90,6 +90,6 @@ public class Address {
   public void setCountry(String country) {
     this.country = country;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

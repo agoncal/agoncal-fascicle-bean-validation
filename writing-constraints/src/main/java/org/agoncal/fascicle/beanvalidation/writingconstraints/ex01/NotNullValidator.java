@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author Emmanuel Bernard
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class NotNullValidator implements ConstraintValidator<NotNull, Object> {
 
   @Override
@@ -17,4 +17,4 @@ public class NotNullValidator implements ConstraintValidator<NotNull, Object> {
     return object != null;
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

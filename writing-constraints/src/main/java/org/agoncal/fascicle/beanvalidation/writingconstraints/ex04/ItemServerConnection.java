@@ -8,7 +8,7 @@ import java.util.Date;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class ItemServerConnection {
 
   @URL
@@ -21,7 +21,7 @@ public class ItemServerConnection {
   private Date lastConnectionDate;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   public ItemServerConnection() {
   }
@@ -67,6 +67,6 @@ public class ItemServerConnection {
   public void setLastConnectionDate(Date lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

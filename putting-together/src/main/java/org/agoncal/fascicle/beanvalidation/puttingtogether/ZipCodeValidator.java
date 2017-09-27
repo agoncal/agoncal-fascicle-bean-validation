@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
 
   @Inject
@@ -30,4 +30,4 @@ public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
     return checker.isZipCodeValid(value);
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

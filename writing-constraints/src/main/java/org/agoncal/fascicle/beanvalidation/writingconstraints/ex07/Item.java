@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Item {
 
   @NotNull
@@ -30,7 +30,7 @@ public class Item {
     return price * rate;
   }
 
-  // tag::adocskip[]
+  // tag::adocSkip[]
   public Item() {
   }
 
@@ -80,6 +80,6 @@ public class Item {
     sb.append('}');
     return sb.toString();
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

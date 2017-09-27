@@ -14,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * --
  */
 // @formatter:off
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @Constraint(validatedBy = ZipCodeValidator.class)
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
@@ -30,5 +30,5 @@ public @interface ZipCode {
     ZipCode[] value();
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
 // @formatter:on

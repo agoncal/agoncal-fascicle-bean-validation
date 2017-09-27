@@ -8,7 +8,7 @@ import javax.validation.constraints.Pattern;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class CD extends Item {
 
   @Pattern(regexp = "[A-Z][a-z]{1,}", message = "{music.company}")
@@ -24,7 +24,7 @@ public class CD extends Item {
   //   return price * rate;
   // }
 
-  // tag::adocskip[]
+  // tag::adocSkip[]
   public CD() {
   }
 
@@ -95,6 +95,6 @@ public class CD extends Item {
     sb.append('}');
     return sb.toString();
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

@@ -10,7 +10,7 @@ import java.util.Date;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Customer {
 
   @NotNull
@@ -25,7 +25,7 @@ public class Customer {
   private Address deliveryAddress;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   // ======================================
   // =            Constructors            =
@@ -91,6 +91,6 @@ public class Customer {
   public void setDeliveryAddress(Address deliveryAddress) {
     this.deliveryAddress = deliveryAddress;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class AddressTest {
 
   @Test
@@ -32,4 +32,4 @@ public class AddressTest {
     vf.close();
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

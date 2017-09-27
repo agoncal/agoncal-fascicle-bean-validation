@@ -17,7 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * --
  */
 // @formatter:off
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @Size(min = 7)
 @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
   + "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*"
@@ -38,5 +38,5 @@ public @interface Email {
     Email[] value();
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
 // @formatter:on

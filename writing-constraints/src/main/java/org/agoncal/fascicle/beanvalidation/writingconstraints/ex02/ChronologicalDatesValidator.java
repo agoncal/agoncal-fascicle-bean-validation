@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class ChronologicalDatesValidator implements ConstraintValidator<ChronologicalDates, Order> {
 
   @Override
@@ -16,4 +16,4 @@ public class ChronologicalDatesValidator implements ConstraintValidator<Chronolo
     return order.getCreationDate().getTime() < order.getPaymentDate().getTime() && order.getPaymentDate().getTime() < order.getDeliveryDate().getTime();
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

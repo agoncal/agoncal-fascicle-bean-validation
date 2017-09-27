@@ -11,7 +11,7 @@ import java.util.Date;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class CardValidator {
 
   private ValidationAlgorithm validationAlgorithm;
@@ -34,7 +34,7 @@ public class CardValidator {
 
   }
 
-  // tag::adocskip[]
+  // tag::adocSkip[]
   public CardValidator() {
   }
 
@@ -49,6 +49,6 @@ public class CardValidator {
       }
     }
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class URLValidator implements ConstraintValidator<URL, String> {
 
   private String protocol;
@@ -55,4 +55,4 @@ public class URLValidator implements ConstraintValidator<URL, String> {
     return true;
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

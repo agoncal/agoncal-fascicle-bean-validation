@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * --
  * Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class CustomerTest {
 
   private static ValidatorFactory vf;
@@ -56,4 +56,4 @@ public class CustomerTest {
     assertEquals("{org.agoncal.cdbookstore.Email.message}", violations.iterator().next().getMessageTemplate());
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

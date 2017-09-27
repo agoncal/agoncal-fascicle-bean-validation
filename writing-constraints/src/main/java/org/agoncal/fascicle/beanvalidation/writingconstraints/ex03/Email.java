@@ -17,7 +17,7 @@ import static java.lang.annotation.ElementType.*;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @NotNull
 @Size(min = 7)
 @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
@@ -35,4 +35,4 @@ public @interface Email {
 
   Class<? extends Payload>[] payload() default {};
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

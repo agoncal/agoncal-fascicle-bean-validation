@@ -8,7 +8,7 @@ import java.util.Date;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class Order {
 
   @Pattern(regexp = "[C,D,M][A-Z][0-9]*")
@@ -20,7 +20,7 @@ public class Order {
   private Date deliveryDate;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
 
   // ======================================
   // =            Constructors            =
@@ -72,6 +72,6 @@ public class Order {
   public void setDeliveryDate(Date deliveryDate) {
     this.deliveryDate = deliveryDate;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

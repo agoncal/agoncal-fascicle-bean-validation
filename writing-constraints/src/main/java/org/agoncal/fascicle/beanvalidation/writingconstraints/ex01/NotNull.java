@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Documented
@@ -22,4 +22,4 @@ public @interface NotNull {
 
   Class<? extends Payload>[] payload() default {};
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

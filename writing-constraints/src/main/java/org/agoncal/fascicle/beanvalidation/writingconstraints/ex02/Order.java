@@ -12,18 +12,18 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 // tag::adocclassconstraint[]
 @ChronologicalDates
 public class Order {
 
-  // tag::adocskip[]
+  // tag::adocSkip[]
   @NotNull
   @Pattern(regexp = "[C,D,M][A-Z][0-9]*")
   private String orderId;
   @NotNull
   @Min(1)
-  // end::adocskip[]
+  // end::adocSkip[]
   private Double totalAmount;
   private Date creationDate;
   private Date paymentDate;
@@ -43,7 +43,7 @@ public class Order {
     return complexCalculation();
   }
 
-  // tag::adocskipbody[]
+  // tag::adocSkipbody[]
   private Double complexCalculation() {
     return 1d;
   }
@@ -99,6 +99,6 @@ public class Order {
   public void setOrderLines(List<OrderLine> orderLines) {
     this.orderLines = orderLines;
   }
-  // end::adocskipbody[]
+  // end::adocSkipbody[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

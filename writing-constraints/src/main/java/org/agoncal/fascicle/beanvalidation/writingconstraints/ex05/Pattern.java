@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
 @Repeatable(Pattern.List.class)
@@ -26,4 +26,4 @@ public @interface Pattern {
     Pattern[] value();
   }
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
