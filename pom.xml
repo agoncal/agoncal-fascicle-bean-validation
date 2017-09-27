@@ -22,9 +22,8 @@
     <version.el>3.0.1-b08</version.el>
     <!-- Test -->
     <skipTests>false</skipTests>
-    <skipITs>${skipTests}</skipITs>
-    <skipUTs>${skipTests}</skipUTs>
     <version.junit>5.0.0</version.junit>
+    <version.junit.platform>1.0.0</version.junit.platform>
     <!-- Maven Plugins -->
     <version.clean.plugin>3.0.0</version.clean.plugin>
     <version.compiler.plugin>3.7.0</version.compiler.plugin>
@@ -32,14 +31,14 @@
     <version.deploy.plugin>2.8.2</version.deploy.plugin>
     <version.enforcer.plugin>3.0.0-M1</version.enforcer.plugin>
     <version.exec.plugin>1.6.0</version.exec.plugin>
-    <version.failsafe.plugin>2.20.1</version.failsafe.plugin>
+    <version.failsafe.plugin>2.20</version.failsafe.plugin>
     <version.help.plugin>2.2</version.help.plugin>
     <version.install.plugin>2.5.2</version.install.plugin>
     <version.jar.plugin>3.0.2</version.jar.plugin>
     <version.javadoc.plugin>3.0.0-M1</version.javadoc.plugin>
     <version.resources.plugin>3.0.2</version.resources.plugin>
     <version.site.plugin>3.6</version.site.plugin>
-    <version.surefire.plugin>2.20.1</version.surefire.plugin>
+    <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.version.plugin>2.4</version.version.plugin>
     <version.war.plugin>3.1.0</version.war.plugin>
     <!-- Plugins flag -->
@@ -82,7 +81,7 @@
       <!-- Test -->
       <dependency>
         <groupId>org.junit.jupiter</groupId>
-        <artifactId>junit-jupiter-api</artifactId>
+        <artifactId>junit-jupiter-engine</artifactId>
         <version>${version.junit}</version>
         <scope>test</scope>
       </dependency>
@@ -149,7 +148,6 @@
           <version>${version.failsafe.plugin}</version>
           <configuration>
             <skipTests>${skipTests}</skipTests>
-            <skipITs>${skipITs}</skipITs>
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
             <reuseForks>false</reuseForks>
           </configuration>
@@ -230,9 +228,15 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${version.surefire.plugin}</version>
           <configuration>
-            <skipTests>${skipUTs}</skipTests>
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
           </configuration>
+          <dependencies>
+              <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-surefire-provider</artifactId>
+                <version>${version.junit.platform}</version>
+              </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
