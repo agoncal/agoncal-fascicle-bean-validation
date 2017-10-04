@@ -2,6 +2,8 @@
 
 Code of my future Bean Validation Fascicle
 
+![Travis](https://travis-ci.org/agoncal/agoncal-fascicle-bean-validation.svg?branch=2.0)
+
 ## Locale
 
 To make sure the constraint messages are in English you can set your local:
