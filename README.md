@@ -1,4 +1,4 @@
-# agoncal-book-bean-validation
+# AGoncal Fascicle: Bean Validation
 
 Code of my future Bean Validation Fascicle
 

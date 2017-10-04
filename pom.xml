@@ -21,7 +21,6 @@
     <version.hibernate.validator>6.0.2.Final</version.hibernate.validator>
     <version.el>3.0.1-b08</version.el>
     <!-- Test -->
-    <skipTests>false</skipTests>
     <version.junit>5.0.0</version.junit>
     <version.junit.platform>1.0.0</version.junit.platform>
 
@@ -180,7 +179,6 @@
           <artifactId>maven-failsafe-plugin</artifactId>
           <version>${version.failsafe.plugin}</version>
           <configuration>
-            <skipTests>${skipTests}</skipTests>
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
             <reuseForks>false</reuseForks>
           </configuration>
