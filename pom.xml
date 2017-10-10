@@ -9,7 +9,9 @@
   <name>Bean Validation</name>
 
   <modules>
+    <module>applying-constraints</module>
     <module>getting-started</module>
+    <module>integrating</module>
     <module>putting-together</module>
     <module>validating-constraints</module>
     <module>writing-constraints</module>
