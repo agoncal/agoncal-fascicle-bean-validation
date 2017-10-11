@@ -1,6 +1,8 @@
-package org.agoncal.fascicle.beanvalidation.gettingstarted.ex01;
+package org.agoncal.fascicle.beanvalidation.gettingstarted;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -17,42 +19,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * http://www.antoniogoncalves.org
  * --
  */
-public class ArtistTest {
+// tag::adocBegin[]
+class ArtistTest {
 
-  // ======================================
-  // =             Attributes             =
-  // ======================================
-
-  protected ValidatorFactory vf;
-  protected Validator validator;
-
-  // ======================================
-  // =          Lifecycle Methods         =
-  // ======================================
+  private ValidatorFactory vf;
+  private Validator validator;
 
   @BeforeEach
-  public void init() {
+  private void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterEach
-  public void close() {
+  private void close() {
     vf.close();
   }
+  // end::adocBegin[]
 
   // ======================================
   // =              Methods               =
   // ======================================
 
+  // tag::adocShouldRaiseNoConstraintViolation[]
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  private void shouldRaiseNoConstraintViolation() {
 
     Artist book = new Artist().firstName("Adams").lastName("Douglas");
 
     Set<ConstraintViolation<Artist>> violations = validator.validate(book);
     assertEquals(0, violations.size());
   }
+  // end::adocShouldRaiseNoConstraintViolation[]
 
   // @Test
   // public void shouldRaiseConstraintViolationCausePriceLow() {

@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.gettingstarted.ex01;
+package org.agoncal.fascicle.beanvalidation.gettingstarted;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
