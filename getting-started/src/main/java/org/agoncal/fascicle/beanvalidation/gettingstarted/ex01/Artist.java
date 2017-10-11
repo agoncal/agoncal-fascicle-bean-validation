@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * http://www.antoniogoncalves.org
  * --
  */
+// tag::adocSnippet[]
 public class Artist {
 
   @NotNull
@@ -24,9 +25,8 @@ public class Artist {
   @Past
   private LocalDate dateOfBirth;
 
-  // ======================================
-  // =            Constructors            =
-  // ======================================
+  // Constructors, getters, setters
+  // tag::adocSnippet[]
 
   public Artist() {
   }
@@ -123,4 +123,6 @@ public class Artist {
       ", dateOfBirth=" + dateOfBirth +
       '}';
   }
+  // end::adocSnippet[]
 }
+// end::adocSnippet[]
