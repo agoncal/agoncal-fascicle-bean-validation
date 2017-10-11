@@ -20,19 +20,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * --
  */
 // tag::adocBegin[]
-class ArtistTest {
+public class ArtistTest {
 
   private ValidatorFactory vf;
   private Validator validator;
 
   @BeforeEach
-  private void init() {
+  public void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterEach
-  private void close() {
+  public void close() {
     vf.close();
   }
   // end::adocBegin[]
@@ -43,7 +43,7 @@ class ArtistTest {
 
   // tag::adocShouldRaiseNoConstraintViolation[]
   @Test
-  private void shouldRaiseNoConstraintViolation() {
+  public void shouldRaiseNoConstraintViolation() {
 
     Artist book = new Artist().firstName("Adams").lastName("Douglas");
 
