@@ -104,7 +104,7 @@ public class Artist {
     this.dateOfBirth = dateOfBirth;
   }
 
-  public Artist dateOfBirth(LocalDate bio) {
+  public Artist dateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
     return this;
   }

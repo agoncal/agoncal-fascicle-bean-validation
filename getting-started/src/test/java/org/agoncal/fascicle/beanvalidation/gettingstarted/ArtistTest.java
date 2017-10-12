@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -71,5 +72,17 @@ public class ArtistTest {
     assertEquals(1, violations.size());
   }
   // end::shouldRaiseConstraintViolationCauseInvalidEmail[]
+
+  // tag::shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate[]
+  @Test
+  public void shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate() {
+
+    LocalDate dateOfBirth = LocalDate.of(2678,12,01);
+    Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong").dateOfBirth(dateOfBirth);
+
+    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    assertEquals(2, violations.size());
+  }
+  // end::shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate[]
 
 }
