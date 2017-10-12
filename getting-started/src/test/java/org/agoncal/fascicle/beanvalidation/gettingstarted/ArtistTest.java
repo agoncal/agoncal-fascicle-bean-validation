@@ -14,8 +14,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Antonio Goncalves
- * <p>
- * <p>
  * http://www.antoniogoncalves.org
  * --
  */
@@ -52,49 +50,26 @@ public class ArtistTest {
   }
   // end::adocShouldRaiseNoConstraintViolation[]
 
-  // @Test
-  // public void shouldRaiseConstraintViolationCausePriceLow() {
-  //
-  //   Artist book = new Artist("H2G2", 0.5f, "Best IT Scifi Book", "1234-4566-9876", 247, false);
-  //
-  //   Set<ConstraintViolation<Artist>> violations = validator.validate(book);
-  //   displayContraintViolations(violations);
-  //   assertEquals(1, violations.size());
-  // }
-  //
-  // @Test
-  // public void shouldRaiseConstraintsViolationCauseTitleAndPriceNull() {
-  //
-  //   Artist book = new Artist();
-  //
-  //   Set<ConstraintViolation<Artist>> violations = validator.validate(book);
-  //   displayContraintViolations(violations);
-  //   assertEquals(2, violations.size());
-  // }
-  //
-  // @Test
-  // public void shouldRaiseConstraintsViolationCauseValidatingOnlyTitle() {
-  //
-  //   Artist book = new Artist();
-  //
-  //   Set<ConstraintViolation<Artist>> violations = validator.validateProperty(book, "title");
-  //   displayContraintViolations(violations);
-  //   assertEquals(1, violations.size());
-  // }
-  //
-  // @Test
-  // public void shouldRaiseConstraintsViolationCheckingTheTitleValue() {
-  //
-  //   Set<ConstraintViolation<Artist>> violations = validator.validateValue(Artist.class, "title", null);
-  //   displayContraintViolations(violations);
-  //   assertEquals(1, violations.size());
-  // }
-  //
-  // private void displayContraintViolations(Set<ConstraintViolation<Artist>> constraintViolations) {
-  //   for (ConstraintViolation constraintViolation : constraintViolations) {
-  //     System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
-  //       "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
-  //
-  //   }
-  // }
+  // tag::shouldRaiseConstraintViolationCauseFirstNameIsNull[]
+  @Test
+  public void shouldRaiseConstraintViolationCauseFirstNameIsNull() {
+
+    Artist book = new Artist().firstName(null).lastName("Douglas");
+
+    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    assertEquals(1, violations.size());
+  }
+  // end::shouldRaiseConstraintViolationCauseFirstNameIsNull[]
+
+  // tag::shouldRaiseConstraintViolationCauseInvalidEmail[]
+  @Test
+  public void shouldRaiseConstraintViolationCauseInvalidEmail() {
+
+    Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong");
+
+    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    assertEquals(1, violations.size());
+  }
+  // end::shouldRaiseConstraintViolationCauseInvalidEmail[]
+
 }
