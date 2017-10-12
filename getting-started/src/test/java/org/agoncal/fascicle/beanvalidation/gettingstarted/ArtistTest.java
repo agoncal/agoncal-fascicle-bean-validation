@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.gettingstarted;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Antonio Goncalves
@@ -21,17 +22,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 // tag::adocBegin[]
 public class ArtistTest {
 
-  private ValidatorFactory vf;
-  private Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
-  @BeforeEach
-  public void init() {
+  @BeforeAll
+  public static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
-  @AfterEach
-  public void close() {
+  @AfterAll
+  public static void close() {
     vf.close();
   }
   // end::adocBegin[]
@@ -47,7 +48,7 @@ public class ArtistTest {
     Artist book = new Artist().firstName("Adams").lastName("Douglas");
 
     Set<ConstraintViolation<Artist>> violations = validator.validate(book);
-    assertEquals(0, violations.size());
+    assertTrue(violations.isEmpty());
   }
   // end::adocShouldRaiseNoConstraintViolation[]
 
@@ -70,6 +71,11 @@ public class ArtistTest {
 
     Set<ConstraintViolation<Artist>> violations = validator.validate(book);
     assertEquals(1, violations.size());
+
+    ConstraintViolation<Artist> violation = violations.iterator().next();
+    assertEquals("must be a well-formed email address", violation.getMessage());
+    assertEquals("wrong", violation.getInvalidValue());
+    assertEquals("email", violation.getPropertyPath().toString());
   }
   // end::shouldRaiseConstraintViolationCauseInvalidEmail[]
 
@@ -77,7 +83,7 @@ public class ArtistTest {
   @Test
   public void shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate() {
 
-    LocalDate dateOfBirth = LocalDate.of(2678,12,01);
+    LocalDate dateOfBirth = LocalDate.of(2678, 12, 01);
     Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong").dateOfBirth(dateOfBirth);
 
     Set<ConstraintViolation<Artist>> violations = validator.validate(book);
