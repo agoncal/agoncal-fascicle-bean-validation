@@ -26,7 +26,7 @@ public class Artist {
   private LocalDate dateOfBirth;
 
   // Constructors, getters, setters
-  // tag::adocSnippet[]
+  // tag::adocSkip[]
 
   public Artist() {
   }
@@ -123,6 +123,6 @@ public class Artist {
       ", dateOfBirth=" + dateOfBirth +
       '}';
   }
-  // end::adocSnippet[]
+  // end::adocSkip[]
 }
 // end::adocSnippet[]
