@@ -35,6 +35,7 @@ public class Order {
     return complexCalculation();
   }
 
+  // Constructors, getters, setters
   // tag::adocSkip[]
   public Order() {
   }

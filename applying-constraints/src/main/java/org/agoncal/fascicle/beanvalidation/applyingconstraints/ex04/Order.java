@@ -24,6 +24,7 @@ public class Order {
   @NotEmpty
   private List<OrderLine> orderLines;
 
+  // Constructors, getters, setters
   // tag::adocSkip[]
   // @formatter:on
   public Order() {

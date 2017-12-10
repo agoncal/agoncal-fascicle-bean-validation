@@ -20,6 +20,7 @@ public class CD {
   @NotEmpty @Size(max = 5)
   private Map<@Positive Integer, @NotBlank String> tracks;
 
+  // Constructors, getters, setters
   // tag::adocSkip[]
   // @formatter:on
 
