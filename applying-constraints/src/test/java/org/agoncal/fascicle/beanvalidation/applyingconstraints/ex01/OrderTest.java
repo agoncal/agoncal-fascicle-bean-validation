@@ -67,25 +67,10 @@ public class OrderTest {
     order.setOrderId("CA45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
-    order.setCustomerEmail("antonio.goncalves@gmail.com");
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
-  }
-
-  @Test
-  public void shouldRaiseViolationDueToEmail() {
-
-    Order order = new Order(creationDate);
-    order.setOrderId("CA45678");
-    order.setTotalAmount(1234.5);
-    order.setDeliveryDate(deliveryDate);
-    order.setCustomerEmail("dummy");
-    order.addOrderLine(new OrderLine("item", 12d, 2));
-
-    Set<ConstraintViolation<Order>> violations = validator.validate(order);
-    assertEquals(1, violations.size());
   }
 
   @Test
@@ -95,8 +80,6 @@ public class OrderTest {
     order.setOrderId("CA45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
-    order.setCustomerEmail("dummy");
-    order.addOrderLine(null);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());

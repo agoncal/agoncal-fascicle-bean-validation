@@ -23,8 +23,6 @@ public class Order {
   private Date creationDate;
   @Future
   private Date deliveryDate;
-  @Email
-  private String customerEmail;
 
   @NotNull
   private List<OrderLine> orderLines;
@@ -80,14 +78,6 @@ public class Order {
 
   public void setDeliveryDate(Date deliveryDate) {
     this.deliveryDate = deliveryDate;
-  }
-
-  public String getCustomerEmail() {
-    return customerEmail;
-  }
-
-  public void setCustomerEmail(String customerEmail) {
-    this.customerEmail = customerEmail;
   }
 
   public List<OrderLine> getOrderLines() {
