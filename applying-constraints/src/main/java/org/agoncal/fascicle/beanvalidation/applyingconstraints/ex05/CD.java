@@ -1,8 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex05;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.*;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,6 +9,7 @@ import java.util.Map;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class CD {
 
@@ -17,9 +17,11 @@ public class CD {
   private String title;
   private String musicCompany;
 
+  @NotEmpty @Size(max = 5)
   private Map<@Positive Integer, @NotBlank String> tracks;
 
   // tag::adocSkip[]
+  // @formatter:on
 
   // ======================================
   // =            Constructors            =
@@ -61,6 +63,12 @@ public class CD {
     this.tracks = tracks;
   }
 
+  public void addTrack(Integer position, String title) {
+    if (tracks == null)
+      tracks = new HashMap<>();
+
+    tracks.put(position, title);
+  }
 
   // end::adocSkip[]
 }
