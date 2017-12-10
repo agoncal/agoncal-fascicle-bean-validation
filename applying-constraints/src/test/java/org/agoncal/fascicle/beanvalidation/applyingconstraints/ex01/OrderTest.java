@@ -67,7 +67,7 @@ public class OrderTest {
     order.setOrderId("CA45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
-    order.setContactEmail("antonio.goncalves@gmail.com");
+    order.setCustomerEmail("antonio.goncalves@gmail.com");
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
@@ -81,7 +81,7 @@ public class OrderTest {
     order.setOrderId("CA45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
-    order.setContactEmail("dummy");
+    order.setCustomerEmail("dummy");
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
@@ -95,7 +95,7 @@ public class OrderTest {
     order.setOrderId("CA45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
-    order.setContactEmail("dummy");
+    order.setCustomerEmail("dummy");
     order.addOrderLine(null);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);

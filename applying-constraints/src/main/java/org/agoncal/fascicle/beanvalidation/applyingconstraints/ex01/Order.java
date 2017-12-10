@@ -21,11 +21,10 @@ public class Order {
   private Double totalAmount;
   @PastOrPresent
   private Date creationDate;
-  private Date paymentDate;
   @Future
   private Date deliveryDate;
   @Email
-  private String contactEmail;
+  private String customerEmail;
 
   @NotNull
   private List<OrderLine> orderLines;
@@ -75,14 +74,6 @@ public class Order {
     this.totalAmount = totalAmount;
   }
 
-  public Date getPaymentDate() {
-    return paymentDate;
-  }
-
-  public void setPaymentDate(Date paymentDate) {
-    this.paymentDate = paymentDate;
-  }
-
   public Date getDeliveryDate() {
     return deliveryDate;
   }
@@ -91,12 +82,12 @@ public class Order {
     this.deliveryDate = deliveryDate;
   }
 
-  public String getContactEmail() {
-    return contactEmail;
+  public String getCustomerEmail() {
+    return customerEmail;
   }
 
-  public void setContactEmail(String contactEmail) {
-    this.contactEmail = contactEmail;
+  public void setCustomerEmail(String customerEmail) {
+    this.customerEmail = customerEmail;
   }
 
   public List<OrderLine> getOrderLines() {
