@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex01;
+package org.agoncal.fascicle.beanvalidation.writingconstraints.ex02;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -13,19 +13,26 @@ import java.util.List;
  * --
  */
 // tag::adocSnippet[]
+// tag::adocclassconstraint[]
 @ChronologicalDates
 public class Order {
 
+  // tag::adocSkip[]
   @NotNull
   @Pattern(regexp = "[C,D,M][A-Z][0-9]*")
   private String orderId;
   @NotNull
   @Min(1)
+  // end::adocSkip[]
   private Double totalAmount;
   private Date creationDate;
   private Date paymentDate;
   private Date deliveryDate;
   private List<OrderLine> orderLines;
+  // end::adocclassconstraint[]
+
+  public Order() {
+  }
 
   public Order(@Past Date creationDate) {
     this.creationDate = creationDate;
@@ -36,10 +43,7 @@ public class Order {
     return complexCalculation();
   }
 
-  // tag::adocSkip[]
-  public Order() {
-  }
-
+  // tag::adocSkipbody[]
   private Double complexCalculation() {
     return 1d;
   }
@@ -95,6 +99,6 @@ public class Order {
   public void setOrderLines(List<OrderLine> orderLines) {
     this.orderLines = orderLines;
   }
-  // end::adocSkip[]
+  // end::adocSkipbody[]
 }
 // end::adocSnippet[]
