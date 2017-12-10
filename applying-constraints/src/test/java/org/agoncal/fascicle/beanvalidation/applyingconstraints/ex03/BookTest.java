@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex02;
+package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex03;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

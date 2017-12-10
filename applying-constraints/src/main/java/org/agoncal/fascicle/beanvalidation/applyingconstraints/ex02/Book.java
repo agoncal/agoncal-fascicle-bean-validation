@@ -13,7 +13,7 @@ public class Book {
 
   @NotNull
   private String title;
-  @Digits(integer = 10, fraction = 2)
+  @Digits(integer = 4, fraction = 2)
   private Float price;
   @Size(max = 2000)
   private String description;
