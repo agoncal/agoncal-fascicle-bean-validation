@@ -1,6 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex04;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class Order {
   private Double totalAmount;
 
   @NotEmpty
-  private List<@Email @NotEmpty String> emails;
+  private List<@Email @NotBlank String> emails;
 
   @NotEmpty
   private List<OrderLine> orderLines;
