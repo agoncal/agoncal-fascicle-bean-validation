@@ -24,7 +24,6 @@ public class Book {
   private String authorEmail;
 
   // Constructors, getters, setters
-
   // tag::adocSkip[]
   // @formatter:on
 
@@ -81,7 +80,6 @@ public class Book {
   public void setAuthorEmail(String authorEmail) {
     this.authorEmail = authorEmail;
   }
-
   // end::adocSkip[]
 }
 // end::adocSnippet[]

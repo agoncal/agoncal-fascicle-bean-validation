@@ -14,8 +14,7 @@ import java.util.List;
 // tag::adocSnippet[]
 public class Order {
 
-  @NotNull
-  @Pattern(regexp = "[C,D,M][A-Z][0-9]*")
+  @NotNull @Pattern(regexp = "[C,D,M][0-9]*")
   private String orderId;
   @NotNull @Min(1)
   private Double totalAmount;
@@ -27,7 +26,7 @@ public class Order {
   @NotNull
   private List<OrderLine> orderLines;
 
-  public Order(@Past Date creationDate) {
+  public Order(@PastOrPresent Date creationDate) {
     this.creationDate = creationDate;
   }
 
