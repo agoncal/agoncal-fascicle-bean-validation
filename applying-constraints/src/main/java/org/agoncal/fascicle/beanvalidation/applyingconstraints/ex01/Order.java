@@ -10,14 +10,14 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Order {
 
   @NotNull
   @Pattern(regexp = "[C,D,M][A-Z][0-9]*")
   private String orderId;
-  @NotNull
-  @Min(1)
+  @NotNull @Min(1)
   private Double totalAmount;
   @PastOrPresent
   private Date creationDate;
