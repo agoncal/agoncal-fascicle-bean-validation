@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex02;
+package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex01;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
