@@ -22,7 +22,6 @@ public @interface Pattern {
   @Retention(RUNTIME)
   @Documented
   @interface List {
-
     Pattern[] value();
   }
 }
