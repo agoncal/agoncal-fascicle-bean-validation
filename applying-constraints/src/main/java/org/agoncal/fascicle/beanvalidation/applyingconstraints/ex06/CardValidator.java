@@ -14,27 +14,25 @@ import java.util.Date;
 // tag::adocSnippet[]
 public class CardValidator {
 
-  private ValidationAlgorithm validationAlgorithm;
+  private ValidationAlgorithm algorithm;
 
-  public CardValidator(@NotNull ValidationAlgorithm validationAlgorithm) {
-    this.validationAlgorithm = validationAlgorithm;
+  public CardValidator(@NotNull ValidationAlgorithm algorithm) {
+    this.algorithm = algorithm;
   }
 
   @AssertTrue
   public Boolean validate(@NotNull @Valid CreditCard creditCard) {
 
-    return validationAlgorithm.validate(creditCard.getNumber(), creditCard.getControlNumber());
-
+    return algorithm.validate(creditCard.getNumber(), creditCard.getControlNumber());
   }
 
   @AssertTrue
-  public Boolean validate(@NotNull String number, @Future Date expiryDate, @NotNull Integer controlNumber, String type) {
+  public Boolean validate(@NotNull String number, @Future Date expiryDate, @NotNull Integer controlNumber) {
 
-    return validationAlgorithm.validate(number, controlNumber);
-
+    return algorithm.validate(number, controlNumber);
   }
-
   // tag::adocSkip[]
+
   public CardValidator() {
   }
 
