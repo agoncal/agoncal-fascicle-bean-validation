@@ -19,10 +19,10 @@ public class Order {
   private Double totalAmount;
 
   @NotEmpty
-  private List<@Email @NotBlank String> emails;
+  private List<OrderLine> orderLines;
 
   @NotEmpty
-  private List<OrderLine> orderLines;
+  private List<@Email @NotBlank String> emails;
 
   // Constructors, getters, setters
   // tag::adocSkip[]

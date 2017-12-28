@@ -39,13 +39,17 @@
     <version.failsafe.plugin>${version.surefire.plugin}</version.failsafe.plugin>
     <version.help.plugin>2.2</version.help.plugin>
     <version.install.plugin>2.5.2</version.install.plugin>
+    <version.invoker.plugin>3.0.1</version.invoker.plugin>
     <version.jar.plugin>3.0.2</version.jar.plugin>
-    <version.javadoc.plugin>3.0.0-M1</version.javadoc.plugin>
+    <version.javadoc.plugin>3.0.0</version.javadoc.plugin>
+    <version.plugin.plugin>3.5</version.plugin.plugin>
     <version.resources.plugin>3.0.2</version.resources.plugin>
+    <version.shade.plugin>3.1.0</version.shade.plugin>
     <version.site.plugin>3.6</version.site.plugin>
+    <version.source.plugin>3.0.1</version.source.plugin>
     <version.surefire.plugin>2.20</version.surefire.plugin>
-    <version.version.plugin>2.4</version.version.plugin>
-    <version.war.plugin>3.1.0</version.war.plugin>
+    <version.version.plugin>2.5</version.version.plugin>
+    <version.war.plugin>3.2.0</version.war.plugin>
     <!-- Plugins flag -->
     <javadoc.disabled>true</javadoc.disabled>
     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -207,6 +211,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-invoker-plugin</artifactId>
+          <version>${version.invoker.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
           <version>${version.jar.plugin}</version>
           <configuration>
@@ -249,13 +258,28 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-plugin-plugin</artifactId>
+          <version>${version.plugin.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
           <version>${version.resources.plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>${version.shade.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>${version.site.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${version.source.plugin}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
