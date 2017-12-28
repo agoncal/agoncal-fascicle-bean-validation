@@ -64,7 +64,7 @@ public class OrderTest {
   public void shouldRaiseNoConstraintViolation() {
 
     Order order = new Order(creationDate);
-    order.setOrderId("CA45678");
+    order.setOrderId("C45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
@@ -77,7 +77,7 @@ public class OrderTest {
   public void shouldRaiseViolationDueToEmptyLines() {
 
     Order order = new Order(creationDate);
-    order.setOrderId("CA45678");
+    order.setOrderId("C45678");
     order.setTotalAmount(1234.5);
     order.setDeliveryDate(deliveryDate);
 
