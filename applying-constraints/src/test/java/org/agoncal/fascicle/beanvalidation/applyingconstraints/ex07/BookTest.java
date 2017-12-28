@@ -11,6 +11,8 @@ import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Antonio Goncalves
@@ -55,6 +57,9 @@ public class BookTest {
     book.setNbOfPages(10);
     book.setAuthorEmail("agoncal.fascicle@gmail.com");
 
+    assertTrue(book.getNbOfPages().isPresent());
+    assertTrue(book.getAuthorEmail().isPresent());
+
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(0, violations.size());
   }
@@ -66,6 +71,9 @@ public class BookTest {
     book.setTitle("title");
     book.setNbOfPages(10);
     book.setAuthorEmail("dummy");
+
+    assertTrue(book.getNbOfPages().isPresent());
+    assertTrue(book.getAuthorEmail().isPresent());
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(1, violations.size());
@@ -79,6 +87,9 @@ public class BookTest {
     book.setNbOfPages(10);
     book.setAuthorEmail(null);
 
+    assertTrue(book.getNbOfPages().isPresent());
+    assertFalse(book.getAuthorEmail().isPresent());
+
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(0, violations.size());
   }
@@ -90,6 +101,9 @@ public class BookTest {
     book.setTitle("title");
     book.setNbOfPages(-10);
     book.setAuthorEmail("agoncal.fascicle@gmail.com");
+
+    assertTrue(book.getNbOfPages().isPresent());
+    assertTrue(book.getAuthorEmail().isPresent());
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(1, violations.size());
@@ -103,6 +117,9 @@ public class BookTest {
     book.setNbOfPages(null);
     book.setAuthorEmail("agoncal.fascicle@gmail.com");
 
+    assertFalse(book.getNbOfPages().isPresent());
+    assertTrue(book.getAuthorEmail().isPresent());
+
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(0, violations.size());
   }
@@ -114,6 +131,9 @@ public class BookTest {
     book.setTitle(null);
     book.setNbOfPages(10);
     book.setAuthorEmail("agoncal.fascicle@gmail.com");
+
+    assertTrue(book.getNbOfPages().isPresent());
+    assertTrue(book.getAuthorEmail().isPresent());
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(0, violations.size());
