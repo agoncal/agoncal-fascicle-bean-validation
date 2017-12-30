@@ -5,7 +5,7 @@
   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/validation/mapping http://xmlns.jcp.org/xml/ns/validation/configuration/validation-mapping-2.0.xsd"
   version="2.0">
 
-  <bean class="org.agoncal.fascicle.Book" ignore-annotations="false">
+  <bean class="org.agoncal.fascicle.beanvalidation.applyingconstraints.Book" ignore-annotations="false">
     <field name="title">
       <constraint annotation="javax.validation.constraints.NotNull">
         <message>Title should not be null</message>
