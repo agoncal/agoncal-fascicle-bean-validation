@@ -33,6 +33,7 @@ public class Book {
   // ======================================
   // =          Getters & Setters         =
   // ======================================
+
   public String getTitle() {
     return title;
   }

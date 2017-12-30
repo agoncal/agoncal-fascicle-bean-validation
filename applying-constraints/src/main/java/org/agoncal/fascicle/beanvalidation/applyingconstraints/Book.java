@@ -5,33 +5,22 @@ package org.agoncal.fascicle.beanvalidation.applyingconstraints;
  *         http://www.antoniogoncalves.org
  *         --
  */
+// @formatter:off
+// tag::adocSnippet[]
 public class Book {
-
-  // ======================================
-  // =             Attributes             =
-  // ======================================
 
   private String title;
   private Float price;
   private String description;
-  private String isbn;
+  private Integer isbn;
   private Integer nbOfPages;
-  private Boolean illustrations;
+  private String authorEmail;
 
-  // ======================================
-  // =            Constructors            =
-  // ======================================
+  // Constructors, getters, setters
+  // tag::adocSkip[]
+  // @formatter:on
 
   public Book() {
-  }
-
-  public Book(String title, Float price, String description, String isbn, Integer nbOfPages, Boolean illustrations) {
-    this.title = title;
-    this.price = price;
-    this.description = description;
-    this.isbn = isbn;
-    this.nbOfPages = nbOfPages;
-    this.illustrations = illustrations;
   }
 
   // ======================================
@@ -62,11 +51,11 @@ public class Book {
     this.description = description;
   }
 
-  public String getIsbn() {
+  public Integer getIsbn() {
     return isbn;
   }
 
-  public void setIsbn(String isbn) {
+  public void setIsbn(Integer isbn) {
     this.isbn = isbn;
   }
 
@@ -78,29 +67,13 @@ public class Book {
     this.nbOfPages = nbOfPages;
   }
 
-  public Boolean getIllustrations() {
-    return illustrations;
+  public String getAuthorEmail() {
+    return authorEmail;
   }
 
-  public void setIllustrations(Boolean illustrations) {
-    this.illustrations = illustrations;
+  public void setAuthorEmail(String authorEmail) {
+    this.authorEmail = authorEmail;
   }
-
-  // ======================================
-  // =         hash, equals, toString     =
-  // ======================================
-
-  @Override
-  public String toString() {
-    final StringBuilder sb = new StringBuilder();
-    sb.append("Book02");
-    sb.append(", title='").append(title).append('\'');
-    sb.append(", price=").append(price);
-    sb.append(", description='").append(description).append('\'');
-    sb.append(", isbn='").append(isbn).append('\'');
-    sb.append(", nbOfPages=").append(nbOfPages);
-    sb.append(", illustrations=").append(illustrations);
-    sb.append('}');
-    return sb.toString();
-  }
+  // end::adocSkip[]
 }
+// end::adocSnippet[]

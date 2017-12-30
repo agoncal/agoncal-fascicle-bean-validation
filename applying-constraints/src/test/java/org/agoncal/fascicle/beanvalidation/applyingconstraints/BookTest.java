@@ -48,54 +48,91 @@ public class BookTest {
   @Test
   public void shouldRaiseNoConstraintViolation() {
 
-    Book book = new Book("H2G2", 12.5f, "Best IT Scifi Book", "1234-4566-9876", 247, false);
+    Book book = new Book();
+    book.setTitle("title");
+    book.setPrice(2.99F);
+    book.setDescription("description");
+    book.setNbOfPages(10);
+    book.setAuthorEmail("agoncal.fascicle@gmail.com");
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(0, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCausePriceLow() {
+  public void shouldRaiseViolationDueToEmail() {
 
-    Book book = new Book("H2G2", 0.5f, "Best IT Scifi Book", "1234-4566-9876", 247, false);
+    Book book = new Book();
+    book.setTitle("title");
+    book.setPrice(2.99F);
+    book.setDescription("description");
+    book.setNbOfPages(10);
+    book.setAuthorEmail("dummy");
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
-    displayContraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseTitleAndPriceNull() {
+  public void shouldRaiseViolationDueToNbPages() {
 
     Book book = new Book();
+    book.setTitle("title");
+    book.setPrice(2.99F);
+    book.setDescription("description");
+    book.setNbOfPages(-10);
+    book.setAuthorEmail("agoncal.fascicle@gmail.com");
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
-    displayContraintViolations(violations);
-    assertEquals(2, violations.size());
-  }
-
-  @Test
-  public void shouldRaiseConstraintsViolationCauseValidatingOnlyTitle() {
-
-    Book book = new Book();
-
-    Set<ConstraintViolation<Book>> violations = validator.validateProperty(book, "title");
-    displayContraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCheckingTheTitleValue() {
+  public void shouldRaiseViolationDueToPrice() {
 
-    Set<ConstraintViolation<Book>> violations = validator.validateValue(Book.class, "title", null);
-    displayContraintViolations(violations);
+    Book book = new Book();
+    book.setTitle("title");
+    book.setPrice(2.4444499F);
+    book.setDescription("description");
+    book.setNbOfPages(10);
+    book.setAuthorEmail("agoncal.fascicle@gmail.com");
+
+    Set<ConstraintViolation<Book>> violations = validator.validate(book);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseViolationDueToPriceNoDigits() {
+
+    Book book = new Book();
+    book.setTitle("title");
+    book.setPrice(222222222F);
+    book.setDescription("description");
+    book.setNbOfPages(10);
+    book.setAuthorEmail("agoncal.fascicle@gmail.com");
+
+    Set<ConstraintViolation<Book>> violations = validator.validate(book);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseViolationDueToTitle() {
+
+    Book book = new Book();
+    book.setTitle(null);
+    book.setPrice(2.99F);
+    book.setDescription("description");
+    book.setNbOfPages(10);
+    book.setAuthorEmail("agoncal.fascicle@gmail.com");
+
+    Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(1, violations.size());
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<Book>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
-              "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
+        "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
 
     }
   }

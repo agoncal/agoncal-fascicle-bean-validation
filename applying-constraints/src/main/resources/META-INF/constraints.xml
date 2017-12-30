@@ -12,15 +12,21 @@
       </constraint>
     </field>
     <field name="price">
-      <constraint annotation="javax.validation.constraints.NotNull"/>
-      <constraint annotation="javax.validation.constraints.Min">
-        <element name="value">2</element>
+      <constraint annotation="javax.validation.constraints.Digits">
+        <element name="integer">4</element>
+        <element name="fraction">2</element>
       </constraint>
     </field>
     <field name="description">
       <constraint annotation="javax.validation.constraints.Size">
         <element name="max">2000</element>
       </constraint>
+    </field>
+    <field name="nbOfPages">
+      <constraint annotation="javax.validation.constraints.Positive"/>
+    </field>
+    <field name="authorEmail">
+      <constraint annotation="javax.validation.constraints.Email"/>
     </field>
   </bean>
 </constraint-mappings>

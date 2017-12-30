@@ -14,10 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Antonio Goncalves
- * <p>
- * <p>
- * http://www.antoniogoncalves.org
- * --
+ *         http://www.antoniogoncalves.org
+ *         --
  */
 public class BookTest {
 
