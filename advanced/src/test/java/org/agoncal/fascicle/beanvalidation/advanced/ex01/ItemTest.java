@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex02;
+package org.agoncal.fascicle.beanvalidation.advanced.ex01;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

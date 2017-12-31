@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex02;
+package org.agoncal.fascicle.beanvalidation.advanced.ex01;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;

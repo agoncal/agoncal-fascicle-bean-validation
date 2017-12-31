@@ -1,90 +1,48 @@
 package org.agoncal.fascicle.beanvalidation.advanced.ex01;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
 
 /**
  * @author Antonio Goncalves
  * http://www.antoniogoncalves.org
  * --
  */
-// @formatter:off
 // tag::adocSnippet[]
-public class CD {
+public class CD extends Item {
 
-  @NotNull @Size(min = 4, max = 50)
-  private String title;
-  @NotNull @Positive
-  private Float price;
-  @NotNull(groups = PrintingCatalog.class)
-  @Size(min = 10, max = 5000, groups = PrintingCatalog.class)
-  private String description;
-  @Pattern(regexp = "[A-Z][a-z]{1,}")
+  @Pattern(regexp = "[A-Z][a-z]{1,}", message = "{music.company}")
   private String musicCompany;
-  @Max(value = 5)
+  @Max(value = 5, message = "{number.cds}")
   private Integer numberOfCDs;
   private Float totalDuration;
+  @MusicGenre
+  private String genre;
 
-  @NotNull @DecimalMin("5.8")
-  public Float calculatePrice(@DecimalMin("1.4") Float rate) {
-    return price * rate;
-  }
+  // ConstraintDeclarationException: not allowed when method overriding
+  // public Float calculatePrice(@DecimalMin("1.4") Float rate) {
+  //   return price * rate;
+  // }
 
-  @DecimalMin("9.99")
-  public Float calculateVAT() {
-    return price * 0.196f;
-  }
   // tag::adocSkip[]
-  // @formatter:on
-
-  // ======================================
-  // =            Constructors            =
-  // ======================================
-
   public CD() {
   }
+
+  public CD(Long id, String title, Float price, String description, String musicCompany, Integer numberOfCDs, Float totalDuration, String genre) {
+    super(id, title, price, description);
+    this.musicCompany = musicCompany;
+    this.numberOfCDs = numberOfCDs;
+    this.totalDuration = totalDuration;
+    this.genre = genre;
+  }
+
+  // ======================================
+  // =           Public Methods           =
+  // ======================================
 
   // ======================================
   // =          Getters & Setters         =
   // ======================================
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public CD title(String title) {
-    this.title = title;
-    return this;
-  }
-
-  public Float getPrice() {
-    return price;
-  }
-
-  public void setPrice(Float price) {
-    this.price = price;
-  }
-
-  public CD price(Float price) {
-    this.price = price;
-    return this;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CD description(String description) {
-    this.description = description;
-    return this;
-  }
 
   public String getMusicCompany() {
     return musicCompany;
@@ -92,11 +50,6 @@ public class CD {
 
   public void setMusicCompany(String musicCompany) {
     this.musicCompany = musicCompany;
-  }
-
-  public CD musicCompany(String musicCompany) {
-    this.musicCompany = musicCompany;
-    return this;
   }
 
   public Integer getNumberOfCDs() {
@@ -107,11 +60,6 @@ public class CD {
     this.numberOfCDs = numberOfCDs;
   }
 
-  public CD numberOfCDs(Integer numberOfCDs) {
-    this.numberOfCDs = numberOfCDs;
-    return this;
-  }
-
   public Float getTotalDuration() {
     return totalDuration;
   }
@@ -120,12 +68,33 @@ public class CD {
     this.totalDuration = totalDuration;
   }
 
-  public CD totalDuration(Float totalDuration) {
-    this.totalDuration = totalDuration;
-    return this;
+  public String getGenre() {
+    return genre;
   }
 
+  public void setGenre(String genre) {
+    this.genre = genre;
+  }
+
+  // ======================================
+  // =         hash, equals, toString     =
+  // ======================================
+
+  @Override
+  public String toString() {
+    final StringBuilder sb = new StringBuilder();
+    sb.append("CD");
+    sb.append("{id=").append(id);
+    sb.append(", title='").append(title).append('\'');
+    sb.append(", price=").append(price);
+    sb.append(", description='").append(description).append('\'');
+    sb.append(", musicCompany='").append(musicCompany).append('\'');
+    sb.append(", numberOfCDs=").append(numberOfCDs);
+    sb.append(", totalDuration=").append(totalDuration);
+    sb.append(", genre='").append(genre).append('\'');
+    sb.append('}');
+    return sb.toString();
+  }
   // end::adocSkip[]
 }
 // end::adocSnippet[]
-
