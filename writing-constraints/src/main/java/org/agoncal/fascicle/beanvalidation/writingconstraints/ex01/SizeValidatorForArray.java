@@ -16,7 +16,7 @@ public class SizeValidatorForArray implements ConstraintValidator<javax.validati
     this.max = parameters.max();
   }
 
-  // tag::adocSnippet[]
+  // tag::adocIsValid[]
   public boolean isValid(Object[] array, ConstraintValidatorContext constraintValidatorContext) {
     if (array == null) {
       return true;
@@ -24,5 +24,5 @@ public class SizeValidatorForArray implements ConstraintValidator<javax.validati
       return array.length >= this.min && array.length <= this.max;
     }
   }
-  // end::adocSnippet[]
+  // end::adocIsValid[]
 }

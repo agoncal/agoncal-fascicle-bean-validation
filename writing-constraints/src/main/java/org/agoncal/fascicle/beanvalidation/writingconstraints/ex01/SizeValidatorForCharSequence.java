@@ -8,6 +8,7 @@ import javax.validation.ConstraintValidatorContext;
  *
  * @author Emmanuel Bernard
  */
+// tag::adocSnippet[]
 public class SizeValidatorForCharSequence implements ConstraintValidator<Size, CharSequence> {
   private int min;
   private int max;
@@ -20,7 +21,7 @@ public class SizeValidatorForCharSequence implements ConstraintValidator<Size, C
     this.max = parameters.max();
   }
 
-  // tag::adocSnippet[]
+  // tag::adocIsValid[]
   public boolean isValid(CharSequence charSequence, ConstraintValidatorContext constraintValidatorContext) {
     if (charSequence == null) {
       return true;
@@ -28,6 +29,7 @@ public class SizeValidatorForCharSequence implements ConstraintValidator<Size, C
       int length = charSequence.length();
       return length >= this.min && length <= this.max;
     }
+    // end::adocIsValid[]
   }
   // end::adocSnippet[]
 }

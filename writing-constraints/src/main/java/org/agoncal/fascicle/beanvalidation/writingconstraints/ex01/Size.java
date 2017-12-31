@@ -14,9 +14,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 // tag::adocSnippet[]
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Constraint(validatedBy = {})
 @Repeatable(Size.List.class)
 @Documented
-@Constraint(validatedBy = {})
 public @interface Size {
 
   String message() default "{javax.validation.constraints.Size.message}";
