@@ -52,7 +52,7 @@ public class CDTest {
   public void shouldRaiseNoConstraintViolation() {
 
     // tag::shouldRaiseNoConstraintViolation[]
-    CD cd = new CD("Kind of Blue", 12.5f);
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
     assertEquals(0, violations.size());
@@ -74,8 +74,7 @@ public class CDTest {
   public void shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
-    CD cd = new CD();
-    cd.setNumberOfCDs(2);
+    CD cd = new CD().numberOfCDs(2);
 
     Set<ConstraintViolation<CD>> violations = validator.validateProperty(cd, "numberOfCDs");
     assertEquals(0, violations.size());
@@ -86,8 +85,7 @@ public class CDTest {
   public void shouldRaiseConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseConstraintViolationValidatingNumberOfCDsProperty[]
-    CD cd = new CD();
-    cd.setNumberOfCDs(7);
+    CD cd = new CD().numberOfCDs(7);
 
     Set<ConstraintViolation<CD>> violations = validator.validateProperty(cd, "numberOfCDs");
 
@@ -114,7 +112,7 @@ public class CDTest {
   public void shouldRaiseNoMethodParameterConstraintViolation() throws NoSuchMethodException {
 
     // tag::shouldRaiseNoMethodParameterConstraintViolation[]
-    CD cd = new CD("Kind of Blue", 12.5f);
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CD.class.getMethod("calculatePrice", Float.class);
@@ -126,7 +124,7 @@ public class CDTest {
   @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
   public void shouldRaiseMethodParameterConstraintViolationCauseRateIsLow() throws NoSuchMethodException {
 
-    CD cd = new CD("Kind of Blue", 12.5f);
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CD.class.getMethod("calculatePrice", Float.class);
@@ -141,20 +139,18 @@ public class CDTest {
   @Test
   public void shouldRaiseNoConstraintViolationWithGroup() {
 
-    CD cd = new CD("Kind of Blue", 12.5f);
-    cd.setDescription("Best Jazz CD ever");
+    CD cd = new CD().title("Kind of Blue").price(12.5f).description("Best Jazz CD ever");
 
-    Set<ConstraintViolation<CD>> violations = validator.validate(cd, PrintingCatalog.class);
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
     assertEquals(0, violations.size());
   }
 
   @Test
   public void shouldRaiseNoConstraintViolationWithGroupEvenWithNullTitleAndPrice() {
 
-    CD cd = new CD();
-    cd.setDescription("Best Jazz CD ever");
+    CD cd = new CD().description("Best Jazz CD ever");
 
-    Set<ConstraintViolation<CD>> violations = validator.validate(cd, PrintingCatalog.class);
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
     assertEquals(0, violations.size());
   }
 
@@ -162,8 +158,7 @@ public class CDTest {
   public void shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitleAndPrice() {
 
     // tag::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitleAndPrice[]
-    CD cd = new CD();
-    cd.setDescription("Best Jazz CD ever");
+    CD cd = new CD().description("Best Jazz CD ever");
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
     assertEquals(2, violations.size());
@@ -173,8 +168,7 @@ public class CDTest {
   @Test
   public void shouldRaiseConstraintViolationWithNoGroupsCauseNullTitleAndPrice() {
 
-    CD cd = new CD();
-    cd.setDescription("Best Jazz CD ever");
+    CD cd = new CD().description("Best Jazz CD ever");
 
     // tag::shouldRaiseConstraintViolationWithNoGroupsCauseNullTitleAndPrice[]
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
@@ -185,8 +179,7 @@ public class CDTest {
   @Test
   public void shouldRaiseConstraintViolationWithDefaultGroupCauseNullTitleAndPrice() {
 
-    CD cd = new CD();
-    cd.setDescription("Best Jazz CD ever");
+    CD cd = new CD().description("Best Jazz CD ever");
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
     assertEquals(2, violations.size());
@@ -196,10 +189,9 @@ public class CDTest {
   public void shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize() {
 
     // tag::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize[]
-    CD cd = new CD();
-    cd.setDescription("Jazz");
+    CD cd = new CD().description("Jazz");
 
-    Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class, PrintingCatalog.class);
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
     assertEquals(3, violations.size());
     // end::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize[]
   }
@@ -208,10 +200,9 @@ public class CDTest {
   public void shouldRaiseConstraintViolationWithOneGroupCauseSize() {
 
     // tag::shouldRaiseConstraintViolationWithOneGroupCauseSize[]
-    CD cd = new CD();
-    cd.setDescription("Too short");
+    CD cd = new CD().description("Too short");
 
-    Set<ConstraintViolation<CD>> violations = validator.validate(cd, PrintingCatalog.class);
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
     assertEquals(1, violations.size());
     // end::shouldRaiseConstraintViolationWithOneGroupCauseSize[]
   }
@@ -219,10 +210,9 @@ public class CDTest {
   @Test
   public void shouldRaiseConstraintViolationWithGroupCauseSizeIsShort() {
 
-    CD cd = new CD("Kind of Blue", 12.5f);
-    cd.setDescription("Jazz");
+    CD cd = new CD().title("Kind of Blue").price(12.5f).description("Jazz");
 
-    Set<ConstraintViolation<CD>> violations = validator.validate(cd, PrintingCatalog.class);
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
     assertEquals(1, violations.size());
   }
 
