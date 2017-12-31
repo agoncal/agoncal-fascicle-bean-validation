@@ -5,6 +5,7 @@ package org.agoncal.fascicle.beanvalidation.writingconstraints.ex02;
  * http://www.antoniogoncalves.org
  * --
  */
+// tag::adocSnippet[]
 public class Book {
 
   private String title;
@@ -12,6 +13,9 @@ public class Book {
   @Isbn
   private String isbn;
   private Integer nbOfPages;
+
+  // Constructors, getters, setters
+  // tag::adocSkip[]
 
   // ======================================
   // =            Constructors            =
@@ -55,4 +59,7 @@ public class Book {
   public void setNbOfPages(Integer nbOfPages) {
     this.nbOfPages = nbOfPages;
   }
+
+  // end::adocSkip[]
 }
+// end::adocSnippet[]
