@@ -1,5 +1,6 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex08;
+package org.agoncal.fascicle.beanvalidation.writingconstraints.ex05;
 
+import org.agoncal.fascicle.beanvalidation.writingconstraints.ex05.ItemServerConnection;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
