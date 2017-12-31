@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex01;
+package org.agoncal.fascicle.beanvalidation.writingconstraints.ex02;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -14,10 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author Antonio Goncalves
- * <p>
- * <p>
- * http://www.antoniogoncalves.org
- * --
+ *         http://www.antoniogoncalves.org
+ *         --
  */
 public class BookTest {
 
@@ -50,54 +48,47 @@ public class BookTest {
   @Test
   public void shouldRaiseNoConstraintViolation() {
 
-    Book book = new Book("H2G2", 12.5f, "Best IT Scifi Book", "1234-4566-9876", 247, false);
+    Book book = new Book();
+    book.setIsbn("aaaaaaaa");
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
+    displayContraintViolations(violations);
     assertEquals(0, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCausePriceLow() {
-
-    Book book = new Book("H2G2", 0.5f, "Best IT Scifi Book", "1234-4566-9876", 247, false);
-
-    Set<ConstraintViolation<Book>> violations = validator.validate(book);
-    displayContraintViolations(violations);
-    assertEquals(1, violations.size());
-  }
-
-  @Test
-  public void shouldRaiseConstraintsViolationCauseTitleAndPriceNull() {
+  public void shouldRaiseConstraintViolationCauseIsbnNull() {
 
     Book book = new Book();
 
     Set<ConstraintViolation<Book>> violations = validator.validate(book);
-    displayContraintViolations(violations);
-    assertEquals(2, violations.size());
-  }
-
-  @Test
-  public void shouldRaiseConstraintsViolationCauseValidatingOnlyTitle() {
-
-    Book book = new Book();
-
-    Set<ConstraintViolation<Book>> violations = validator.validateProperty(book, "title");
-    displayContraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCheckingTheTitleValue() {
+  public void shouldRaiseConstraintViolationCauseIsbnTooLong() {
 
-    Set<ConstraintViolation<Book>> violations = validator.validateValue(Book.class, "title", null);
-    displayContraintViolations(violations);
+    Book book = new Book();
+    book.setIsbn("abcdef123456789");
+
+    Set<ConstraintViolation<Book>> violations = validator.validate(book);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationCauseIsbnWrongPattern() {
+
+    Book book = new Book();
+    book.setIsbn("12345");
+
+    Set<ConstraintViolation<Book>> violations = validator.validate(book);
     assertEquals(1, violations.size());
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<Book>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
-        "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
+              "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
 
     }
   }
