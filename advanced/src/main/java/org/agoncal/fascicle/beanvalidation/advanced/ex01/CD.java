@@ -1,6 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.validatingconstraints.ex01;
-
-import org.agoncal.fascicle.beanvalidation.advanced.ex01.PrintingCatalog;
+package org.agoncal.fascicle.beanvalidation.advanced.ex01;
 
 import javax.validation.constraints.*;
 
