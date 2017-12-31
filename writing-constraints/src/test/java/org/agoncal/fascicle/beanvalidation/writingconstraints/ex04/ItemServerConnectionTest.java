@@ -9,7 +9,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.text.ParseException;
-import java.util.Date;
+import java.time.Instant;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -108,7 +108,7 @@ public class ItemServerConnectionTest {
   public void shouldRaiseExceptionAsDateIsNotAURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
-    itemServer.setLastConnectionDate(new Date());
+    itemServer.setLastConnectionDate(Instant.now());
 
     assertThrows(javax.validation.ValidationException.class, () -> {
       validator.validate(itemServer, Error.class);

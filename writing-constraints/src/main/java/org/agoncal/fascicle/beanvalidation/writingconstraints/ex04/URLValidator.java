@@ -22,7 +22,7 @@ public class URLValidator implements ConstraintValidator<URL, String> {
     this.port = url.port();
   }
 
-  public boolean isValid(String value, ConstraintValidatorContext context) {
+  public boolean isValid(String value, ConstraintValidatorContext ctx) {
     if (value == null || value.length() == 0) {
       return true;
     }
