@@ -1,5 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.validatingconstraints.ex01;
 
+import org.agoncal.fascicle.beanvalidation.advanced.ex01.PrintingCatalog;
+
 import javax.validation.constraints.*;
 
 /**
@@ -15,7 +17,8 @@ public class CD {
   private String title;
   @NotNull @Positive
   private Float price;
-  @Size(min = 10, max = 5000)
+  @NotNull(groups = PrintingCatalog.class)
+  @Size(min = 10, max = 5000, groups = PrintingCatalog.class)
   private String description;
   @Pattern(regexp = "[A-Z][a-z]{1,}")
   private String musicCompany;

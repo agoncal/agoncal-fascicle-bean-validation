@@ -9,6 +9,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import javax.validation.executable.ExecutableValidator;
+import javax.validation.groups.Default;
 import java.lang.reflect.Method;
 import java.util.Set;
 
@@ -54,7 +55,6 @@ public class CDTest {
     CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
     assertEquals(0, violations.size());
     // end::shouldRaiseNoConstraintViolation[]
   }
@@ -138,6 +138,87 @@ public class CDTest {
     assertEquals(new Float(1.2), violations.iterator().next().getInvalidValue());
     assertEquals("{javax.validation.constraints.DecimalMin.message}", violations.iterator().next().getMessageTemplate());
   }
+
+  @Test
+  public void shouldRaiseNoConstraintViolationWithGroup() {
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f).description("Best Jazz CD ever");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseNoConstraintViolationWithGroupEvenWithNullTitleAndPrice() {
+
+    CD cd = new CD().description("Best Jazz CD ever");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitleAndPrice() {
+
+    // tag::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitleAndPrice[]
+    CD cd = new CD().description("Best Jazz CD ever");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
+    assertEquals(2, violations.size());
+    // end::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitleAndPrice[]
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithNoGroupsCauseNullTitleAndPrice() {
+
+    CD cd = new CD().description("Best Jazz CD ever");
+
+    // tag::shouldRaiseConstraintViolationWithNoGroupsCauseNullTitleAndPrice[]
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    // end::shouldRaiseConstraintViolationWithNoGroupsCauseNullTitleAndPrice[]
+    assertEquals(2, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithDefaultGroupCauseNullTitleAndPrice() {
+
+    CD cd = new CD().description("Best Jazz CD ever");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
+    assertEquals(2, violations.size());
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize() {
+
+    // tag::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize[]
+    CD cd = new CD().description("Jazz");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd, Default.class);
+    assertEquals(3, violations.size());
+    // end::shouldRaiseConstraintViolationWithTwoGroupsCauseNullTitlePriceAndSize[]
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithOneGroupCauseSize() {
+
+    // tag::shouldRaiseConstraintViolationWithOneGroupCauseSize[]
+    CD cd = new CD().description("Too short");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(1, violations.size());
+    // end::shouldRaiseConstraintViolationWithOneGroupCauseSize[]
+  }
+
+  @Test
+  public void shouldRaiseConstraintViolationWithGroupCauseSizeIsShort() {
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f).description("Jazz");
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(1, violations.size());
+  }
+
 
   private void displayContraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
