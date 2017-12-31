@@ -13,10 +13,6 @@ import javax.validation.ConstraintValidatorContext;
 public class ChronologicalDatesValidator implements ConstraintValidator<ChronologicalDates, Order> {
 
   @Override
-  public void initialize(ChronologicalDates constraintAnnotation) {
-  }
-
-  @Override
   public boolean isValid(Order order, ConstraintValidatorContext ctx) {
     return order.getCreationDate().isBefore(order.getPaymentDate()) &&
            order.getPaymentDate().isBefore(order.getDeliveryDate());
