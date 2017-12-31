@@ -17,7 +17,7 @@ public class SizeValidatorForArray implements ConstraintValidator<Size, Object[]
   }
 
   // tag::adocIsValid[]
-  public boolean isValid(Object[] array, ConstraintValidatorContext constraintValidatorContext) {
+  public boolean isValid(Object[] array, ConstraintValidatorContext ctx) {
     if (array == null) {
       return true;
     } else {

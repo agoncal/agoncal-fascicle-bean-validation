@@ -22,7 +22,7 @@ public class SizeValidatorForCharSequence implements ConstraintValidator<Size, C
   }
 
   // tag::adocIsValid[]
-  public boolean isValid(CharSequence charSequence, ConstraintValidatorContext constraintValidatorContext) {
+  public boolean isValid(CharSequence charSequence, ConstraintValidatorContext ctx) {
     if (charSequence == null) {
       return true;
     } else {
