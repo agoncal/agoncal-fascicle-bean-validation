@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex07;
+package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
