@@ -4,7 +4,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraints.Size;
 
-public class SizeValidatorForArray implements ConstraintValidator<javax.validation.constraints.Size, Object[]> {
+public class SizeValidatorForArray implements ConstraintValidator<Size, Object[]> {
   private int min;
   private int max;
 
