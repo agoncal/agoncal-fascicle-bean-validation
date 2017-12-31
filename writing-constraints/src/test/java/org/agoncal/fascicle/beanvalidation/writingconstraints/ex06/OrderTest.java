@@ -49,6 +49,7 @@ public class OrderTest {
   @Test
   public void shouldRaiseNoConstraintsViolation() {
 
+    // tag::shouldRaiseNoConstraintsViolation[]
     Order order = new Order();
     order.setCreationDate(LocalDate.parse("2018-01-10"));
     order.setPaymentDate(LocalDate.parse("2018-01-20"));
@@ -56,11 +57,13 @@ public class OrderTest {
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
+    // end::shouldRaiseNoConstraintsViolation[]
   }
 
   @Test
   public void shouldRaiseConstraintsViolationCauseDatesAreNotChronological() {
 
+    // tag::shouldRaiseConstraintsViolationCauseDatesAreNotChronological[]
     Order order = new Order();
     order.setCreationDate(LocalDate.parse("2018-01-30"));
     order.setPaymentDate(LocalDate.parse("2018-01-20"));
@@ -68,6 +71,7 @@ public class OrderTest {
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());
+    // end::shouldRaiseConstraintsViolationCauseDatesAreNotChronological[]
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {
