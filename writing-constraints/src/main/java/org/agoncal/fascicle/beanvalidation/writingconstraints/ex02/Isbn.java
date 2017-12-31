@@ -13,11 +13,14 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+// tag::adocSnippet[]
+@Constraint(validatedBy = {})
+
 @NotNull
 @Size(min = 7)
 @Pattern(regexp = "[a-f]{1,}")
 @ReportAsSingleViolation
-@Constraint(validatedBy = {})
+
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE, ANNOTATION_TYPE, CONSTRUCTOR})
 @Documented
@@ -29,3 +32,4 @@ public @interface Isbn {
 
   Class<? extends Payload>[] payload() default {};
 }
+// end::adocSnippet[]
