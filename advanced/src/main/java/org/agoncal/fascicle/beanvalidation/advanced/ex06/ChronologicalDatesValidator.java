@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex06;
+package org.agoncal.fascicle.beanvalidation.advanced.ex06;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -16,6 +16,6 @@ public class ChronologicalDatesValidator implements ConstraintValidator<Chronolo
 
   @Override
   public boolean isValid(Order order, ConstraintValidatorContext context) {
-    return order.getCreationDate().isBefore(order.getPaymentDate()) && order.getPaymentDate().isBefore(order.getDeliveryDate());
+    return order.getCreationDate().getTime() < order.getPaymentDate().getTime() && order.getPaymentDate().getTime() < order.getDeliveryDate().getTime();
   }
 }

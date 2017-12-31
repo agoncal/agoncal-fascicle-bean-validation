@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.writingconstraints.ex06;
+package org.agoncal.fascicle.beanvalidation.advanced.ex06;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,7 +8,9 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.time.LocalDate;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,14 +29,25 @@ public class OrderTest {
   protected static ValidatorFactory vf;
   protected static Validator validator;
 
+  private static Date creationDate;
+  private static Date paymentDate;
+  private static Date deliveryDate;
+
+
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  public static void init() throws ParseException {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
+
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+    creationDate = dateFormat.parse("01/01/2010");
+    paymentDate = dateFormat.parse("02/01/2010");
+    deliveryDate = dateFormat.parse("03/01/2010");
   }
 
   @AfterAll
@@ -50,11 +63,24 @@ public class OrderTest {
   public void shouldRaiseNoConstraintsViolation() {
 
     Order order = new Order();
-    order.setCreationDate(LocalDate.parse("2018-01-10"));
-    order.setPaymentDate(LocalDate.parse("2018-01-20"));
-    order.setDeliveryDate(LocalDate.parse("2018-01-30"));
+    order.setId(1234L);
+    order.setTotalAmount(1234.5);
+
+    order.setCreationDate(creationDate);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    displayContraintViolations(violations);
+    assertEquals(0, violations.size());
+
+    order.setPaymentDate(paymentDate);
+
+    violations = validator.validate(order, Payment.class);
+    displayContraintViolations(violations);
+    assertEquals(0, violations.size());
+
+    order.setDeliveryDate(deliveryDate);
+
+    violations = validator.validate(order, Delivery.class);
     assertEquals(0, violations.size());
   }
 
@@ -62,11 +88,22 @@ public class OrderTest {
   public void shouldRaiseConstraintsViolationCauseDatesAreNotChronological() {
 
     Order order = new Order();
-    order.setCreationDate(LocalDate.parse("2018-01-30"));
-    order.setPaymentDate(LocalDate.parse("2018-01-20"));
-    order.setDeliveryDate(LocalDate.parse("2018-01-10"));
+    order.setId(1234L);
+    order.setTotalAmount(1234.5);
+
+    order.setCreationDate(creationDate);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(0, violations.size());
+
+    order.setPaymentDate(creationDate);
+
+    violations = validator.validate(order, Payment.class);
+    assertEquals(0, violations.size());
+
+    order.setDeliveryDate(creationDate);
+
+    violations = validator.validate(order, Delivery.class);
     assertEquals(1, violations.size());
   }
 

@@ -1,8 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex06;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -11,21 +9,13 @@ import java.util.List;
  * --
  */
 // tag::adocSnippet[]
-@ChronologicalDates(groups = Delivery.class)
+@ChronologicalDates
 public class Order {
 
-  @NotNull
-  private Long id;
-  @NotNull
-  @Past
-  private Date creationDate;
+  private LocalDate creationDate;
+  private LocalDate paymentDate;
+  private LocalDate deliveryDate;
   private Double totalAmount;
-  @NotNull(groups = Payment.class)
-  @Past(groups = Payment.class)
-  private Date paymentDate;
-  @NotNull(groups = Delivery.class)
-  @Past(groups = Delivery.class)
-  private Date deliveryDate;
   private List<OrderLine> orderLines;
 
   // Constructors, getters, setters
@@ -38,20 +28,29 @@ public class Order {
   // =          Getters & Setters         =
   // ======================================
 
-  public Long getId() {
-    return id;
-  }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Date getCreationDate() {
+  public LocalDate getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(LocalDate creationDate) {
     this.creationDate = creationDate;
+  }
+
+  public LocalDate getPaymentDate() {
+    return paymentDate;
+  }
+
+  public void setPaymentDate(LocalDate paymentDate) {
+    this.paymentDate = paymentDate;
+  }
+
+  public LocalDate getDeliveryDate() {
+    return deliveryDate;
+  }
+
+  public void setDeliveryDate(LocalDate deliveryDate) {
+    this.deliveryDate = deliveryDate;
   }
 
   public Double getTotalAmount() {
@@ -60,22 +59,6 @@ public class Order {
 
   public void setTotalAmount(Double totalAmount) {
     this.totalAmount = totalAmount;
-  }
-
-  public Date getPaymentDate() {
-    return paymentDate;
-  }
-
-  public void setPaymentDate(Date paymentDate) {
-    this.paymentDate = paymentDate;
-  }
-
-  public Date getDeliveryDate() {
-    return deliveryDate;
-  }
-
-  public void setDeliveryDate(Date deliveryDate) {
-    this.deliveryDate = deliveryDate;
   }
 
   public List<OrderLine> getOrderLines() {
