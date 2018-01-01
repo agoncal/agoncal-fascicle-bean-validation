@@ -11,9 +11,9 @@ import javax.validation.constraints.Pattern;
 // tag::adocSnippet[]
 public class CD extends Item {
 
-  @Pattern(regexp = "[A-Z][a-z]{1,}", message = "{music.company}")
+  @Pattern(regexp = "[A-Z][a-z]{1,}")
   private String musicCompany;
-  @Max(value = 5, message = "{number.cds}")
+  @Max(value = 5)
   private Integer numberOfCDs;
   private Float totalDuration;
   @MusicGenre
@@ -23,7 +23,6 @@ public class CD extends Item {
   // public Float calculatePrice(@DecimalMin("1.4") Float rate) {
   //   return price * rate;
   // }
-
   // tag::adocSkip[]
   public CD() {
   }
@@ -44,12 +43,37 @@ public class CD extends Item {
   // =          Getters & Setters         =
   // ======================================
 
+  public CD id(Long id) {
+    this.id = id;
+    return this;
+  }
+
+  public CD title(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public CD price(Float price) {
+    this.price = price;
+    return this;
+  }
+
+  public CD description(String description) {
+    this.description = description;
+    return this;
+  }
+
   public String getMusicCompany() {
     return musicCompany;
   }
 
   public void setMusicCompany(String musicCompany) {
     this.musicCompany = musicCompany;
+  }
+
+  public CD musicCompany(String musicCompany) {
+    this.musicCompany = musicCompany;
+    return this;
   }
 
   public Integer getNumberOfCDs() {
@@ -60,6 +84,11 @@ public class CD extends Item {
     this.numberOfCDs = numberOfCDs;
   }
 
+  public CD numberOfCDs(Integer numberOfCDs) {
+    this.numberOfCDs = numberOfCDs;
+    return this;
+  }
+
   public Float getTotalDuration() {
     return totalDuration;
   }
@@ -68,12 +97,22 @@ public class CD extends Item {
     this.totalDuration = totalDuration;
   }
 
+  public CD totalDuration(Float totalDuration) {
+    this.totalDuration = totalDuration;
+    return this;
+  }
+
   public String getGenre() {
     return genre;
   }
 
   public void setGenre(String genre) {
     this.genre = genre;
+  }
+
+  public CD genre(String genre) {
+    this.genre = genre;
+    return this;
   }
 
   // ======================================

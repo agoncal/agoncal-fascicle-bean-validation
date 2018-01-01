@@ -9,13 +9,13 @@ import javax.validation.constraints.Size;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Item {
 
   @NotNull
   protected Long id;
-  @NotNull
-  @Size(min = 4, max = 50)
+  @NotNull @Size(min = 4, max = 50)
   protected String title;
   protected Float price;
   protected String description;
@@ -29,8 +29,9 @@ public class Item {
   public Float calculatePrice(@DecimalMin("1.2") Float rate) {
     return price * rate;
   }
-
   // tag::adocSkip[]
+  // @formatter:on
+
   public Item() {
   }
 
@@ -43,6 +44,10 @@ public class Item {
 
   public Long getId() {
     return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getTitle() {

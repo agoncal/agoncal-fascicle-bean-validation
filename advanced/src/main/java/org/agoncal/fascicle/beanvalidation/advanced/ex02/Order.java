@@ -1,8 +1,8 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex06;
+package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -10,26 +10,25 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 @ChronologicalDates(groups = Delivery.class)
 public class Order {
 
   @NotNull
   private Long id;
-  @NotNull
-  @Past
-  private Date creationDate;
   private Double totalAmount;
-  @NotNull(groups = Payment.class)
-  @Past(groups = Payment.class)
-  private Date paymentDate;
-  @NotNull(groups = Delivery.class)
-  @Past(groups = Delivery.class)
-  private Date deliveryDate;
+  @NotNull @Past
+  private LocalDate creationDate;
+  @NotNull(groups = Payment.class) @Past(groups = Payment.class)
+  private LocalDate paymentDate;
+  @NotNull(groups = Delivery.class) @Past(groups = Delivery.class)
+  private LocalDate deliveryDate;
   private List<OrderLine> orderLines;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   public Order() {
   }
@@ -46,11 +45,11 @@ public class Order {
     this.id = id;
   }
 
-  public Date getCreationDate() {
+  public LocalDate getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(LocalDate creationDate) {
     this.creationDate = creationDate;
   }
 
@@ -62,19 +61,19 @@ public class Order {
     this.totalAmount = totalAmount;
   }
 
-  public Date getPaymentDate() {
+  public LocalDate getPaymentDate() {
     return paymentDate;
   }
 
-  public void setPaymentDate(Date paymentDate) {
+  public void setPaymentDate(LocalDate paymentDate) {
     this.paymentDate = paymentDate;
   }
 
-  public Date getDeliveryDate() {
+  public LocalDate getDeliveryDate() {
     return deliveryDate;
   }
 
-  public void setDeliveryDate(Date deliveryDate) {
+  public void setDeliveryDate(LocalDate deliveryDate) {
     this.deliveryDate = deliveryDate;
   }
 

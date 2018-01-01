@@ -51,7 +51,7 @@ public class CDTest {
   public void shouldRaiseNoConstraintViolation() {
 
     // Creates a CD with null title
-    CD cd = new CD(1L, "title", 12.80f, "Beatles master piece", "Apple", 1, 53.32f, "Pop");
+    CD cd = new CD().id(1L).title("Help").price(12.80f).description("Beatles master piece").musicCompany("Apple").numberOfCDs(1).totalDuration(53.32f).genre("Pop");
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);

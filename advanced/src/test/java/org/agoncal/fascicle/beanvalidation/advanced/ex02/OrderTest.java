@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex06;
+package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -8,9 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,9 +27,9 @@ public class OrderTest {
   protected static ValidatorFactory vf;
   protected static Validator validator;
 
-  private static Date creationDate;
-  private static Date paymentDate;
-  private static Date deliveryDate;
+  private static LocalDate creationDate;
+  private static LocalDate paymentDate;
+  private static LocalDate deliveryDate;
 
 
   // ======================================
@@ -39,15 +37,13 @@ public class OrderTest {
   // ======================================
 
   @BeforeAll
-  public static void init() throws ParseException {
+  public static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
 
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-    creationDate = dateFormat.parse("01/01/2010");
-    paymentDate = dateFormat.parse("02/01/2010");
-    deliveryDate = dateFormat.parse("03/01/2010");
+    creationDate = LocalDate.parse("2017-01-10");
+    paymentDate = LocalDate.parse("2017-01-20");
+    deliveryDate = LocalDate.parse("2017-01-30");
   }
 
   @AfterAll

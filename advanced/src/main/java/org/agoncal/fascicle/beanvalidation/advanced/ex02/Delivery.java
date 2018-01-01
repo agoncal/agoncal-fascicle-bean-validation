@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex06;
+package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
 /**
  * @author Antonio Goncalves
