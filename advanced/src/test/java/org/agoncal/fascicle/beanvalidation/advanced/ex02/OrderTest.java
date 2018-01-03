@@ -102,9 +102,24 @@ public class OrderTest {
     order.setPaymentDate(LocalDate.parse("2017-01-20"));
     order.setDeliveryDate(LocalDate.parse("2017-01-30"));
 
-    Set<ConstraintViolation<Order>> violations = validator.validate(order, Payment.class);
+    Set<ConstraintViolation<Order>> violations = validator.validate(order, Delivery.class);
     assertEquals(0, violations.size());
     // end::shouldRaiseNoConstraintsViolationCauseDeliveryGroup[]
+  }
+
+  @Test
+  public void shouldRaiseConstraintsViolationCauseDeliveryGroup() {
+
+    // tag::shouldRaiseConstraintsViolationCauseDeliveryGroup[]
+    Order order = new Order().id(1234L).totalAmount(1234.5);
+
+    order.setCreationDate(LocalDate.parse("2017-01-30"));
+    order.setPaymentDate(LocalDate.parse("2017-01-20"));
+    order.setDeliveryDate(LocalDate.parse("2017-01-10"));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order, Delivery.class);
+    assertEquals(1, violations.size());
+    // end::shouldRaiseConstraintsViolationCauseDeliveryGroup[]
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {

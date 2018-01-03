@@ -1,12 +1,9 @@
 package org.agoncal.fascicle.beanvalidation.advanced.ex03;
 
-import org.agoncal.fascicle.beanvalidation.advanced.ex02.ChronologicalDates;
-import org.agoncal.fascicle.beanvalidation.advanced.ex02.Delivery;
-import org.agoncal.fascicle.beanvalidation.advanced.ex02.Payment;
-
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,25 +11,20 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
-// @formatter:off
 // tag::adocSnippet[]
-@ChronologicalDates(groups = Delivery.class)
 public class Order {
 
   @NotNull
   private Long id;
   private Double totalAmount;
-  @NotNull @Past
   private LocalDate creationDate;
-  @NotNull(groups = Payment.class) @Past(groups = Payment.class)
   private LocalDate paymentDate;
-  @NotNull(groups = Delivery.class) @Past(groups = Delivery.class)
   private LocalDate deliveryDate;
+  @Valid
   private List<OrderLine> orderLines;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
-  // @formatter:on
 
   public Order() {
   }
@@ -97,6 +89,12 @@ public class Order {
 
   public void setOrderLines(List<OrderLine> orderLines) {
     this.orderLines = orderLines;
+  }
+
+  public void add(OrderLine orderLine) {
+    if (this.orderLines == null)
+      this.orderLines = new ArrayList<>();
+    orderLines.add(orderLine);
   }
   // end::adocSkip[]
 }
