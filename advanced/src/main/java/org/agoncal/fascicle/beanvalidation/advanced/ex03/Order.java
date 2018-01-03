@@ -2,7 +2,6 @@ package org.agoncal.fascicle.beanvalidation.advanced.ex03;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +16,6 @@ public class Order {
   @NotNull
   private Long id;
   private Double totalAmount;
-  private LocalDate creationDate;
-  private LocalDate paymentDate;
-  private LocalDate deliveryDate;
   @Valid
   private List<OrderLine> orderLines;
 
@@ -46,14 +42,6 @@ public class Order {
     return this;
   }
 
-  public LocalDate getCreationDate() {
-    return creationDate;
-  }
-
-  public void setCreationDate(LocalDate creationDate) {
-    this.creationDate = creationDate;
-  }
-
   public Double getTotalAmount() {
     return totalAmount;
   }
@@ -65,22 +53,6 @@ public class Order {
   public Order totalAmount(Double itotalAmountd) {
     this.totalAmount = totalAmount;
     return this;
-  }
-
-  public LocalDate getPaymentDate() {
-    return paymentDate;
-  }
-
-  public void setPaymentDate(LocalDate paymentDate) {
-    this.paymentDate = paymentDate;
-  }
-
-  public LocalDate getDeliveryDate() {
-    return deliveryDate;
-  }
-
-  public void setDeliveryDate(LocalDate deliveryDate) {
-    this.deliveryDate = deliveryDate;
   }
 
   public List<OrderLine> getOrderLines() {
