@@ -9,19 +9,19 @@ import javax.validation.constraints.PositiveOrZero;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class OrderLine {
 
   private String item;
-  @NotNull
-  @PositiveOrZero
+  @NotNull @PositiveOrZero
   private Double unitPrice;
-  @NotNull
-  @Positive
+  @NotNull @Positive
   private Integer quantity;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   public OrderLine() {
   }
