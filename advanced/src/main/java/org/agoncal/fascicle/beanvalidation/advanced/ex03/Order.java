@@ -1,4 +1,8 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex02;
+package org.agoncal.fascicle.beanvalidation.advanced.ex03;
+
+import org.agoncal.fascicle.beanvalidation.advanced.ex02.ChronologicalDates;
+import org.agoncal.fascicle.beanvalidation.advanced.ex02.Delivery;
+import org.agoncal.fascicle.beanvalidation.advanced.ex02.Payment;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;

@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import javax.validation.groups.Default;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -27,11 +28,6 @@ public class OrderTest {
   protected static ValidatorFactory vf;
   protected static Validator validator;
 
-  private static LocalDate creationDate;
-  private static LocalDate paymentDate;
-  private static LocalDate deliveryDate;
-
-
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
@@ -40,10 +36,6 @@ public class OrderTest {
   public static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
-
-    creationDate = LocalDate.parse("2017-01-10");
-    paymentDate = LocalDate.parse("2017-01-20");
-    deliveryDate = LocalDate.parse("2017-01-30");
   }
 
   @AfterAll
@@ -56,51 +48,63 @@ public class OrderTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  public void shouldRaiseNoConstraintsViolationCauseOnlyCreation() {
 
-    Order order = new Order();
-    order.setId(1234L);
-    order.setTotalAmount(1234.5);
+    // tag::shouldRaiseNoConstraintsViolationCauseOnlyCreation[]
+    Order order = new Order().id(1234L).totalAmount(1234.5);
 
-    order.setCreationDate(creationDate);
+    order.setCreationDate(LocalDate.parse("2017-01-10"));
+    order.setPaymentDate(null);
+    order.setDeliveryDate(null);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
-    displayContraintViolations(violations);
     assertEquals(0, violations.size());
-
-    order.setPaymentDate(paymentDate);
-
-    violations = validator.validate(order, Payment.class);
-    displayContraintViolations(violations);
-    assertEquals(0, violations.size());
-
-    order.setDeliveryDate(deliveryDate);
-
-    violations = validator.validate(order, Delivery.class);
-    assertEquals(0, violations.size());
+    // end::shouldRaiseNoConstraintsViolationCauseOnlyCreation[]
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseDatesAreNotChronological() {
+  public void shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup() {
 
-    Order order = new Order();
-    order.setId(1234L);
-    order.setTotalAmount(1234.5);
+    // tag::shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup[]
+    Order order = new Order().id(1234L).totalAmount(1234.5);
 
-    order.setCreationDate(creationDate);
+    order.setCreationDate(LocalDate.parse("2017-01-10"));
+    order.setPaymentDate(null);
+    order.setDeliveryDate(null);
 
-    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    Set<ConstraintViolation<Order>> violations = validator.validate(order, Default.class);
     assertEquals(0, violations.size());
+    // end::shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup[]
+  }
 
-    order.setPaymentDate(creationDate);
+  @Test
+  public void shouldRaiseConstraintsViolationCausePaymentGroup() {
 
-    violations = validator.validate(order, Payment.class);
-    assertEquals(0, violations.size());
+    // tag::shouldRaiseConstraintsViolationCausePaymentGroup[]
+    Order order = new Order().id(1234L).totalAmount(1234.5);
 
-    order.setDeliveryDate(creationDate);
+    order.setCreationDate(LocalDate.parse("2017-01-10"));
+    order.setPaymentDate(null);
+    order.setDeliveryDate(null);
 
-    violations = validator.validate(order, Delivery.class);
+    Set<ConstraintViolation<Order>> violations = validator.validate(order, Payment.class);
     assertEquals(1, violations.size());
+    // end::shouldRaiseConstraintsViolationCausePaymentGroup[]
+  }
+
+  @Test
+  public void shouldRaiseNoConstraintsViolationCauseDeliveryGroup() {
+
+    // tag::shouldRaiseNoConstraintsViolationCauseDeliveryGroup[]
+    Order order = new Order().id(1234L).totalAmount(1234.5);
+
+    order.setCreationDate(LocalDate.parse("2017-01-10"));
+    order.setPaymentDate(LocalDate.parse("2017-01-20"));
+    order.setDeliveryDate(LocalDate.parse("2017-01-30"));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order, Payment.class);
+    assertEquals(0, violations.size());
+    // end::shouldRaiseNoConstraintsViolationCauseDeliveryGroup[]
   }
 
   private void displayContraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {
