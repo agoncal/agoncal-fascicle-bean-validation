@@ -18,9 +18,14 @@ public class AuthorEndpoint {
   // tag::adocSkip[]
 
   @GET()
-  @Produces("text/plain")
-  public String helloWorld() {
-    return "Hello World";
+  @Produces("application/json")
+  public Response getAuthor() {
+    Author author = new Author();
+    author.setId(1L);
+    author.setFirstname("Douglas");
+    author.setSurname("Adams");
+    author.setEmail("douglas.adams@h2g2.com");
+    return Response.ok(author).build();
   }
   // end::adocSkip[]
 }
