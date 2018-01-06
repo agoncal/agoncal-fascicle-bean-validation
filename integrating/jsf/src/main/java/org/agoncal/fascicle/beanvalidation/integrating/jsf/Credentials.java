@@ -23,8 +23,8 @@ public class Credentials {
     // Check user
     return null;
   }
+  // tag::adocSkip[]
   // @formatter:on
-  // end::adocSnippet[]
 
   public String getLogin() {
     return login;
