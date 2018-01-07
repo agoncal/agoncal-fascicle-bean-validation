@@ -2,6 +2,7 @@ package org.agoncal.fascicle.beanvalidation.puttingtogether;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -16,6 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 // @formatter:off
 // tag::adocSnippet[]
 @Constraint(validatedBy = ZipCodeValidator.class)
+@Repeatable(ZipCode.List.class)
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
 public @interface ZipCode {

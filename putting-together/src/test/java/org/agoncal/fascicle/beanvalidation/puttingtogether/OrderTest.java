@@ -82,7 +82,6 @@ public class OrderTest {
     // tag::shouldRaiseConstraintsViolationCauseNullCustomer[]
     Order order = new Order().id(1234L).totalAmount(40.5).creationDate(LocalDate.MIN);
     order.setCustomer(null);
-    order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
     order.add(new OrderLine().item("Help").quantity(1).unitPrice(10.5));
     order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(15d));
 
