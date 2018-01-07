@@ -1,4 +1,4 @@
-package org.agoncal.fascicle.beanvalidation.advanced.ex03;
+package org.agoncal.fascicle.beanvalidation.validatingconstraints.ex02;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
