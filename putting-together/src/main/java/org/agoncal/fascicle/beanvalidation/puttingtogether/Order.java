@@ -2,6 +2,8 @@ package org.agoncal.fascicle.beanvalidation.puttingtogether;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +12,15 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Order {
 
   @NotNull
   private Long id;
   private Double totalAmount;
+  @Past
+  private LocalDate creationDate;
   @NotNull @Valid
   private Customer customer;
   @Valid
@@ -25,6 +30,7 @@ public class Order {
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   public Order() {
   }

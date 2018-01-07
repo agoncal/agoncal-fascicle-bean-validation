@@ -1,31 +1,28 @@
 package org.agoncal.fascicle.beanvalidation.puttingtogether;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 /**
  * @author Antonio Goncalves
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Customer {
 
-  @NotNull
-  @Size(min = 2)
+  @NotNull @Size(min = 2)
   private String firstName;
   private String lastName;
   @Email
   private String email;
   private String phoneNumber;
-  @Past
-  private Date dateOfBirth;
-  private Address deliveryAddress;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   // ======================================
   // =            Constructors            =
@@ -74,22 +71,6 @@ public class Customer {
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
-  }
-
-  public Date getDateOfBirth() {
-    return dateOfBirth;
-  }
-
-  public void setDateOfBirth(Date dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public Address getDeliveryAddress() {
-    return deliveryAddress;
-  }
-
-  public void setDeliveryAddress(Address deliveryAddress) {
-    this.deliveryAddress = deliveryAddress;
   }
   // end::adocSkip[]
 }

@@ -20,7 +20,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface ZipCode {
 
-  String message() default "{org.agoncal.book.ZipCode.message}";
+  String message() default "{org.agoncal.fascicle.ZipCode.message}";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 
