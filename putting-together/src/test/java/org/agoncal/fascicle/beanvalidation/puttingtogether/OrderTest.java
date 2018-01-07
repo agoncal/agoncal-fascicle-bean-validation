@@ -18,18 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * http://www.antoniogoncalves.org
  * --
  */
+// tag::adocSnippet[]
 public class OrderTest {
 
-  // ======================================
-  // =             Attributes             =
-  // ======================================
-
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
-
-  // ======================================
-  // =          Lifecycle Methods         =
-  // ======================================
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   @BeforeAll
   public static void init() {
@@ -42,6 +35,8 @@ public class OrderTest {
     vf.close();
   }
 
+  // ...
+  // end::adocSnippet[]
   // ======================================
   // =              Methods               =
   // ======================================
