@@ -65,6 +65,19 @@ public class Order {
     return this;
   }
 
+  public LocalDate getCreationDate() {
+    return creationDate;
+  }
+
+  public void setCreationDate(LocalDate creationDate) {
+    this.creationDate = creationDate;
+  }
+
+  public Order creationDate(LocalDate creationDate) {
+    this.creationDate = creationDate;
+    return this;
+  }
+
   public Customer getCustomer() {
     return customer;
   }

@@ -49,12 +49,22 @@ public class Customer {
     this.firstName = firstName;
   }
 
+  public Customer firstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
   public String getLastName() {
     return lastName;
   }
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public Customer lastName(String lastName) {
+    this.lastName = lastName;
+    return this;
   }
 
   public String getEmail() {
@@ -65,12 +75,22 @@ public class Customer {
     this.email = email;
   }
 
+  public Customer email(String email) {
+    this.email = email;
+    return this;
+  }
+
   public String getPhoneNumber() {
     return phoneNumber;
   }
 
   public void setPhoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
+  }
+
+  public Customer phoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
   }
   // end::adocSkip[]
 }
