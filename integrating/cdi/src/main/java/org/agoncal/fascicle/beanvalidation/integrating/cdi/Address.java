@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Address {
 
@@ -16,13 +17,13 @@ public class Address {
   @NotNull
   private String city;
   private String state;
-  @NotNull
-  @ZipCode
+  @NotNull @ZipCode
   private String zipcode;
   private String country;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   // ======================================
   // =            Constructors            =
