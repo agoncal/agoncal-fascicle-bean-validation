@@ -5,11 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+// @formatter:off
+// tag::adocSnippet[]
 @Entity
 public class Book {
 
-  @Id
-  @GeneratedValue
+  @Id @GeneratedValue
   private Long id;
   @NotNull
   private String title;
@@ -22,6 +23,10 @@ public class Book {
   private Integer nbOfPages;
   @Email
   private String authorEmail;
+
+  // Constructors, getters, setters
+  // tag::adocSkip[]
+  // @formatter:on
 
   public Long getId() {
     return id;
@@ -113,4 +118,6 @@ public class Book {
     this.authorEmail = authorEmail;
     return this;
   }
+  // end::adocSkip[]
 }
+// end::adocSnippet[]
