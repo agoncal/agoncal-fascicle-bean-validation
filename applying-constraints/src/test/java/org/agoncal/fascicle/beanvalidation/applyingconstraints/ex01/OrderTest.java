@@ -26,8 +26,8 @@ public class OrderTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   private static Date creationDate;
   private static Date paymentDate;
