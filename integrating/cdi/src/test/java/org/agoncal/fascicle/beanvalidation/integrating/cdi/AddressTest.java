@@ -24,7 +24,8 @@ public class AddressTest {
   // =             Attributes             =
   // ======================================
 
-  @Inject Validator validator;
+  @Inject
+  Validator validator;
 
   // ======================================
   // =              Methods               =

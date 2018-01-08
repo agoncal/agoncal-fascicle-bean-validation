@@ -13,16 +13,16 @@ import java.net.URISyntaxException;
 @RestController
 public class AddressEndpoint {
 
-    private final AddressRepository addressRepository;
+  private final AddressRepository addressRepository;
 
-    public AddressEndpoint(AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
-    }
+  public AddressEndpoint(AddressRepository addressRepository) {
+    this.addressRepository = addressRepository;
+  }
 
-    @PostMapping("/addresses")
-    public ResponseEntity<Address> createAddress(@Valid @RequestBody Address address) throws URISyntaxException {
-        Address result = addressRepository.save(address);
-        return ResponseEntity.created(new URI("/api/addresss/" + address.getId())).body(result);
-    }
+  @PostMapping("/addresses")
+  public ResponseEntity<Address> createAddress(@Valid @RequestBody Address address) throws URISyntaxException {
+    Address result = addressRepository.save(address);
+    return ResponseEntity.created(new URI("/addresss/" + address.getId())).body(result);
+  }
 }
 // end::adocSnippet[]
