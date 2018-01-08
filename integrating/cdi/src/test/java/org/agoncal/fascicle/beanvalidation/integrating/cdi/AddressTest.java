@@ -1,6 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.integrating.cdi;
 
 import org.jboss.weld.junit5.EnableWeld;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * http://www.antoniogoncalves.org
  * --
  */
+@Disabled
 @EnableWeld
 public class AddressTest {
 
@@ -28,7 +30,7 @@ public class AddressTest {
   // =              Methods               =
   // ======================================
 
-  @Test
+  //@Test
   public void shouldRaiseNoConstraintViolation() {
 
     // tag::shouldRaiseNoConstraintViolation[]
