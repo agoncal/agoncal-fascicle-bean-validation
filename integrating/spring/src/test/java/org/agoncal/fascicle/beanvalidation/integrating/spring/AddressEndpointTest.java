@@ -44,26 +44,28 @@ public class AddressEndpointTest {
   @Transactional
   public void createValidAddress() throws Exception {
 
+    // tag::createValidAddress[]
     Address address = new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA");
 
-    // Create the Address
     mockAddressEndpoint.perform(post("/addresses")
       .contentType("application/json")
       .content(convertObjectToJsonBytes(address)))
       .andExpect(status().isCreated());
+    // tag::createValidAddress[]
   }
 
   @Test
   @Transactional
   public void createInvalidAddress() throws Exception {
 
+    // tag::createInvalidAddress[]
     Address address = new Address().street1(null).city("New York").state("NY").zipcode("12345").country("USA");
 
-    // Create the Address
     mockAddressEndpoint.perform(post("/addresses")
       .contentType("application/json")
       .content(convertObjectToJsonBytes(address)))
       .andExpect(status().isBadRequest());
+    // tag::createInvalidAddress[]
   }
 
   public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
