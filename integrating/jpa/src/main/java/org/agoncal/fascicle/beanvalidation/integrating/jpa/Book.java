@@ -21,8 +21,6 @@ public class Book {
   private String isbn;
   @Positive
   private Integer nbOfPages;
-  @Email
-  private String authorEmail;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
@@ -103,19 +101,6 @@ public class Book {
 
   public Book nbOfPages(Integer nbOfPages) {
     this.nbOfPages = nbOfPages;
-    return this;
-  }
-
-  public String getAuthorEmail() {
-    return authorEmail;
-  }
-
-  public void setAuthorEmail(String authorEmail) {
-    this.authorEmail = authorEmail;
-  }
-
-  public Book authorEmail(String authorEmail) {
-    this.authorEmail = authorEmail;
     return this;
   }
   // end::adocSkip[]
