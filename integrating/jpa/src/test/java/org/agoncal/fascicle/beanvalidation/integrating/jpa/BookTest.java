@@ -23,8 +23,6 @@ public class BookTest {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("beanvalidationPU");
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
-    ;
-
 
     // Creates an instance of book
     Book book = new Book().title("H2G2").description("The Hitchhiker's Guide to the Galaxy").price(12.5F).isbn("1-84023-742-2").nbOfPages(354);
@@ -41,6 +39,7 @@ public class BookTest {
   @Test
   public void shouldRaiseConstraintViolationCauseNullTitle() {
 
+    // tag::shouldRaiseConstraintViolationCauseNullTitle[]
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("beanvalidationPU");
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
@@ -51,5 +50,6 @@ public class BookTest {
       em.persist(book);
       tx.commit();
     });
+    // end::shouldRaiseConstraintViolationCauseNullTitle[]
   }
 }
