@@ -44,7 +44,7 @@ public class BookTest {
     EntityManager em = emf.createEntityManager();
     EntityTransaction tx = em.getTransaction();
 
-    Book book = new Book().title(null).description("The Hitchhiker's Guide to the Galaxy").price(12.5F).isbn("1-84023-742-2").nbOfPages(354);
+    Book book = new Book().title(null).price(12.5F).isbn("1-84023-742-2").nbOfPages(354);
     assertThrows(RollbackException.class, () -> {
       tx.begin();
       em.persist(book);
