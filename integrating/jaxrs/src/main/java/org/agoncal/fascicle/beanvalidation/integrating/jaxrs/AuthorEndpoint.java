@@ -11,7 +11,7 @@ public class AuthorEndpoint {
 
   @POST
   @Consumes("application/json")
-  public Response create(@Valid Author author) {
+  public Response createAuthor(@Valid Author author) {
     return Response.created(UriBuilder.fromResource(AuthorEndpoint.class)
       .path(String.valueOf(author.getId())).build()).build();
   }

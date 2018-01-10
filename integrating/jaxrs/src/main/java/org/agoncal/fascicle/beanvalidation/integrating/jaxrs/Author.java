@@ -4,27 +4,25 @@ import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
 
-@XmlRootElement
-public class Author implements Serializable {
+// @formatter:off
+// tag::adocSnippet[]
+public class Author {
 
   @NotNull
   private Long id;
-
-  @NotNull
-  @Size(min = 2, max = 50)
+  @NotNull @Size(min = 2, max = 50)
   private String firstname;
   @NotNull
   private String surname;
-
   @Size(max = 2000)
   private String bio;
-
   @Email
   private String email;
 
+  // Constructors, getters, setters
+  // tag::adocSkip[]
+  // @formatter:on
   public Long getId() {
     return id;
   }
@@ -64,4 +62,6 @@ public class Author implements Serializable {
   public void setEmail(String email) {
     this.email = email;
   }
+  // end::adocSkip[]
 }
+// end::adocSnippet[]
