@@ -51,7 +51,7 @@ public class AddressEndpointTest {
       .contentType("application/json")
       .content(convertObjectToJsonBytes(address)))
       .andExpect(status().isCreated());
-    // tag::createValidAddress[]
+    // end::createValidAddress[]
   }
 
   @Test
@@ -65,7 +65,7 @@ public class AddressEndpointTest {
       .contentType("application/json")
       .content(convertObjectToJsonBytes(address)))
       .andExpect(status().isBadRequest());
-    // tag::createInvalidAddress[]
+    // end::createInvalidAddress[]
   }
 
   public static byte[] convertObjectToJsonBytes(Object object) throws IOException {
