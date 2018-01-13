@@ -82,6 +82,11 @@ public class OrderTest {
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());
+
+    for (ConstraintViolation constraintViolation : violations) {
+      System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
+        "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
+    }
     // end::shouldRaiseConstraintsViolationCauseNullCustomer[]
   }
 
