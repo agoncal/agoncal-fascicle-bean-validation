@@ -129,7 +129,7 @@ public class BookTest {
     assertEquals(1, violations.size());
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<Book>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<Book>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

@@ -120,7 +120,7 @@ public class OrderTest {
     // end::shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice[]
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

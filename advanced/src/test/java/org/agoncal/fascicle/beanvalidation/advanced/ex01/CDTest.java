@@ -66,7 +66,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(2, violations.size());
   }
 
@@ -78,7 +78,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
@@ -90,7 +90,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
@@ -102,7 +102,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(2, violations.size());
   }
 
@@ -114,7 +114,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(2, violations.size());
   }
 
@@ -126,7 +126,7 @@ public class CDTest {
 
     // Validate the cd
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(2, violations.size());
   }
 
@@ -152,7 +152,7 @@ public class CDTest {
     Set<ConstraintViolation<CD>> violations = methodValidator.validateParameters(cd, method, new Object[]{new Float(4.5)});
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

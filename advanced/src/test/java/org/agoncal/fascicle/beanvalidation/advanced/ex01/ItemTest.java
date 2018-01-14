@@ -66,7 +66,7 @@ public class ItemTest {
 
     // Validate the cd
     Set<ConstraintViolation<Item>> violations = validator.validate(book);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(2, violations.size());
   }
 
@@ -100,11 +100,11 @@ public class ItemTest {
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = Item.class.getMethod("calculatePrice", Float.class);
     Set<ConstraintViolation<Item>> violations = methodValidator.validateParameters(item, method, new Object[]{new Float(0.5)});
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<Item>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<Item>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

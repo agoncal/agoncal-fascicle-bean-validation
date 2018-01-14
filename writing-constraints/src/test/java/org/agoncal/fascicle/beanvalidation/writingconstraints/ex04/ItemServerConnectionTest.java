@@ -64,7 +64,7 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("dummy", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
@@ -76,7 +76,7 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "dummy", "ftp://www.cdbookstore.com:21");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
@@ -88,7 +88,7 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "dummy");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
@@ -100,7 +100,7 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("dummy1", "dummy2", "dummy3");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(3, violations.size());
   }
 
@@ -115,7 +115,7 @@ public class ItemServerConnectionTest {
     });
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

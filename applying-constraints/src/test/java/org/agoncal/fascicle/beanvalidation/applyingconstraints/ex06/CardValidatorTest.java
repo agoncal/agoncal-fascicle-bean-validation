@@ -70,7 +70,7 @@ public class CardValidatorTest {
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CardValidator.class.getMethod("validate", CreditCard.class);
     Set<ConstraintViolation<CardValidator>> violations = methodValidator.validateParameters(cardValidator, method, new Object[]{null});
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
@@ -83,11 +83,11 @@ public class CardValidatorTest {
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CardValidator.class.getMethod("validate", CreditCard.class);
     Set<ConstraintViolation<CardValidator>> violations = methodValidator.validateParameters(cardValidator, method, new Object[]{creditCard});
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(3, violations.size());
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<CardValidator>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<CardValidator>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

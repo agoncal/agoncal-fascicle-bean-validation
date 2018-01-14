@@ -54,7 +54,7 @@ public class CDTest {
     CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(0, violations.size());
     // end::shouldRaiseNoConstraintViolation[]
   }
@@ -132,14 +132,14 @@ public class CDTest {
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CD.class.getMethod("calculatePrice", Float.class);
     Set<ConstraintViolation<CD>> violations = methodValidator.validateParameters(cd, method, new Object[]{new Float(1.2)});
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("must be greater than or equal to 1.4", violations.iterator().next().getMessage());
     assertEquals(new Float(1.2), violations.iterator().next().getInvalidValue());
     assertEquals("{javax.validation.constraints.DecimalMin.message}", violations.iterator().next().getMessageTemplate());
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

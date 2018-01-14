@@ -65,7 +65,7 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
@@ -77,7 +77,7 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }
 
@@ -89,7 +89,7 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("must be a well-formed email address", violations.iterator().next().getMessage());
   }
@@ -102,7 +102,7 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("The recovery email is not a valid email address", violations.iterator().next().getMessage());
   }
@@ -116,7 +116,7 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("Customer is too young. He/she should be older than 18", violations.iterator().next().getMessage());
   }
@@ -129,12 +129,12 @@ public class CustomerTest {
 
     // Validate the cd
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("The customer firstname should be between 4 and 50", violations.iterator().next().getMessage());
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<Customer>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<Customer>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());
