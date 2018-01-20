@@ -11,23 +11,28 @@ import java.time.LocalDate;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Artist {
 
   @NotNull
   private String firstName;
+
   @NotNull
   private String lastName;
+
   @Email
   private String email;
+
   @Size(max = 2000)
   private String bio;
+
   @Past
   private LocalDate dateOfBirth;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
-
+  // @formatter:on
   public Artist() {
   }
 
