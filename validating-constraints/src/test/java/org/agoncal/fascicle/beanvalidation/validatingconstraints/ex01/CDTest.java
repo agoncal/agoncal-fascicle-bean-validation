@@ -25,21 +25,21 @@ public class CDTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +48,7 @@ public class CDTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     // tag::shouldRaiseNoConstraintViolation[]
     CD cd = new CD().title("Kind of Blue").price(12.5f);
@@ -60,7 +60,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseTitleAndPriceAreNull() {
+  void shouldRaiseConstraintViolationCauseTitleAndPriceAreNull() {
 
     // tag::shouldRaiseConstraintViolationCauseTitleAndPriceAreNull[]
     CD cd = new CD();
@@ -71,7 +71,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty() {
+  void shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
     CD cd = new CD().numberOfCDs(2);
@@ -82,7 +82,7 @@ public class CDTest {
   }
 
   @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
-  public void shouldRaiseConstraintViolationValidatingNumberOfCDsProperty() {
+  void shouldRaiseConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseConstraintViolationValidatingNumberOfCDsProperty[]
     CD cd = new CD().numberOfCDs(7);
@@ -99,7 +99,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationValidatingNumberOfCDsPropertyValue() {
+  void shouldRaiseNoConstraintViolationValidatingNumberOfCDsPropertyValue() {
 
     Set<ConstraintViolation<CD>> violations;
     // tag::shouldRaiseNoConstraintViolationValidatingNumberOfCDsPropertyValue[]
@@ -112,7 +112,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseNoMethodParameterConstraintViolation() throws NoSuchMethodException {
+  void shouldRaiseNoMethodParameterConstraintViolation() throws NoSuchMethodException {
 
     // tag::shouldRaiseNoMethodParameterConstraintViolation[]
     CD cd = new CD().title("Kind of Blue").price(12.5f);
@@ -125,7 +125,7 @@ public class CDTest {
   }
 
   @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
-  public void shouldRaiseMethodParameterConstraintViolationCauseRateIsLow() throws NoSuchMethodException {
+  void shouldRaiseMethodParameterConstraintViolationCauseRateIsLow() throws NoSuchMethodException {
 
     CD cd = new CD().title("Kind of Blue").price(12.5f);
 

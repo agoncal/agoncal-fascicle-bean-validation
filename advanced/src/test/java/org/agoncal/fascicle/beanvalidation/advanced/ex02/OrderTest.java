@@ -25,21 +25,21 @@ public class OrderTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +48,7 @@ public class OrderTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolationCauseOnlyCreation() {
+  void shouldRaiseNoConstraintsViolationCauseOnlyCreation() {
 
     // tag::shouldRaiseNoConstraintsViolationCauseOnlyCreation[]
     Order order = new Order().id(1234L).totalAmount(1234.5);
@@ -63,7 +63,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup() {
+  void shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup() {
 
     // tag::shouldRaiseNoConstraintsViolationCauseOnlyCreationDefaultGroup[]
     Order order = new Order().id(1234L).totalAmount(1234.5);
@@ -78,7 +78,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCausePaymentGroup() {
+  void shouldRaiseConstraintsViolationCausePaymentGroup() {
 
     // tag::shouldRaiseConstraintsViolationCausePaymentGroup[]
     Order order = new Order().id(1234L).totalAmount(1234.5);
@@ -93,7 +93,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintsViolationCauseDeliveryGroup() {
+  void shouldRaiseNoConstraintsViolationCauseDeliveryGroup() {
 
     // tag::shouldRaiseNoConstraintsViolationCauseDeliveryGroup[]
     Order order = new Order().id(1234L).totalAmount(1234.5);
@@ -108,7 +108,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseDeliveryGroup() {
+  void shouldRaiseConstraintsViolationCauseDeliveryGroup() {
 
     // tag::shouldRaiseConstraintsViolationCauseDeliveryGroup[]
     Order order = new Order().id(1234L).totalAmount(1234.5);

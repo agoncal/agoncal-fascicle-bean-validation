@@ -23,21 +23,21 @@ public class BookTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -46,7 +46,7 @@ public class BookTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     Book book = new Book();
     book.setIsbn("aaaaaaaa");
@@ -57,7 +57,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseIsbnNull() {
+  void shouldRaiseConstraintViolationCauseIsbnNull() {
 
     Book book = new Book();
 
@@ -66,7 +66,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseIsbnTooLong() {
+  void shouldRaiseConstraintViolationCauseIsbnTooLong() {
 
     Book book = new Book();
     book.setIsbn("abcdef123456789");
@@ -76,7 +76,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseIsbnWrongPattern() {
+  void shouldRaiseConstraintViolationCauseIsbnWrongPattern() {
 
     Book book = new Book();
     book.setIsbn("12345");

@@ -26,13 +26,13 @@ public class ArtistTest {
   private static Validator validator;
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
   // end::adocBegin[]
@@ -43,7 +43,7 @@ public class ArtistTest {
 
   // tag::adocShouldRaiseNoConstraintViolation[]
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     Artist book = new Artist().firstName("Adams").lastName("Douglas");
 
@@ -54,7 +54,7 @@ public class ArtistTest {
 
   // tag::shouldRaiseConstraintViolationCauseFirstNameIsNull[]
   @Test
-  public void shouldRaiseConstraintViolationCauseFirstNameIsNull() {
+  void shouldRaiseConstraintViolationCauseFirstNameIsNull() {
 
     Artist book = new Artist().firstName(null).lastName("Douglas");
 
@@ -65,7 +65,7 @@ public class ArtistTest {
 
   // tag::shouldRaiseConstraintViolationCauseInvalidEmail[]
   @Test
-  public void shouldRaiseConstraintViolationCauseInvalidEmail() {
+  void shouldRaiseConstraintViolationCauseInvalidEmail() {
 
     Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong");
 
@@ -81,7 +81,7 @@ public class ArtistTest {
 
   // tag::shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate[]
   @Test
-  public void shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate() {
+  void shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate() {
 
     LocalDate dateOfBirth = LocalDate.of(2678, 12, 01);
     Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong").dateOfBirth(dateOfBirth);
@@ -90,5 +90,4 @@ public class ArtistTest {
     assertEquals(2, violations.size());
   }
   // end::shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate[]
-
 }

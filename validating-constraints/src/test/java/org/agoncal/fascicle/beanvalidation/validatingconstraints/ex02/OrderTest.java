@@ -23,21 +23,21 @@ public class OrderTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -46,7 +46,7 @@ public class OrderTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  void shouldRaiseNoConstraintsViolation() {
 
     // tag::shouldRaiseNoConstraintsViolation[]
     Order order = new Order().id(1234L).totalAmount(40.5);
@@ -59,7 +59,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseNullQuantity() {
+  void shouldRaiseConstraintsViolationCauseNullQuantity() {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantity[]
     Order order = new Order().id(1234L).totalAmount(40.5);
@@ -72,7 +72,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice() {
+  void shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice() {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice[]
     Order order = new Order().id(1234L).totalAmount(40.5);

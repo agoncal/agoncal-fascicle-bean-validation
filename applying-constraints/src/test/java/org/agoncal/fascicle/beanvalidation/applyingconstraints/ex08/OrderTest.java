@@ -8,7 +8,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.text.ParseException;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,8 +23,8 @@ public class OrderTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
 
   // ======================================
@@ -33,13 +32,13 @@ public class OrderTest {
   // ======================================
 
   @BeforeAll
-  public static void init() throws ParseException {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +47,7 @@ public class OrderTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  void shouldRaiseNoConstraintsViolation() {
 
     Order order = new Order();
     order.setOrderId("CA45678");
@@ -58,7 +57,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseRegex() {
+  void shouldRaiseConstraintsViolationCauseRegex() {
 
     Order order = new Order();
     order.setOrderId("FA45678");

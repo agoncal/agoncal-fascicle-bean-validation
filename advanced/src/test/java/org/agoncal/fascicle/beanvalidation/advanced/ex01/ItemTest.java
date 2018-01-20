@@ -25,21 +25,21 @@ public class ItemTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +48,7 @@ public class ItemTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     // Creates a book
     Item book = new Item(1L, "H2G2", 12.5f, "Best IT Scifi Book");
@@ -59,7 +59,7 @@ public class ItemTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolation() {
+  void shouldRaiseConstraintsViolation() {
 
     // Creates a book
     Item book = new Item();
@@ -71,35 +71,35 @@ public class ItemTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationOnCalculateVAT() throws NoSuchMethodException {
+  void shouldRaiseNoConstraintViolationOnCalculateVAT() throws NoSuchMethodException {
 
     Item item = new Item(1L, "H2G2", 12.5f, "Best IT Scifi Book");
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = Item.class.getMethod("calculateVAT");
-    Set<ConstraintViolation<Item>> violations = methodValidator.validateReturnValue(item, method, new Float(10.0));
+    Set<ConstraintViolation<Item>> violations = methodValidator.validateReturnValue(item, method, 10.0f);
     assertEquals(0, violations.size());
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationOnCalculatePrice() throws NoSuchMethodException {
+  void shouldRaiseNoConstraintViolationOnCalculatePrice() throws NoSuchMethodException {
 
     Item item = new Item(1L, "H2G2", 12.5f, "Best IT Scifi Book");
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = Item.class.getMethod("calculatePrice", Float.class);
-    Set<ConstraintViolation<Item>> violations = methodValidator.validateParameters(item, method, new Object[]{new Float(4.5)});
+    Set<ConstraintViolation<Item>> violations = methodValidator.validateParameters(item, method, new Object[]{4.5f});
     assertEquals(0, violations.size());
   }
 
   @Test
-  public void shouldRaiseConstraintViolationOnCalculatePriceCauseRateIsTooLow() throws NoSuchMethodException {
+  void shouldRaiseConstraintViolationOnCalculatePriceCauseRateIsTooLow() throws NoSuchMethodException {
 
     Item item = new Item(1L, "H2G2", 12.5f, "Best IT Scifi Book");
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = Item.class.getMethod("calculatePrice", Float.class);
-    Set<ConstraintViolation<Item>> violations = methodValidator.validateParameters(item, method, new Object[]{new Float(0.5)});
+    Set<ConstraintViolation<Item>> violations = methodValidator.validateParameters(item, method, new Object[]{0.5f});
     displayConstraintViolations(violations);
     assertEquals(1, violations.size());
   }

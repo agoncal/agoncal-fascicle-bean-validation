@@ -39,7 +39,7 @@ public class OrderTest {
   // ======================================
 
   @BeforeAll
-  public static void init() throws ParseException {
+  static void init() throws ParseException {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
 
@@ -52,7 +52,7 @@ public class OrderTest {
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -61,7 +61,7 @@ public class OrderTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     Order order = new Order(creationDate);
     order.setOrderId("C45678");
@@ -74,7 +74,7 @@ public class OrderTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToEmptyLines() {
+  void shouldRaiseViolationDueToEmptyLines() {
 
     Order order = new Order(creationDate);
     order.setOrderId("C45678");

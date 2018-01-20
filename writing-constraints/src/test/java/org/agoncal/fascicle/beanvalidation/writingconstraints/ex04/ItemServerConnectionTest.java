@@ -8,7 +8,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.text.ParseException;
 import java.time.Instant;
 import java.util.Set;
 
@@ -26,8 +25,8 @@ public class ItemServerConnectionTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
 
   // ======================================
@@ -35,13 +34,13 @@ public class ItemServerConnectionTest {
   // ======================================
 
   @BeforeAll
-  public static void init() throws ParseException {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -50,7 +49,7 @@ public class ItemServerConnectionTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  void shouldRaiseNoConstraintsViolation() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
 
@@ -59,7 +58,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("dummy", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
 
@@ -71,7 +70,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidItemURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidItemURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "dummy", "ftp://www.cdbookstore.com:21");
 
@@ -83,7 +82,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidFTPServerURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidFTPServerURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "dummy");
 
@@ -95,7 +94,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidURLs() {
+  void shouldRaiseConstraintsViolationCauseInvalidURLs() {
 
     ItemServerConnection itemServer = new ItemServerConnection("dummy1", "dummy2", "dummy3");
 
@@ -105,7 +104,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseExceptionAsDateIsNotAURL() {
+  void shouldRaiseExceptionAsDateIsNotAURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
     itemServer.setLastConnectionDate(Instant.now());

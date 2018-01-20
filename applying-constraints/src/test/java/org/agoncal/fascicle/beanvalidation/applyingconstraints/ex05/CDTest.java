@@ -24,21 +24,21 @@ public class CDTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -47,7 +47,7 @@ public class CDTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     CD cd = new CD("Help", "EMI");
     cd.addTrack(1, "Help!");
@@ -57,7 +57,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToEmpty() {
+  void shouldRaiseViolationDueToEmpty() {
 
     CD cd = new CD("Help", "EMI");
     cd.addTrack(1, "");
@@ -67,7 +67,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToNegative() {
+  void shouldRaiseViolationDueToNegative() {
 
     CD cd = new CD("Help", "EMI");
     cd.addTrack(-1, "Help!");
@@ -77,7 +77,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToMax() {
+  void shouldRaiseViolationDueToMax() {
 
     CD cd = new CD("Help", "EMI");
     cd.addTrack(1, "Help!");
@@ -92,7 +92,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToEmptyMap() {
+  void shouldRaiseViolationDueToEmptyMap() {
 
     CD cd = new CD("Help", "EMI");
     cd.setTracks(new HashMap<>());
@@ -102,7 +102,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToNullMap() {
+  void shouldRaiseViolationDueToNullMap() {
 
     CD cd = new CD("Help", "EMI");
     cd.setTracks(null);

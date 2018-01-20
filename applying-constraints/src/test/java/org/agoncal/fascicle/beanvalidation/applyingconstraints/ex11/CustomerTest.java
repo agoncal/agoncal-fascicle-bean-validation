@@ -23,21 +23,21 @@ public class CustomerTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -46,7 +46,7 @@ public class CustomerTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     // Creates a book
     Customer customer = new Customer("John", "Smith", "jsmith@gmail.com", "recovery@gmail.com");
@@ -58,7 +58,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseEmailWithoutAt() {
+  void shouldRaiseConstraintsViolationCauseEmailWithoutAt() {
 
     // Creates a book
     Customer customer = new Customer("John", "Smith", "jsmithgmail.com", "recovery@gmail.com");
@@ -70,7 +70,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseFirstnameIsNull() {
+  void shouldRaiseConstraintsViolationCauseFirstnameIsNull() {
 
     // Creates a book
     Customer customer = new Customer();
@@ -82,7 +82,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldCheckEmailDefaultMessage() {
+  void shouldCheckEmailDefaultMessage() {
 
     // Creates a book
     Customer customer = new Customer("John", "Smith", "dummy", "recovery@gmail.com");
@@ -95,7 +95,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldCheckEmailCustomMessage() {
+  void shouldCheckEmailCustomMessage() {
 
     // Creates a book
     Customer customer = new Customer("John", "Smith", "jsmith@gmail.com", "dummy");
@@ -108,7 +108,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldCheckAgeMessage() {
+  void shouldCheckAgeMessage() {
 
     // Creates a book
     Customer customer = new Customer("John", "Smith", "jsmith@gmail.com", "recovery@gmail.com");
@@ -122,7 +122,7 @@ public class CustomerTest {
   }
 
   @Test
-  public void shouldCheckFirstnameMessage() {
+  void shouldCheckFirstnameMessage() {
 
     // Creates a book
     Customer customer = new Customer("J", "Smith", "jsmith@gmail.com", "recovery@gmail.com");

@@ -27,21 +27,21 @@ public class BookTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -50,7 +50,7 @@ public class BookTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     Book book = new Book();
     book.setTitle("title");
@@ -65,7 +65,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToEmail() {
+  void shouldRaiseViolationDueToEmail() {
 
     Book book = new Book();
     book.setTitle("title");
@@ -80,7 +80,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationWithOptionalEmail() {
+  void shouldRaiseNoConstraintViolationWithOptionalEmail() {
 
     Book book = new Book();
     book.setTitle("title");
@@ -95,7 +95,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseViolationDueToNbPages() {
+  void shouldRaiseViolationDueToNbPages() {
 
     Book book = new Book();
     book.setTitle("title");
@@ -110,7 +110,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationWithOptionalNbPages() {
+  void shouldRaiseNoConstraintViolationWithOptionalNbPages() {
 
     Book book = new Book();
     book.setTitle("title");
@@ -125,7 +125,7 @@ public class BookTest {
   }
 
   @Test
-  public void shouldRaiseNoConstraintViolationWithNullTitle() {
+  void shouldRaiseNoConstraintViolationWithNullTitle() {
 
     Book book = new Book();
     book.setTitle(null);

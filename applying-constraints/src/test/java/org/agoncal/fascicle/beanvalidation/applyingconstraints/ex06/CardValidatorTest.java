@@ -25,21 +25,21 @@ public class CardValidatorTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +48,7 @@ public class CardValidatorTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() throws NoSuchMethodException {
+  void shouldRaiseNoConstraintViolation() throws NoSuchMethodException {
 
     CreditCard creditCard = new CreditCard("12341234", "10/10", 1234, "VISA");
     CardValidator cardValidator = new CardValidator();
@@ -63,7 +63,7 @@ public class CardValidatorTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseCreditCardIsNull() throws NoSuchMethodException {
+  void shouldRaiseConstraintViolationCauseCreditCardIsNull() throws NoSuchMethodException {
 
     CardValidator cardValidator = new CardValidator();
 
@@ -75,7 +75,7 @@ public class CardValidatorTest {
   }
 
   @Test
-  public void shouldRaiseConstraintViolationCauseCreditCardParametersAreNull() throws NoSuchMethodException {
+  void shouldRaiseConstraintViolationCauseCreditCardParametersAreNull() throws NoSuchMethodException {
 
     CreditCard creditCard = new CreditCard(null, null, null, null);
     CardValidator cardValidator = new CardValidator();

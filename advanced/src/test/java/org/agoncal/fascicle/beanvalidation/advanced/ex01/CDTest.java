@@ -25,21 +25,21 @@ public class CDTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -48,7 +48,7 @@ public class CDTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintViolation() {
+  void shouldRaiseNoConstraintViolation() {
 
     // Creates a CD with null title
     CD cd = new CD().id(1L).title("Help").price(12.80f).description("Beatles master piece").musicCompany("Apple").numberOfCDs(1).totalDuration(53.32f).genre("Pop");
@@ -59,7 +59,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolation() {
+  void shouldRaiseConstraintsViolation() {
 
     // Creates a CD with null title
     CD cd = new CD();
@@ -71,7 +71,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseWrongMusicCompany() throws Exception {
+  void shouldRaiseWrongMusicCompany() {
 
     // Creates a cd
     CD cd = new CD(1L, "St Pepper", 12.80f, "Beatles master piece", "apple", 1, 53.32f, "Pop");
@@ -83,7 +83,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseTooManyCDs() throws Exception {
+  void shouldRaiseTooManyCDs() {
 
     // Creates a cd
     CD cd = new CD(1L, "St Pepper", 12.80f, "Beatles master piece", "Apple", 11, 53.32f, "Pop");
@@ -95,7 +95,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseMusicGenreLowerCase() throws Exception {
+  void shouldRaiseMusicGenreLowerCase() {
 
     // Creates a cd
     CD cd = new CD(1L, "St Pepper", 12.80f, "Beatles master piece", "Apple", 11, 53.32f, "pop");
@@ -107,7 +107,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseMusicGenreTooShort() {
+  void shouldRaiseMusicGenreTooShort() {
 
     // Creates a cd
     CD cd = new CD(1L, "St Pepper", 12.80f, "Beatles master piece", "Apple", 11, 53.32f, "P");
@@ -119,7 +119,7 @@ public class CDTest {
   }
 
   @Test
-  public void shouldRaiseMusicGenreTooLong() {
+  void shouldRaiseMusicGenreTooLong() {
 
     // Creates a cd
     CD cd = new CD(1L, "St Pepper", 12.80f, "Beatles master piece", "Apple", 11, 53.32f, "Poooooooooooooooooooooooooooooooooooooooooooooooooooooop");
@@ -132,24 +132,24 @@ public class CDTest {
 
 
   @Test
-  public void shouldRaiseNoConstraintViolationOnCalculateVAT() throws NoSuchMethodException {
+  void shouldRaiseNoConstraintViolationOnCalculateVAT() throws NoSuchMethodException {
 
     CD cd = new CD(1L, "title", 12.80f, "Beatles master piece", "Apple", 1, 53.32f, "Pop");
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CD.class.getMethod("calculateVAT");
-    Set<ConstraintViolation<CD>> violations = methodValidator.validateReturnValue(cd, method, new Float(10.0));
+    Set<ConstraintViolation<CD>> violations = methodValidator.validateReturnValue(cd, method, 10.0f);
     assertEquals(0, violations.size());
   }
 
   @Test
-  public void shouldRaiseAnExceptionCauseOverriddenMethodCannotHaveConstraintParameters() throws NoSuchMethodException {
+  void shouldRaiseAnExceptionCauseOverriddenMethodCannotHaveConstraintParameters() throws NoSuchMethodException {
 
     CD cd = new CD(1L, "title", 12.80f, "Beatles master piece", "Apple", 1, 53.32f, "Pop");
 
     ExecutableValidator methodValidator = validator.forExecutables();
     Method method = CD.class.getMethod("calculatePrice", Float.class);
-    Set<ConstraintViolation<CD>> violations = methodValidator.validateParameters(cd, method, new Object[]{new Float(4.5)});
+    Set<ConstraintViolation<CD>> violations = methodValidator.validateParameters(cd, method, new Object[]{4.5f});
   }
 
   private void displayConstraintViolations(Set<ConstraintViolation<CD>> constraintViolations) {

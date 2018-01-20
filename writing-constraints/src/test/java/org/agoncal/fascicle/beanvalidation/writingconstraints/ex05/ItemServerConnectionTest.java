@@ -8,7 +8,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.text.ParseException;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,21 +23,21 @@ public class ItemServerConnectionTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
   @BeforeAll
-  public static void init() throws ParseException {
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
   @AfterAll
-  public static void close() {
+  static void close() {
     vf.close();
   }
 
@@ -47,7 +46,7 @@ public class ItemServerConnectionTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  void shouldRaiseNoConstraintsViolation() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/133", "http://www.cdbookstore.com/book/1334", "ftp://www.cdbookstore.com:21");
 
@@ -56,7 +55,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("dummy", "http://www.cdbookstore.com/book/1334", "ftp://www.cdbookstore.com:21");
 
@@ -68,7 +67,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidProtocol() {
+  void shouldRaiseConstraintsViolationCauseInvalidProtocol() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/133", "ftp://www.cdbookstore.com/book/1334", "ftp://www.cdbookstore.com:21");
 
@@ -80,7 +79,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidHost() {
+  void shouldRaiseConstraintsViolationCauseInvalidHost() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/133", "http://www.dummy.com/book/1334", "ftp://www.cdbookstore.com:21");
 
@@ -92,7 +91,7 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidPort() {
+  void shouldRaiseConstraintsViolationCauseInvalidPort() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/133", "http://www.cdbookstore.com/book/1334", "ftp://www.cdbookstore.com:22");
 
