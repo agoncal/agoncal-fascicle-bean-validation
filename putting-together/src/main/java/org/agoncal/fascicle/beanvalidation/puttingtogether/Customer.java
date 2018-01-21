@@ -1,31 +1,28 @@
 package org.agoncal.fascicle.beanvalidation.puttingtogether;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-import java.util.Date;
 
 /**
  * @author Antonio Goncalves
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// @formatter:off
+// tag::adocSnippet[]
 public class Customer {
 
-  @NotNull
-  @Size(min = 2)
+  @NotNull @Size(min = 2)
   private String firstName;
   private String lastName;
   @Email
   private String email;
   private String phoneNumber;
-  @Past
-  private Date dateOfBirth;
-  private Address deliveryAddress;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
+  // @formatter:on
 
   // ======================================
   // =            Constructors            =
@@ -52,12 +49,22 @@ public class Customer {
     this.firstName = firstName;
   }
 
+  public Customer firstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
   public String getLastName() {
     return lastName;
   }
 
   public void setLastName(String lastName) {
     this.lastName = lastName;
+  }
+
+  public Customer lastName(String lastName) {
+    this.lastName = lastName;
+    return this;
   }
 
   public String getEmail() {
@@ -68,6 +75,11 @@ public class Customer {
     this.email = email;
   }
 
+  public Customer email(String email) {
+    this.email = email;
+    return this;
+  }
+
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -76,21 +88,10 @@ public class Customer {
     this.phoneNumber = phoneNumber;
   }
 
-  public Date getDateOfBirth() {
-    return dateOfBirth;
+  public Customer phoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
   }
-
-  public void setDateOfBirth(Date dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
-  }
-
-  public Address getDeliveryAddress() {
-    return deliveryAddress;
-  }
-
-  public void setDeliveryAddress(Address deliveryAddress) {
-    this.deliveryAddress = deliveryAddress;
-  }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

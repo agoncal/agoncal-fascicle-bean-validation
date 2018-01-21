@@ -1,0 +1,11 @@
+.
+├── src
+│   ├── main
+│   │   └── java
+│   │       └── org/agoncal/fascicle/beanvalidation/gettingstarted
+│   │           └── Artist.java
+│   └── test
+│       └── java
+│           └── org/agoncal/fascicle/beanvalidation/gettingstarted
+│               └── ArtistTest.java
+└── pom.xml

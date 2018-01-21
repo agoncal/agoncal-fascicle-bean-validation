@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.agoncal.fascicle.bean-validation</groupId>
   <artifactId>integrating</artifactId>
   <version>2.0</version>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <name>Bean Validation :: Integrating other Technologies</name>
 
   <parent>
@@ -15,20 +15,11 @@
     <version>2.0</version>
   </parent>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-validator</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>javax.el</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
-
+  <modules>
+    <module>cdi</module>
+    <module>jaxrs</module>
+    <module>jpa</module>
+    <module>jsf</module>
+    <module>spring</module>
+  </modules>
 </project>

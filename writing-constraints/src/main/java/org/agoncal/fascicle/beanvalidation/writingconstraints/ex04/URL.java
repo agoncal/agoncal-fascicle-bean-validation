@@ -14,7 +14,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  * --
  */
 // @formatter:off
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 @Constraint(validatedBy = {URLValidator.class})
 @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
 @Retention(RUNTIME)
@@ -28,5 +28,5 @@ public @interface URL {
   String host() default "";
   int port() default -1;
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
 // @formatter:on

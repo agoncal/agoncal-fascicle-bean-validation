@@ -1,18 +1,18 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex04;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.text.ParseException;
-import java.util.Date;
+import java.time.Instant;
 import java.util.Set;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Antonio Goncalves
@@ -25,22 +25,22 @@ public class ItemServerConnectionTest {
   // =             Attributes             =
   // ======================================
 
-  protected static ValidatorFactory vf;
-  protected static Validator validator;
+  private static ValidatorFactory vf;
+  private static Validator validator;
 
 
   // ======================================
   // =          Lifecycle Methods         =
   // ======================================
 
-  @BeforeClass
-  public static void init() throws ParseException {
+  @BeforeAll
+  static void init() {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
   }
 
-  @AfterClass
-  public static void close() {
+  @AfterAll
+  static void close() {
     vf.close();
   }
 
@@ -49,7 +49,7 @@ public class ItemServerConnectionTest {
   // ======================================
 
   @Test
-  public void shouldRaiseNoConstraintsViolation() {
+  void shouldRaiseNoConstraintsViolation() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
 
@@ -58,61 +58,63 @@ public class ItemServerConnectionTest {
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidResourceURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("dummy", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidItemURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidItemURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "dummy", "ftp://www.cdbookstore.com:21");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidFTPServerURL() {
+  void shouldRaiseConstraintsViolationCauseInvalidFTPServerURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "dummy");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(1, violations.size());
     assertEquals("dummy", violations.iterator().next().getInvalidValue());
     assertEquals("Malformed URL", violations.iterator().next().getMessage());
   }
 
   @Test
-  public void shouldRaiseConstraintsViolationCauseInvalidURLs() {
+  void shouldRaiseConstraintsViolationCauseInvalidURLs() {
 
     ItemServerConnection itemServer = new ItemServerConnection("dummy1", "dummy2", "dummy3");
 
     Set<ConstraintViolation<ItemServerConnection>> violations = validator.validate(itemServer);
-    displayContraintViolations(violations);
+    displayConstraintViolations(violations);
     assertEquals(3, violations.size());
   }
 
-  @Test(expected = javax.validation.ValidationException.class)
-  public void shouldRaiseExceptionAsDateIsNotAURL() {
+  @Test
+  void shouldRaiseExceptionAsDateIsNotAURL() {
 
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
-    itemServer.setLastConnectionDate(new Date());
+    itemServer.setLastConnectionDate(Instant.now());
 
-    validator.validate(itemServer, Error.class);
+    assertThrows(javax.validation.ValidationException.class, () -> {
+      validator.validate(itemServer, Error.class);
+    });
   }
 
-  private void displayContraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {
+  private void displayConstraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +
         "." + constraintViolation.getPropertyPath() + " - Invalid Value = " + constraintViolation.getInvalidValue() + " - Error Msg = " + constraintViolation.getMessage());

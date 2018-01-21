@@ -1,0 +1,21 @@
+[INFO] -------------------------------------------------------
+[INFO] Building Bean Validation :: Getting Started 2.0
+[INFO] -------------------------------------------------------
+[INFO]
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile)
+[INFO]
+[INFO] --- maven-surefire-plugin:2.20:test (default-test)
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running org.agoncal.fascicle.beanvalidation.gettingstarted.ArtistTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.365 s
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] -------------------------------------------------------

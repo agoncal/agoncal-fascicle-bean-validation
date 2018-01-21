@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/resources/scaffold/pageTemplate.xhtml">
+
+  <ui:param name="pageTitle" value="Bean Validation with JSF"/>
+
+  <ui:define name="header">Bean Validation + JSF</ui:define>
+
+  <ui:define name="main">
+    <h2 class="success">Enter Login/Password and check if valid</h2>
+  </ui:define>
+
+  <ui:define name="main">
+    <!-- tag::adocSnippet[] -->
+    <h:form>
+      <f:validateBean disabled="false">
+        <h:panelGroup styleClass="search">
+
+          <h:panelGrid columnClasses="label,component,required" columns="3">
+            <h:outputLabel for="credentialsLogin" value="Login:"/>
+            <h:panelGroup>
+              <h:inputText id="credentialsLogin" value="#{credentials.login}"/>
+              <h:message for="credentialsLogin" styleClass="error"/>
+            </h:panelGroup>
+            <h:outputText/>
+            <h:outputLabel for="credentialsPassword" value="Password:"/>
+            <h:panelGroup>
+              <h:inputText id="credentialsPassword" value="#{credentials.password}"/>
+              <h:message for="credentialsPassword" styleClass="error"/>
+            </h:panelGroup>
+            <h:outputText/>
+          </h:panelGrid>
+          <h:panelGroup styleClass="buttons">
+            <h:commandLink value="Login" action="#{credentials.loggingIn}" styleClass="btn btn-primary"/>
+          </h:panelGroup>
+        </h:panelGroup>
+      </f:validateBean>
+    </h:form>
+    <!-- end::adocSnippet[] -->
+  </ui:define>
+
+</ui:composition>

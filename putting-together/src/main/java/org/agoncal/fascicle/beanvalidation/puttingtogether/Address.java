@@ -7,7 +7,8 @@ import javax.validation.constraints.NotNull;
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// @formatter:off
+// tag::adocSnippet[]
 public class Address {
 
   @NotNull
@@ -16,13 +17,13 @@ public class Address {
   @NotNull
   private String city;
   private String state;
-  @NotNull
-  @ZipCode
+  @NotNull @ZipCode
   private String zipcode;
   private String country;
 
   // Constructors, getters, setters
-  // tag::adocskip[]
+  // tag::adocSkip[]
+  // @formatter:on
 
   // ======================================
   // =            Constructors            =
@@ -51,12 +52,22 @@ public class Address {
     this.street1 = street1;
   }
 
+  public Address street1(String street1) {
+    this.street1 = street1;
+    return this;
+  }
+
   public String getStreet2() {
     return street2;
   }
 
   public void setStreet2(String street2) {
     this.street2 = street2;
+  }
+
+  public Address street2(String street2) {
+    this.street2 = street2;
+    return this;
   }
 
   public String getCity() {
@@ -67,12 +78,22 @@ public class Address {
     this.city = city;
   }
 
+  public Address city(String city) {
+    this.city = city;
+    return this;
+  }
+
   public String getState() {
     return state;
   }
 
   public void setState(String state) {
     this.state = state;
+  }
+
+  public Address state(String state) {
+    this.state = state;
+    return this;
   }
 
   public String getZipcode() {
@@ -83,6 +104,11 @@ public class Address {
     this.zipcode = zipcode;
   }
 
+  public Address zipcode(String zipcode) {
+    this.zipcode = zipcode;
+    return this;
+  }
+
   public String getCountry() {
     return country;
   }
@@ -90,6 +116,11 @@ public class Address {
   public void setCountry(String country) {
     this.country = country;
   }
-  // end::adocskip[]
+
+  public Address country(String country) {
+    this.country = country;
+    return this;
+  }
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]

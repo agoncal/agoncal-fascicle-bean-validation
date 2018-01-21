@@ -1,14 +1,14 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex04;
 
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.Instant;
 
 /**
  * @author Antonio Goncalves
  * http://www.antoniogoncalves.org
  * --
  */
-// tag::adocsnippet[]
+// tag::adocSnippet[]
 public class ItemServerConnection {
 
   @URL
@@ -18,10 +18,10 @@ public class ItemServerConnection {
   private String itemURL;
   @URL(protocol = "ftp", port = 21)
   private String ftpServerURL;
-  private Date lastConnectionDate;
+  private Instant lastConnectionDate;
 
-  // Constructors, Getters & Setters
-  // tag::adocskip[]
+  // Constructors, getters, setters
+  // tag::adocSkip[]
 
   public ItemServerConnection() {
   }
@@ -60,13 +60,13 @@ public class ItemServerConnection {
     this.ftpServerURL = ftpServerURL;
   }
 
-  public Date getLastConnectionDate() {
+  public Instant getLastConnectionDate() {
     return lastConnectionDate;
   }
 
-  public void setLastConnectionDate(Date lastConnectionDate) {
+  public void setLastConnectionDate(Instant lastConnectionDate) {
     this.lastConnectionDate = lastConnectionDate;
   }
-  // end::adocskip[]
+  // end::adocSkip[]
 }
-// end::adocsnippet[]
+// end::adocSnippet[]
