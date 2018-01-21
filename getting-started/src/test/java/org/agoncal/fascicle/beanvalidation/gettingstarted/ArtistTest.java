@@ -45,9 +45,9 @@ public class ArtistTest {
   @Test
   void shouldRaiseNoConstraintViolation() {
 
-    Artist book = new Artist().firstName("Adams").lastName("Douglas");
+    Artist artist = new Artist().firstName("Adams").lastName("Douglas");
 
-    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    Set<ConstraintViolation<Artist>> violations = validator.validate(artist);
     assertTrue(violations.isEmpty());
   }
   // end::adocShouldRaiseNoConstraintViolation[]
@@ -56,9 +56,9 @@ public class ArtistTest {
   @Test
   void shouldRaiseConstraintViolationCauseFirstNameIsNull() {
 
-    Artist book = new Artist().firstName(null).lastName("Douglas");
+    Artist artist = new Artist().firstName(null).lastName("Douglas");
 
-    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    Set<ConstraintViolation<Artist>> violations = validator.validate(artist);
     assertEquals(1, violations.size());
   }
   // end::shouldRaiseConstraintViolationCauseFirstNameIsNull[]
@@ -67,9 +67,9 @@ public class ArtistTest {
   @Test
   void shouldRaiseConstraintViolationCauseInvalidEmail() {
 
-    Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong");
+    Artist artist = new Artist().firstName("Adams").lastName("Douglas").email("wrong");
 
-    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    Set<ConstraintViolation<Artist>> violations = validator.validate(artist);
     assertEquals(1, violations.size());
 
     ConstraintViolation<Artist> violation = violations.iterator().next();
@@ -84,9 +84,9 @@ public class ArtistTest {
   void shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate() {
 
     LocalDate dateOfBirth = LocalDate.of(2678, 12, 01);
-    Artist book = new Artist().firstName("Adams").lastName("Douglas").email("wrong").dateOfBirth(dateOfBirth);
+    Artist artist = new Artist().firstName("Adams").lastName("Douglas").email("wrong").dateOfBirth(dateOfBirth);
 
-    Set<ConstraintViolation<Artist>> violations = validator.validate(book);
+    Set<ConstraintViolation<Artist>> violations = validator.validate(artist);
     assertEquals(2, violations.size());
   }
   // end::shouldRaiseTwoConstraintViolationsCauseInvalidEmailAndFutureDate[]
