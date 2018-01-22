@@ -1,6 +1,5 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex06;
 
-import javax.validation.Valid;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
@@ -21,7 +20,7 @@ public class CardValidator {
   }
 
   @AssertTrue
-  public Boolean validate(@NotNull @Valid CreditCard creditCard) {
+  public Boolean validate(@NotNull CreditCard creditCard) {
 
     return algorithm.validate(creditCard.getNumber(), creditCard.getControlNumber());
   }

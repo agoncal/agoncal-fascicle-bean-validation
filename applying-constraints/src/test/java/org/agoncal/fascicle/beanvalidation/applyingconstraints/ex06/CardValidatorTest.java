@@ -74,19 +74,6 @@ public class CardValidatorTest {
     assertEquals(1, violations.size());
   }
 
-  @Test
-  void shouldRaiseConstraintViolationCauseCreditCardParametersAreNull() throws NoSuchMethodException {
-
-    CreditCard creditCard = new CreditCard(null, null, null, null);
-    CardValidator cardValidator = new CardValidator();
-
-    ExecutableValidator methodValidator = validator.forExecutables();
-    Method method = CardValidator.class.getMethod("validate", CreditCard.class);
-    Set<ConstraintViolation<CardValidator>> violations = methodValidator.validateParameters(cardValidator, method, new Object[]{creditCard});
-    displayConstraintViolations(violations);
-    assertEquals(3, violations.size());
-  }
-
   private void displayConstraintViolations(Set<ConstraintViolation<CardValidator>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +

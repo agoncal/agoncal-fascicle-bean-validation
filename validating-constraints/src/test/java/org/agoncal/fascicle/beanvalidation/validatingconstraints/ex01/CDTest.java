@@ -54,7 +54,6 @@ public class CDTest {
     CD cd = new CD().title("Kind of Blue").price(12.5f);
 
     Set<ConstraintViolation<CD>> violations = validator.validate(cd);
-    displayConstraintViolations(violations);
     assertEquals(0, violations.size());
     // end::shouldRaiseNoConstraintViolation[]
   }

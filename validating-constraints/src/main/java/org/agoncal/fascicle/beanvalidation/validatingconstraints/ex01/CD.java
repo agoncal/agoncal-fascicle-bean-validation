@@ -17,7 +17,7 @@ public class CD {
   private Float price;
   @Size(min = 10, max = 5000)
   private String description;
-  @Pattern(regexp = "[A-Z][a-z]{1,}")
+  @Pattern(regexp = "[A-Z][a-z]+")
   private String musicCompany;
   @Max(value = 5)
   private Integer numberOfCDs;
