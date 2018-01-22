@@ -1,8 +1,9 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex01;
 
 import javax.validation.constraints.*;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,19 +15,19 @@ import java.util.List;
 // tag::adocSnippet[]
 public class Order {
 
-  @NotNull @Pattern(regexp = "[C,D,M][0-9]*")
+  @NotNull @Pattern(regexp = "[CDM][0-9]+")
   private String orderId;
   @NotNull @Min(1)
   private Double totalAmount;
   @PastOrPresent
-  private Date creationDate;
+  private Instant creationDate;
   @Future
-  private Date deliveryDate;
+  private LocalDate deliveryDate;
 
   @NotNull
   private List<OrderLine> orderLines;
 
-  public Order(@PastOrPresent Date creationDate) {
+  public Order(@PastOrPresent Instant creationDate) {
     this.creationDate = creationDate;
   }
 
@@ -56,11 +57,11 @@ public class Order {
     this.orderId = orderId;
   }
 
-  public Date getCreationDate() {
+  public Instant getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(Instant creationDate) {
     this.creationDate = creationDate;
   }
 
@@ -72,11 +73,11 @@ public class Order {
     this.totalAmount = totalAmount;
   }
 
-  public Date getDeliveryDate() {
+  public LocalDate getDeliveryDate() {
     return deliveryDate;
   }
 
-  public void setDeliveryDate(Date deliveryDate) {
+  public void setDeliveryDate(LocalDate deliveryDate) {
     this.deliveryDate = deliveryDate;
   }
 

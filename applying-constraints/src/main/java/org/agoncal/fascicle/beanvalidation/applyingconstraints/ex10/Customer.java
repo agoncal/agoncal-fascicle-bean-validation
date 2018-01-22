@@ -4,7 +4,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * @author Antonio Goncalves
@@ -22,7 +22,7 @@ public class Customer {
   private String lastName;
   @Email(message = "Recovery email is not a valid email address")
   private String recoveryEmail;
-  private Date dateOfBirth;
+  private LocalDate dateOfBirth;
   @Min(value = 18, message = "Customer is too young. Should be older than {value}")
   private Integer age;
 
@@ -76,11 +76,11 @@ public class Customer {
     this.recoveryEmail = recoveryEmail;
   }
 
-  public Date getDateOfBirth() {
+  public LocalDate getDateOfBirth() {
     return dateOfBirth;
   }
 
-  public void setDateOfBirth(Date dateOfBirth) {
+  public void setDateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
 
