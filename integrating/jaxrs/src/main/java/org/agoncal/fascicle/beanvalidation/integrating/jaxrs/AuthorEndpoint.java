@@ -23,8 +23,8 @@ public class AuthorEndpoint {
   public Response getAuthor() {
     Author author = new Author();
     author.setId(1L);
-    author.setFirstname("Douglas");
-    author.setSurname("Adams");
+    author.setFirstName("Douglas");
+    author.setLastName("Adams");
     author.setEmail("douglas.adams@h2g2.com");
     return Response.ok(author).build();
   }

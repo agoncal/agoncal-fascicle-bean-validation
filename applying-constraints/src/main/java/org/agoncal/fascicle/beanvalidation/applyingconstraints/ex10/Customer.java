@@ -17,7 +17,7 @@ public class Customer {
   @Email
   private String userId;
   @NotNull
-  @Size(min = 4, max = 50, message = "Firstname length should be between {min} and {max}")
+  @Size(min = 4, max = 50, message = "First name length should be between {min} and {max}")
   private String firstName;
   private String lastName;
   @Email(message = "Recovery email is not a valid email address")
