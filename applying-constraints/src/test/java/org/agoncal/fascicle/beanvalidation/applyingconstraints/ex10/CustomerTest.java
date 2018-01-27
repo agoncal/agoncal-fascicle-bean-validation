@@ -131,7 +131,7 @@ public class CustomerTest {
     Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
     displayConstraintViolations(violations);
     assertEquals(1, violations.size());
-    assertEquals("Firstname should be between 4 and 50", violations.iterator().next().getMessage());
+    assertEquals("First name length should be between 4 and 50", violations.iterator().next().getMessage());
   }
 
   private void displayConstraintViolations(Set<ConstraintViolation<Customer>> constraintViolations) {

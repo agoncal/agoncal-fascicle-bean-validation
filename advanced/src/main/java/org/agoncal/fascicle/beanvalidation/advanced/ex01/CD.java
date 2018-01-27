@@ -11,7 +11,7 @@ import javax.validation.constraints.Pattern;
 // tag::adocSnippet[]
 public class CD extends Item {
 
-  @Pattern(regexp = "[A-Z][a-z]{1,}")
+  @Pattern(regexp = "[A-Z][a-z]+")
   private String musicCompany;
   @Max(value = 5)
   private Integer numberOfCDs;

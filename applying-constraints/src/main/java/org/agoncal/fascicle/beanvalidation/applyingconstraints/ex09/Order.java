@@ -1,7 +1,8 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex09;
 
 import javax.validation.constraints.Pattern;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 
 /**
  * @author Antonio Goncalves
@@ -12,14 +13,14 @@ import java.util.Date;
 public class Order {
 
   @Pattern.List({
-    @Pattern(regexp = "[C,D,M][A-Z][0-9]*"),
+    @Pattern(regexp = "[CDM][A-Z][0-9]*"),
     @Pattern(regexp = ".[A-Z].*?")
   })
   private String orderId;
-  private Date creationDate;
+  private Instant creationDate;
   private Double totalAmount;
-  private Date paymentDate;
-  private Date deliveryDate;
+  private LocalDate paymentDate;
+  private LocalDate deliveryDate;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
@@ -43,11 +44,11 @@ public class Order {
     this.orderId = orderId;
   }
 
-  public Date getCreationDate() {
+  public Instant getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(Date creationDate) {
+  public void setCreationDate(Instant creationDate) {
     this.creationDate = creationDate;
   }
 
@@ -59,19 +60,19 @@ public class Order {
     this.totalAmount = totalAmount;
   }
 
-  public Date getPaymentDate() {
+  public LocalDate getPaymentDate() {
     return paymentDate;
   }
 
-  public void setPaymentDate(Date paymentDate) {
+  public void setPaymentDate(LocalDate paymentDate) {
     this.paymentDate = paymentDate;
   }
 
-  public Date getDeliveryDate() {
+  public LocalDate getDeliveryDate() {
     return deliveryDate;
   }
 
-  public void setDeliveryDate(Date deliveryDate) {
+  public void setDeliveryDate(LocalDate deliveryDate) {
     this.deliveryDate = deliveryDate;
   }
   // end::adocSkip[]

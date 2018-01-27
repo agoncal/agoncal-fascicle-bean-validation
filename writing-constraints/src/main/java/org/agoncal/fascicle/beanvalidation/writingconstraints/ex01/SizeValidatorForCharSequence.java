@@ -13,15 +13,14 @@ public class SizeValidatorForCharSequence implements ConstraintValidator<Size, C
   private int min;
   private int max;
 
-  public SizeValidatorForCharSequence() {
-  }
-
+  @Override
   public void initialize(Size parameters) {
     this.min = parameters.min();
     this.max = parameters.max();
   }
 
   // tag::adocIsValid[]
+  @Override
   public boolean isValid(CharSequence charSequence, ConstraintValidatorContext ctx) {
     if (charSequence == null) {
       return true;

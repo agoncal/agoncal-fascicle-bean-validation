@@ -9,8 +9,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,9 +29,8 @@ public class OrderTest {
   private static ValidatorFactory vf;
   private static Validator validator;
 
-  private static Date creationDate;
-  private static Date paymentDate;
-  private static Date deliveryDate;
+  private static Instant creationDate = Instant.MIN;
+  private static LocalDate deliveryDate = LocalDate.MAX;
 
 
   // ======================================
@@ -42,13 +41,6 @@ public class OrderTest {
   static void init() throws ParseException {
     vf = Validation.buildDefaultValidatorFactory();
     validator = vf.getValidator();
-
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-
-    creationDate = dateFormat.parse("01/01/2010");
-    paymentDate = dateFormat.parse("02/01/2010");
-    deliveryDate = dateFormat.parse("03/01/2045");
-
   }
 
   @AfterAll
@@ -71,6 +63,71 @@ public class OrderTest {
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
+  }
+
+  @Test
+  void shouldRaiseNoConstraintViolationGoodPattern() {
+
+    Order order = new Order(creationDate);
+    order.setOrderId("D45678");
+    order.setTotalAmount(1234.5);
+    order.setDeliveryDate(deliveryDate);
+    order.addOrderLine(new OrderLine("item", 12d, 2));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(0, violations.size());
+  }
+
+  @Test
+  void shouldRaiseViolationDueToWrongPattern() {
+
+    Order order = new Order(creationDate);
+    order.setOrderId("CDM45678");
+    order.setTotalAmount(1234.5);
+    order.setDeliveryDate(deliveryDate);
+    order.addOrderLine(new OrderLine("item", 12d, 2));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  void shouldRaiseViolationDueToWrongPattern2() {
+
+    Order order = new Order(creationDate);
+    order.setOrderId("Z45678");
+    order.setTotalAmount(1234.5);
+    order.setDeliveryDate(deliveryDate);
+    order.addOrderLine(new OrderLine("item", 12d, 2));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  void shouldRaiseViolationDueToNullAmount() {
+
+    Order order = new Order(creationDate);
+    order.setOrderId("C45678");
+    order.setTotalAmount(null);
+    order.setDeliveryDate(deliveryDate);
+    order.addOrderLine(new OrderLine("item", 12d, 2));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(1, violations.size());
+  }
+
+  @Test
+  void shouldRaiseViolationDueToMinAmount() {
+
+    Order order = new Order(creationDate);
+    order.setOrderId("C45678");
+    order.setTotalAmount(0.5d);
+    order.setDeliveryDate(deliveryDate);
+    order.addOrderLine(new OrderLine("item", 12d, 2));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(1, violations.size());
   }
 
   @Test
