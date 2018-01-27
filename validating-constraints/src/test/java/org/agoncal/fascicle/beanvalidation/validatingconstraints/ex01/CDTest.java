@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Antonio Goncalves
@@ -70,6 +71,26 @@ public class CDTest {
   }
 
   @Test
+  void shouldRaiseConstraintViolationCausePriceIsNegative() {
+
+    // tag::shouldRaiseConstraintViolationCausePriceIsNegative[]
+    CD cd = new CD().title("Kind of Blue").price(-10f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(1, violations.size());
+    ConstraintViolation<CD> violation = violations.iterator().next();
+
+    assertEquals("must be greater than 0", violation.getMessage());
+    assertEquals("{javax.validation.constraints.Positive.message}", violation.getMessageTemplate());
+    assertEquals(-10f, violation.getInvalidValue());
+    assertEquals("price", violation.getPropertyPath().toString());
+    assertEquals(CD.class, violation.getRootBeanClass());
+    assertTrue(violation.getConstraintDescriptor().getAnnotation() instanceof javax.validation.constraints.Positive);
+    assertEquals("Kind of Blue", violation.getRootBean().getTitle());
+    // end::shouldRaiseConstraintViolationCausePriceIsNegative[]
+  }
+
+  @Test
   void shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
@@ -80,7 +101,8 @@ public class CDTest {
     // end::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
   }
 
-  @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
+  @Test
+    //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
   void shouldRaiseConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseConstraintViolationValidatingNumberOfCDsProperty[]
@@ -123,7 +145,8 @@ public class CDTest {
     // end::shouldRaiseNoMethodParameterConstraintViolation[]
   }
 
-  @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
+  @Test
+    //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
   void shouldRaiseMethodParameterConstraintViolationCauseRateIsLow() throws NoSuchMethodException {
 
     CD cd = new CD().title("Kind of Blue").price(12.5f);
