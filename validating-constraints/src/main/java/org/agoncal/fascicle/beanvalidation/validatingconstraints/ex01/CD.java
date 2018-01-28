@@ -27,8 +27,8 @@ public class CD {
 
   // tag::adocMethod[]
   @NotNull @DecimalMin("5.8")
-  public Float calculatePrice(@DecimalMin("1.4") Float rate) {
-    return price * rate;
+  public Float calculatePrice(@DecimalMin("1.4") Float discountRate) {
+    return price * discountRate;
   }
   // end::adocMethod[]
 
