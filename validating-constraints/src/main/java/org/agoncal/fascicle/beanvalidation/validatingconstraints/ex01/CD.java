@@ -23,19 +23,21 @@ public class CD {
   @Max(value = 5)
   private Integer numberOfCDs;
   private Float totalDuration;
-  // end::adocAttributes[]
 
-  // tag::adocMethod[]
+  // end::adocAttributes[]
+  // tag::adocMethodPrice[]
   @NotNull @DecimalMin("5.8")
   public Float calculatePrice(@DecimalMin("1.4") Float discountRate) {
     return price * discountRate;
   }
-  // end::adocMethod[]
 
+  // end::adocMethodPrice[]
+  // tag::adocMethodVat[]
   @DecimalMin("9.99")
   public Float calculateVAT() {
     return price * 0.196f;
   }
+  // end::adocMethodVat[]
   // tag::adocSkip[]
   // @formatter:on
 
