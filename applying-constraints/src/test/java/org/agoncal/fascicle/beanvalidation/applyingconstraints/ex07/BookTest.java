@@ -8,11 +8,10 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Antonio Goncalves
@@ -48,6 +47,14 @@ public class BookTest {
   // ======================================
   // =              Methods               =
   // ======================================
+
+  @Test
+  void shouldTestOptional() {
+    // tag::shouldTestOptional[]
+    assertTrue(Optional.ofNullable("contains a value").isPresent());
+    assertFalse(Optional.ofNullable(null).isPresent());
+    // tag::shouldTestOptional[]
+  }
 
   @Test
   void shouldRaiseNoConstraintViolation() {
