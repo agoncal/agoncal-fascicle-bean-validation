@@ -68,6 +68,10 @@ public class OrderTest {
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());
+    ConstraintViolation<Order> violation = violations.iterator().next();
+
+    assertEquals(Order.class, violation.getRootBean().getClass());
+    assertEquals(OrderLine.class, violation.getLeafBean().getClass());
     // end::shouldRaiseConstraintsViolationCauseNullQuantity[]
   }
 
