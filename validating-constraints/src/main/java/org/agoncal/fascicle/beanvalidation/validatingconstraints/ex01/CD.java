@@ -11,6 +11,7 @@ import javax.validation.constraints.*;
 // tag::adocSnippet[]
 public class CD {
 
+  // tag::adocAttributes[]
   @NotNull @Size(min = 4, max = 50)
   private String title;
   @NotNull @Positive
@@ -22,11 +23,14 @@ public class CD {
   @Max(value = 5)
   private Integer numberOfCDs;
   private Float totalDuration;
+  // end::adocAttributes[]
 
+  // tag::adocMethod[]
   @NotNull @DecimalMin("5.8")
   public Float calculatePrice(@DecimalMin("1.4") Float rate) {
     return price * rate;
   }
+  // end::adocMethod[]
 
   @DecimalMin("9.99")
   public Float calculateVAT() {
