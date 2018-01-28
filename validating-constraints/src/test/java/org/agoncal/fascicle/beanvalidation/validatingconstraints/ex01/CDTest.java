@@ -1,5 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.validatingconstraints.ex01;
 
+import org.hibernate.validator.HibernateValidator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -47,6 +48,42 @@ public class CDTest {
   // ======================================
   // =              Methods               =
   // ======================================
+
+  @Test
+  void shouldRaiseNoConstraintViolationWithDefault() {
+    // tag::shouldRaiseNoConstraintViolationWithDefault[]
+    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    Validator validator = factory.getValidator();
+    // end::shouldRaiseNoConstraintViolationWithDefault[]
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+
+    // tag::close[]
+    factory.close();
+    // end::close[]
+  }
+
+  @Test
+  void shouldRaiseNoConstraintViolationWithNonDefault() {
+    // @formatter:off
+    // tag::shouldRaiseNoConstraintViolationWithNonDefault[]
+    ValidatorFactory factory = Validation.byProvider(HibernateValidator.class)
+                                         .configure()
+                                         .buildValidatorFactory();
+    Validator validator = factory.getValidator();
+    // end::shouldRaiseNoConstraintViolationWithNonDefault[]
+    // @formatter:n
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+
+    factory.close();
+  }
 
   @Test
   void shouldRaiseNoConstraintViolation() {
