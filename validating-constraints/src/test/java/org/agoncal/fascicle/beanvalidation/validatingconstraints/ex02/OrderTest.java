@@ -70,6 +70,7 @@ public class OrderTest {
     assertEquals(1, violations.size());
     ConstraintViolation<Order> violation = violations.iterator().next();
 
+    assertEquals("orderLines[0].quantity", violation.getPropertyPath().toString());
     assertEquals(Order.class, violation.getRootBean().getClass());
     assertEquals(OrderLine.class, violation.getLeafBean().getClass());
     // end::shouldRaiseConstraintsViolationCauseNullQuantity[]

@@ -2,6 +2,8 @@ package org.agoncal.fascicle.beanvalidation.writingconstraints.ex04;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -15,9 +17,11 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
  */
 // @formatter:off
 // tag::adocSnippet[]
-@Constraint(validatedBy = {URLValidator.class})
-@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER})
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
 @Retention(RUNTIME)
+@Constraint(validatedBy = {URLValidator.class})
+@Repeatable(URL.List.class)
+@Documented
 public @interface URL {
 
   String message() default "Malformed URL";
@@ -27,6 +31,13 @@ public @interface URL {
   String protocol() default "";
   String host() default "";
   int port() default -1;
+
+  @Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+  @Retention(RUNTIME)
+  @Documented
+  @interface List {
+    URL[] value();
+  }
 }
 // end::adocSnippet[]
 // @formatter:on
