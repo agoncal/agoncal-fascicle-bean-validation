@@ -23,7 +23,6 @@ public class Address {
 
   // Constructors, getters, setters
   // tag::adocSkip[]
-  // @formatter:on
 
   // ======================================
   // =            Constructors            =
@@ -33,10 +32,13 @@ public class Address {
   }
 
   // tag::adocSend[]
-  public void sendOrder(@NotNull String street1, @NotNull String city, @NotNull @ZipCode String zipcode) {
+  public void sendOrder(@NotNull String street1,
+                        @NotNull String city,
+                        @NotNull @ZipCode String zipcode) {
     // complex logic
   }
   // end::adocSend[]
+  // @formatter:on
 
   // ======================================
   // =          Getters & Setters         =
