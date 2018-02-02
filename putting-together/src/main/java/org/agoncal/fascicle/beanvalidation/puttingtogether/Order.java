@@ -3,6 +3,7 @@ package org.agoncal.fascicle.beanvalidation.puttingtogether;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,15 +19,15 @@ public class Order {
 
   @NotNull
   private Long id;
-  private Double totalAmount;
+  private BigDecimal totalAmount;
   @Past
   private LocalDate creationDate;
   @NotNull @Valid
   private Customer customer;
   @Valid
   private Address deliveryAddress;
-  @NotNull @Valid
-  private List<OrderLine> orderLines;
+  @NotNull
+  private List<@Valid OrderLine> orderLines;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
@@ -52,15 +53,15 @@ public class Order {
     return this;
   }
 
-  public Double getTotalAmount() {
+  public BigDecimal getTotalAmount() {
     return totalAmount;
   }
 
-  public void setTotalAmount(Double totalAmount) {
+  public void setTotalAmount(BigDecimal totalAmount) {
     this.totalAmount = totalAmount;
   }
 
-  public Order totalAmount(Double itotalAmountd) {
+  public Order totalAmount(BigDecimal itotalAmountd) {
     this.totalAmount = totalAmount;
     return this;
   }

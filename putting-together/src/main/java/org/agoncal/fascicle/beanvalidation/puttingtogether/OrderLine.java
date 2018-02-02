@@ -3,6 +3,7 @@ package org.agoncal.fascicle.beanvalidation.puttingtogether;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
+import java.math.BigDecimal;
 
 /**
  * @author Antonio Goncalves
@@ -15,7 +16,7 @@ public class OrderLine {
 
   private String item;
   @NotNull @PositiveOrZero
-  private Double unitPrice;
+  private BigDecimal unitPrice;
   @NotNull @Positive
   private Integer quantity;
 
@@ -26,7 +27,7 @@ public class OrderLine {
   public OrderLine() {
   }
 
-  public OrderLine(String item, Double unitPrice, Integer quantity) {
+  public OrderLine(String item, BigDecimal unitPrice, Integer quantity) {
     this.item = item;
     this.unitPrice = unitPrice;
     this.quantity = quantity;
@@ -49,15 +50,15 @@ public class OrderLine {
     return this;
   }
 
-  public Double getUnitPrice() {
+  public BigDecimal getUnitPrice() {
     return unitPrice;
   }
 
-  public void setUnitPrice(Double unitPrice) {
+  public void setUnitPrice(BigDecimal unitPrice) {
     this.unitPrice = unitPrice;
   }
 
-  public OrderLine unitPrice(Double unitPrice) {
+  public OrderLine unitPrice(BigDecimal unitPrice) {
     this.unitPrice = unitPrice;
     return this;
   }

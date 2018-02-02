@@ -74,6 +74,20 @@ public class OrderTest {
     // end::shouldRaiseConstraintsViolationCauseDatesAreNotChronological[]
   }
 
+  @Test
+  void shouldRaiseNoConstraintsViolationCauseNullDate() {
+
+    // tag::shouldRaiseNoConstraintsViolationCauseNullDate[]
+    Order order = new Order();
+    order.setCreationDate(null);
+    order.setPaymentDate(null);
+    order.setDeliveryDate(null);
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(0, violations.size());
+    // end::shouldRaiseNoConstraintsViolationCauseNullDate[]
+  }
+
   private void displayConstraintViolations(Set<ConstraintViolation<Order>> constraintViolations) {
     for (ConstraintViolation constraintViolation : constraintViolations) {
       System.out.println("### " + constraintViolation.getRootBeanClass().getSimpleName() +

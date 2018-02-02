@@ -1,5 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.validatingconstraints.ex01;
 
+import org.hibernate.validator.HibernateValidator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author Antonio Goncalves
@@ -48,6 +50,42 @@ public class CDTest {
   // ======================================
 
   @Test
+  void shouldRaiseNoConstraintViolationWithDefault() {
+    // tag::shouldRaiseNoConstraintViolationWithDefault[]
+    ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+    Validator validator = factory.getValidator();
+    // end::shouldRaiseNoConstraintViolationWithDefault[]
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+
+    // tag::close[]
+    factory.close();
+    // end::close[]
+  }
+
+  @Test
+  void shouldRaiseNoConstraintViolationWithNonDefault() {
+    // @formatter:off
+    // tag::shouldRaiseNoConstraintViolationWithNonDefault[]
+    ValidatorFactory factory = Validation.byProvider(HibernateValidator.class)
+                                         .configure()
+                                         .buildValidatorFactory();
+    Validator validator = factory.getValidator();
+    // end::shouldRaiseNoConstraintViolationWithNonDefault[]
+    // @formatter:n
+
+    CD cd = new CD().title("Kind of Blue").price(12.5f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(0, violations.size());
+
+    factory.close();
+  }
+
+  @Test
   void shouldRaiseNoConstraintViolation() {
 
     // tag::shouldRaiseNoConstraintViolation[]
@@ -70,6 +108,26 @@ public class CDTest {
   }
 
   @Test
+  void shouldRaiseConstraintViolationCausePriceIsNegative() {
+
+    // tag::shouldRaiseConstraintViolationCausePriceIsNegative[]
+    CD cd = new CD().title("Kind of Blue").price(-10f);
+
+    Set<ConstraintViolation<CD>> violations = validator.validate(cd);
+    assertEquals(1, violations.size());
+    ConstraintViolation<CD> violation = violations.iterator().next();
+
+    assertEquals("must be greater than 0", violation.getMessage());
+    assertEquals("{javax.validation.constraints.Positive.message}", violation.getMessageTemplate());
+    assertEquals(-10f, violation.getInvalidValue());
+    assertEquals("price", violation.getPropertyPath().toString());
+    assertEquals(CD.class, violation.getRootBeanClass());
+    assertTrue(violation.getConstraintDescriptor().getAnnotation() instanceof javax.validation.constraints.Positive);
+    assertEquals("Kind of Blue", violation.getRootBean().getTitle());
+    // end::shouldRaiseConstraintViolationCausePriceIsNegative[]
+  }
+
+  @Test
   void shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
@@ -80,7 +138,8 @@ public class CDTest {
     // end::shouldRaiseNoConstraintViolationValidatingNumberOfCDsProperty[]
   }
 
-  @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
+  @Test
+    //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
   void shouldRaiseConstraintViolationValidatingNumberOfCDsProperty() {
 
     // tag::shouldRaiseConstraintViolationValidatingNumberOfCDsProperty[]
@@ -123,7 +182,8 @@ public class CDTest {
     // end::shouldRaiseNoMethodParameterConstraintViolation[]
   }
 
-  @Test //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
+  @Test
+    //@Ignore("Make sure your local is EN, if not use the following JVM parameters : -Duser.language=en -Duser.country=EN")
   void shouldRaiseMethodParameterConstraintViolationCauseRateIsLow() throws NoSuchMethodException {
 
     CD cd = new CD().title("Kind of Blue").price(12.5f);

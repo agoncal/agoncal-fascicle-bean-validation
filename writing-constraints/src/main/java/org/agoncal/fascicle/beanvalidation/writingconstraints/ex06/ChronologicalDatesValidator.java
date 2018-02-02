@@ -14,6 +14,9 @@ public class ChronologicalDatesValidator implements ConstraintValidator<Chronolo
 
   @Override
   public boolean isValid(Order order, ConstraintValidatorContext ctx) {
+    if (order.getCreationDate()==null || order.getDeliveryDate() == null || order.getPaymentDate() == null)
+      return true;
+
     return order.getCreationDate().isBefore(order.getPaymentDate()) &&
            order.getPaymentDate().isBefore(order.getDeliveryDate());
   }

@@ -10,17 +10,20 @@ import java.util.List;
  * http://www.antoniogoncalves.org
  * --
  */
+// @formatter:off
 // tag::adocSnippet[]
 public class Order {
 
   @NotNull
   private Long id;
   private Double totalAmount;
-  @Valid
-  private List<OrderLine> orderLines;
+  @NotNull @Valid
+  private Address deliveryAddress;
+  private List<@Valid OrderLine> orderLines;
 
   // Constructors, getters, setters
   // tag::adocSkip[]
+  // @formatter:on
 
   public Order() {
   }
@@ -68,6 +71,15 @@ public class Order {
       this.orderLines = new ArrayList<>();
     orderLines.add(orderLine);
   }
+
+  public Address getDeliveryAddress() {
+    return deliveryAddress;
+  }
+
+  public void setDeliveryAddress(Address deliveryAddress) {
+    this.deliveryAddress = deliveryAddress;
+  }
+
   // end::adocSkip[]
 }
 // end::adocSnippet[]

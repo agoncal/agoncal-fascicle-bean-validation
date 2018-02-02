@@ -16,12 +16,14 @@ public class URLValidator implements ConstraintValidator<URL, String> {
   private String host;
   private int port;
 
+  @Override
   public void initialize(URL url) {
     this.protocol = url.protocol();
     this.host = url.host();
     this.port = url.port();
   }
 
+  @Override
   public boolean isValid(String value, ConstraintValidatorContext ctx) {
     if (value == null || value.length() == 0) {
       return true;
