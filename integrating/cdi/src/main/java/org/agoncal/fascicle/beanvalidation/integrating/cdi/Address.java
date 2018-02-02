@@ -32,13 +32,11 @@ public class Address {
   public Address() {
   }
 
-  // tag::adocConstructor[]
-  public Address(@NotNull String street1, @NotNull String city, @NotNull @ZipCode String zipcode) {
-    this.street1 = street1;
-    this.city = city;
-    this.zipcode = zipcode;
+  // tag::adocSend[]
+  public void sendOrder(@NotNull String street1, @NotNull String city, @NotNull @ZipCode String zipcode) {
+    // complex logic
   }
-  // end::adocConstructor[]
+  // end::adocSend[]
 
   // ======================================
   // =          Getters & Setters         =
