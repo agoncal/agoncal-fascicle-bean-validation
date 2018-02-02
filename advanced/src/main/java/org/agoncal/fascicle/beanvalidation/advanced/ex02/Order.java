@@ -1,5 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
+import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.time.LocalDate;
@@ -22,7 +23,7 @@ public class Order {
   private LocalDate creationDate;
   @NotNull(groups = Payment.class) @Past(groups = Payment.class)
   private LocalDate paymentDate;
-  @NotNull(groups = Delivery.class) @Past(groups = Delivery.class)
+  @NotNull(groups = Delivery.class) @Future(groups = Delivery.class)
   private LocalDate deliveryDate;
   private List<OrderLine> orderLines;
 

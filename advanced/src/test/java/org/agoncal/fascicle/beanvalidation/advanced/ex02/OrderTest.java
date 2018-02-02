@@ -100,7 +100,7 @@ public class OrderTest {
 
     order.setCreationDate(LocalDate.parse("2017-01-10"));
     order.setPaymentDate(LocalDate.parse("2017-01-20"));
-    order.setDeliveryDate(LocalDate.parse("2017-01-30"));
+    order.setDeliveryDate(LocalDate.now().plusDays(1));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order, Delivery.class);
     assertEquals(0, violations.size());
@@ -115,7 +115,7 @@ public class OrderTest {
 
     order.setCreationDate(LocalDate.parse("2017-01-30"));
     order.setPaymentDate(LocalDate.parse("2017-01-20"));
-    order.setDeliveryDate(LocalDate.parse("2017-01-10"));
+    order.setDeliveryDate(LocalDate.now().plusDays(1));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order, Delivery.class);
     assertEquals(1, violations.size());

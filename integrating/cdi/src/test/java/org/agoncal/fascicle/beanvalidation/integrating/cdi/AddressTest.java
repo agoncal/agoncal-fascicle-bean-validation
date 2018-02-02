@@ -31,7 +31,7 @@ public class AddressTest {
   // =              Methods               =
   // ======================================
 
-  //@Test
+  @Test
   public void shouldRaiseNoConstraintViolation() {
 
     // tag::shouldRaiseNoConstraintViolation[]
