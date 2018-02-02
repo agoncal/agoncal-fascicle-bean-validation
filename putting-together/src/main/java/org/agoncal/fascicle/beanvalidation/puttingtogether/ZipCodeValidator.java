@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 // tag::adocSnippet[]
 public class ZipCodeValidator implements ConstraintValidator<ZipCode, String> {
 
-  private Pattern zipPattern = Pattern.compile("\\d{5}(-\\d{5})?");
+  private static final Pattern zipPattern = Pattern.compile("\\d{5}(-\\d{5})?");
 
   @Override
   public boolean isValid(String value, ConstraintValidatorContext context) {
