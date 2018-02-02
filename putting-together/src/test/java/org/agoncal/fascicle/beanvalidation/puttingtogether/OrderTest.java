@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -45,11 +46,11 @@ public class OrderTest {
   void shouldRaiseNoConstraintsViolation() {
 
     // tag::shouldRaiseNoConstraintsViolation[]
-    Order order = new Order().id(1234L).totalAmount(40.5).creationDate(LocalDate.MIN);
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5)).creationDate(LocalDate.MIN);
     order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
-    order.add(new OrderLine().item("Help").quantity(1).unitPrice(10.5));
-    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(15d));
+    order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
@@ -60,11 +61,11 @@ public class OrderTest {
   void shouldRaiseNoConstraintsViolationEvenWithNoAddress() {
 
     // tag::shouldRaiseNoConstraintsViolationEvenWithNoAddress[]
-    Order order = new Order().id(1234L).totalAmount(40.5).creationDate(LocalDate.MIN);
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf((40.5))).creationDate(LocalDate.MIN);
     order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(null);
-    order.add(new OrderLine().item("Help").quantity(1).unitPrice(10.5));
-    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(15d));
+    order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
@@ -75,10 +76,10 @@ public class OrderTest {
   void shouldRaiseConstraintsViolationCauseNullCustomer() {
 
     // tag::shouldRaiseConstraintsViolationCauseNullCustomer[]
-    Order order = new Order().id(1234L).totalAmount(40.5).creationDate(LocalDate.MIN);
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5)).creationDate(LocalDate.MIN);
     order.setCustomer(null);
-    order.add(new OrderLine().item("Help").quantity(1).unitPrice(10.5));
-    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(15d));
+    order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());
@@ -94,11 +95,11 @@ public class OrderTest {
   void shouldRaiseConstraintsViolationCauseNullQuantity() {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantity[]
-    Order order = new Order().id(1234L).totalAmount(40.5);
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5));
     order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
-    order.add(new OrderLine().item("Help").quantity(null).unitPrice(10.5));
-    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(15d));
+    order.add(new OrderLine().item("Help").quantity(null).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(1, violations.size());
@@ -109,11 +110,11 @@ public class OrderTest {
   void shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice() {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice[]
-    Order order = new Order().id(1234L).totalAmount(40.5);
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5));
     order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
-    order.add(new OrderLine().item("Help").quantity(null).unitPrice(10.5));
-    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(-99d));
+    order.add(new OrderLine().item("Help").quantity(null).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(-99d)));
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(2, violations.size());
