@@ -29,7 +29,6 @@ public class Book {
     return Optional.ofNullable(nbOfPages);
   }
 
-
   public Optional<@Email String> getAuthorEmail() {
     return Optional.ofNullable(authorEmail);
   }
