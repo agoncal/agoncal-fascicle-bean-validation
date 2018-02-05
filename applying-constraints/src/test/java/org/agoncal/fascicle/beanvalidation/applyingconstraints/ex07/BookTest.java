@@ -53,7 +53,7 @@ public class BookTest {
     // tag::shouldTestOptional[]
     assertTrue(Optional.ofNullable("contains a value").isPresent());
     assertFalse(Optional.ofNullable(null).isPresent());
-    // tag::shouldTestOptional[]
+    // end::shouldTestOptional[]
   }
 
   @Test
