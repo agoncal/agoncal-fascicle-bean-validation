@@ -70,12 +70,13 @@ public class CDTest {
   void shouldRaiseNoConstraintViolationWithNonDefault() {
     // @formatter:off
     // tag::shouldRaiseNoConstraintViolationWithNonDefault[]
-    ValidatorFactory factory = Validation.byProvider(HibernateValidator.class)
-                                         .configure()
-                                         .buildValidatorFactory();
+    ValidatorFactory factory =
+      Validation.byProvider(HibernateValidator.class)
+                .configure()
+                .buildValidatorFactory();
     Validator validator = factory.getValidator();
     // end::shouldRaiseNoConstraintViolationWithNonDefault[]
-    // @formatter:n
+    // @formatter:on
 
     CD cd = new CD().title("Kind of Blue").price(12.5f);
 
