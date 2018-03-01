@@ -16,12 +16,12 @@
     <!-- tag::adocSnippet[] -->
     <h:form>
       <f:validateBean disabled="false">
-        <h:panelGroup styleClass="search">
+        <h:panelGroup>
 
-          <h:panelGrid columnClasses="label,component,required" columns="3">
-            <h:outputLabel for="credentialsLogin" value="Login:"/>
+          <h:panelGrid columns="3">
+            <h:outputLabel for="credentialsLogin" value="Username:"/>
             <h:panelGroup>
-              <h:inputText id="credentialsLogin" value="#{credentials.login}"/>
+              <h:inputText id="credentialsLogin" value="#{credentials.username}"/>
               <h:message for="credentialsLogin" styleClass="error"/>
             </h:panelGroup>
             <h:outputText/>
@@ -32,8 +32,8 @@
             </h:panelGroup>
             <h:outputText/>
           </h:panelGrid>
-          <h:panelGroup styleClass="buttons">
-            <h:commandLink value="Login" action="#{credentials.loggingIn}" styleClass="btn btn-primary"/>
+          <h:panelGroup>
+            <h:commandLink value="Login" action="#{credentials.login}"/>
           </h:panelGroup>
         </h:panelGroup>
       </f:validateBean>

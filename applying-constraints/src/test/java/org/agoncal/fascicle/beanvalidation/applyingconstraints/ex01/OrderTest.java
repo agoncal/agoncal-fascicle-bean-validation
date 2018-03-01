@@ -8,6 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -57,7 +58,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("C45678");
-    order.setTotalAmount(1234.5);
+    order.setTotalAmount(BigDecimal.valueOf(1234.5));
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
@@ -70,7 +71,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("D45678");
-    order.setTotalAmount(1234.5);
+    order.setTotalAmount(BigDecimal.valueOf(1234.5));
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
@@ -83,7 +84,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("CDM45678");
-    order.setTotalAmount(1234.5);
+    order.setTotalAmount(BigDecimal.valueOf(1234.5));
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
@@ -96,7 +97,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("Z45678");
-    order.setTotalAmount(1234.5);
+    order.setTotalAmount(BigDecimal.valueOf(1234.5));
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
@@ -122,7 +123,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("C45678");
-    order.setTotalAmount(0.5d);
+    order.setTotalAmount(BigDecimal.valueOf(0.5d));
     order.setDeliveryDate(deliveryDate);
     order.addOrderLine(new OrderLine("item", 12d, 2));
 
@@ -135,7 +136,7 @@ public class OrderTest {
 
     Order order = new Order(creationDate);
     order.setOrderId("C45678");
-    order.setTotalAmount(1234.5);
+    order.setTotalAmount(BigDecimal.valueOf(1234.5));
     order.setDeliveryDate(deliveryDate);
 
     Set<ConstraintViolation<Order>> violations = validator.validate(order);

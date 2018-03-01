@@ -23,6 +23,7 @@ public class Book {
   private Float price;
   @Size(max = 2000)
   private String description;
+  @Size(min=10, max = 13)
   private String isbn;
   @Positive
   private Integer nbOfPages;

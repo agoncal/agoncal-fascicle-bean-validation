@@ -1,6 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex01;
 
 import javax.validation.constraints.*;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Order {
   @NotNull @Pattern(regexp = "[CDM][0-9]+")
   private String orderId;
   @NotNull @Min(1)
-  private Double totalAmount;
+  private BigDecimal totalAmount;
   @PastOrPresent
   private Instant creationDate;
   @Future
@@ -65,11 +66,11 @@ public class Order {
     this.creationDate = creationDate;
   }
 
-  public Double getTotalAmount() {
+  public BigDecimal getTotalAmount() {
     return totalAmount;
   }
 
-  public void setTotalAmount(Double totalAmount) {
+  public void setTotalAmount(BigDecimal totalAmount) {
     this.totalAmount = totalAmount;
   }
 

@@ -47,7 +47,7 @@ public class OrderTest {
 
     // tag::shouldRaiseNoConstraintsViolation[]
     Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5)).creationDate(LocalDate.MIN);
-    order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
+    order.setCustomer(new Customer().firstName("Antonio").lastName("Goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
     order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
     order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
@@ -62,7 +62,7 @@ public class OrderTest {
 
     // tag::shouldRaiseNoConstraintsViolationEvenWithNoAddress[]
     Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf((40.5))).creationDate(LocalDate.MIN);
-    order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
+    order.setCustomer(new Customer().firstName("Antonio").lastName("Goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(null);
     order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
     order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
@@ -70,6 +70,21 @@ public class OrderTest {
     Set<ConstraintViolation<Order>> violations = validator.validate(order);
     assertEquals(0, violations.size());
     // end::shouldRaiseNoConstraintsViolationEvenWithNoAddress[]
+  }
+
+  @Test
+  void shouldRaiseConstraintsViolationCauseInvalidCustomer() {
+
+    // tag::shouldRaiseConstraintsViolationCauseInvalidCustomer[]
+    Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf((40.5))).creationDate(LocalDate.MIN);
+    order.setCustomer(new Customer().firstName(null).lastName("Goncalves").email("wrongEmail"));
+    order.setDeliveryAddress(null);
+    order.add(new OrderLine().item("Help").quantity(1).unitPrice(BigDecimal.valueOf(10.5)));
+    order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
+
+    Set<ConstraintViolation<Order>> violations = validator.validate(order);
+    assertEquals(2, violations.size());
+    // end::shouldRaiseConstraintsViolationCauseInvalidCustomer[]
   }
 
   @Test
@@ -96,7 +111,7 @@ public class OrderTest {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantity[]
     Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5));
-    order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
+    order.setCustomer(new Customer().firstName("Antonio").lastName("Goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
     order.add(new OrderLine().item("Help").quantity(null).unitPrice(BigDecimal.valueOf(10.5)));
     order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(15d)));
@@ -111,7 +126,7 @@ public class OrderTest {
 
     // tag::shouldRaiseConstraintsViolationCauseNullQuantityNegativePrice[]
     Order order = new Order().id(1234L).totalAmount(BigDecimal.valueOf(40.5));
-    order.setCustomer(new Customer().firstName("Antonio").lastName("goncalves").email("agoncal.fascicle@gmail.com"));
+    order.setCustomer(new Customer().firstName("Antonio").lastName("Goncalves").email("agoncal.fascicle@gmail.com"));
     order.setDeliveryAddress(new Address().street1("233 Spring Street").city("New York").state("NY").zipcode("12345").country("USA"));
     order.add(new OrderLine().item("Help").quantity(null).unitPrice(BigDecimal.valueOf(10.5)));
     order.add(new OrderLine().item("Sergeant Pepper").quantity(2).unitPrice(BigDecimal.valueOf(-99d)));

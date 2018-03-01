@@ -14,24 +14,24 @@ import javax.validation.constraints.Size;
 public class Credentials {
 
   @NotNull @Email
-  private String login;
+  private String username;
 
   @NotNull @Size(min = 8, max = 20)
   private String password;
 
-  public String loggingIn() {
+  public String login() {
     // Check user
     return null;
   }
   // tag::adocSkip[]
   // @formatter:on
 
-  public String getLogin() {
-    return login;
+  public String getUsername() {
+    return username;
   }
 
-  public void setLogin(String login) {
-    this.login = login;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getPassword() {
