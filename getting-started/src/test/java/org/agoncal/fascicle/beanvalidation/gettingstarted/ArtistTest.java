@@ -33,7 +33,7 @@ public class ArtistTest {
 
   @AfterAll
   static void close() {
-    vf.close();
+    if (vf != null) vf.close();
   }
   // end::adocBegin[]
 
