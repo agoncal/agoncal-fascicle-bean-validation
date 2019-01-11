@@ -22,7 +22,7 @@ public class AddressEndpoint {
   @PostMapping("/addresses")
   public ResponseEntity<Address> createAddress(@Valid @RequestBody Address address) throws URISyntaxException {
     Address result = addressRepository.save(address);
-    return ResponseEntity.created(new URI("/addresss/" + address.getId())).body(result);
+    return ResponseEntity.created(new URI("/addresses/" + address.getId())).body(result);
   }
 }
 // end::adocSnippet[]
