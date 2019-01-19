@@ -1,6 +1,11 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex01;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
