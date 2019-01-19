@@ -48,6 +48,7 @@
     </dependency>
   </dependencies>
 
+  <!-- TODO Fix the surefire plugin with JUnit 5 look at JPA -->
   <build>
     <plugins>
       <plugin>
