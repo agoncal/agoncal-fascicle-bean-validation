@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- tag::adocSnippet[] -->
-<constraint-mappings
-  xmlns="http://xmlns.jcp.org/xml/ns/validation/mapping"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/validation/mapping http://xmlns.jcp.org/xml/ns/validation/configuration/validation-mapping-2.0.xsd"
-  version="2.0">
+<constraint-mappings>
 
   <default-package/>
   <constraint-definition annotation="">
-    <validated-by></validated-by>
+    <validated-by/>
   </constraint-definition>
 
   <bean class="">
