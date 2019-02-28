@@ -2,8 +2,8 @@ package org.agoncal.fascicle.beanvalidation.applyingconstraints;
 
 /**
  * @author Antonio Goncalves
- *         http://www.antoniogoncalves.org
- *         --
+ * http://www.antoniogoncalves.org
+ * --
  */
 // @formatter:off
 // tag::adocSnippet[]
