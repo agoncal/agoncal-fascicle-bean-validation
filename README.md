@@ -12,4 +12,6 @@ That's when [Bean Validation](https://beanvalidation.org) comes into play.
 
 In this [fascicle](https://www.amazon.com/Understanding-Bean-Validation-2-0-fascicle-ebook/dp/B07B2KJ41R) will you will learn Bean Validation and use its different APIs to apply constraints on a bean, validate all sorts of constraints, write your own constraints and a few advanced topics such as integrating Bean Validation with other frameworks (JPA, JAX-RS, CDI, Spring).
 
+Foreword by [Gunnar Morling](https://twitter.com/gunnarmorling)
+
 ![Bean Validation Fascicle](https://raw.githubusercontent.com/agoncal/agoncal-fascicle-bean-validation/master/cover.jpg)
