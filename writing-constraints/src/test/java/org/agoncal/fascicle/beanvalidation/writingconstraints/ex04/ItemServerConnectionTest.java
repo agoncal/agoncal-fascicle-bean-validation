@@ -109,7 +109,9 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
     itemServer.setLastConnectionDate(Instant.now());
 
-    assertThrows(javax.validation.ValidationException.class, () -> validator.validate(itemServer, Error.class));
+    assertThrows(javax.validation.ValidationException.class, () -> {
+      validator.validate(itemServer, Error.class);
+    });
   }
 
   private void displayConstraintViolations(Set<ConstraintViolation<ItemServerConnection>> constraintViolations) {

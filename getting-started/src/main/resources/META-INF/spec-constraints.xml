@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- tag::adocSnippet[] -->
+<constraint-mappings>
+
+  <default-package/>
+  <constraint-definition annotation="">
+    <validated-by/>
+  </constraint-definition>
+
+  <bean class="">
+    <class>
+      <constraint annotation=""/>
+      <group-sequence/>
+    </class>
+    <field name="">
+      <constraint annotation="">
+        <message/>
+      </constraint>
+    </field>
+    <constructor/>
+    <getter name=""/>
+    <method name=""/>
+  </bean>
+</constraint-mappings>
+<!-- end::adocSnippet[] -->

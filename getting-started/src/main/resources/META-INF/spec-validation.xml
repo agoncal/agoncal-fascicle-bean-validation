@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- tag::adocSnippet[] -->
+<validation-config>
+
+  <clock-provider/>
+  <constraint-mapping/>
+  <constraint-validator-factory/>
+  <default-provider/>
+  <message-interpolator/>
+  <parameter-name-provider/>
+  <traversable-resolver/>
+  <value-extractor/>
+  <property name=""/>
+</validation-config>
+<!-- end::adocSnippet[] -->

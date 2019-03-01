@@ -1,7 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
   <modelVersion>4.0.0</modelVersion>
+
   <groupId>org.agoncal.fascicle</groupId>
   <artifactId>bean-validation</artifactId>
   <version>2.0</version>
@@ -25,7 +26,9 @@
     <version.hibernate.validator>6.0.5.Final</version.hibernate.validator>
     <version.el>3.0.1-b08</version.el>
     <!-- Test -->
-    <version.junit>5.3.2</version.junit>
+    <version.junit>5.0.2</version.junit>
+    <version.junit.platform>1.0.2</version.junit.platform>
+
     <!-- Core Maven Plugins -->
     <version.antrun.plugin>1.8</version.antrun.plugin>
     <version.archetype.plugin>3.0.1</version.archetype.plugin>
@@ -47,7 +50,7 @@
     <version.shade.plugin>3.1.0</version.shade.plugin>
     <version.site.plugin>3.6</version.site.plugin>
     <version.source.plugin>3.0.1</version.source.plugin>
-    <version.surefire.plugin>2.22.1</version.surefire.plugin>
+    <version.surefire.plugin>2.20</version.surefire.plugin>
     <version.version.plugin>2.5</version.version.plugin>
     <version.war.plugin>3.2.0</version.war.plugin>
     <!-- Plugins flag -->
@@ -73,6 +76,7 @@
         <artifactId>hibernate-validator</artifactId>
         <version>${version.hibernate.validator}</version>
       </dependency>
+
       <!-- Other -->
       <dependency>
         <groupId>org.glassfish</groupId>
@@ -92,6 +96,9 @@
 
 
   <build>
+    <plugins>
+    </plugins>
+
     <pluginManagement>
       <plugins>
         <!-- All core Maven plugins ordered by shortname (antrun, assembly ...) -->
@@ -277,6 +284,13 @@
           <configuration>
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.junit.platform</groupId>
+              <artifactId>junit-platform-surefire-provider</artifactId>
+              <version>${version.junit.platform}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
