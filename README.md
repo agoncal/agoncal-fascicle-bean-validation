@@ -15,3 +15,9 @@ In this [fascicle](https://www.amazon.com/Understanding-Bean-Validation-2-0-fasc
 Foreword by [Gunnar Morling](https://twitter.com/gunnarmorling)
 
 ![Bean Validation Fascicle](https://raw.githubusercontent.com/agoncal/agoncal-fascicle-bean-validation/master/cover.jpg)
+
+And thanks to my proof-reader team:
+
+* [Gunnar Morling](https://twitter.com/gunnarmorling)
+* [Youness Teimouri](http://www.youness-teimouri.com)
+* [Guillaume Smet](http://in.relation.to/guillaume-smet)
