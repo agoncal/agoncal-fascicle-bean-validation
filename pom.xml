@@ -50,7 +50,7 @@
     <version.shade.plugin>3.1.0</version.shade.plugin>
     <version.site.plugin>3.6</version.site.plugin>
     <version.source.plugin>3.0.1</version.source.plugin>
-    <version.surefire.plugin>2.20</version.surefire.plugin>
+    <version.surefire.plugin>2.22.1</version.surefire.plugin>
     <version.version.plugin>2.5</version.version.plugin>
     <version.war.plugin>3.2.0</version.war.plugin>
     <!-- Plugins flag -->
@@ -284,13 +284,6 @@
           <configuration>
             <argLine>-Duser.language=en -Duser.country=EN</argLine>
           </configuration>
-          <dependencies>
-            <dependency>
-              <groupId>org.junit.platform</groupId>
-              <artifactId>junit-platform-surefire-provider</artifactId>
-              <version>${version.junit.platform}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
