@@ -26,9 +26,7 @@
     <version.hibernate.validator>6.0.5.Final</version.hibernate.validator>
     <version.el>3.0.1-b08</version.el>
     <!-- Test -->
-    <version.junit>5.0.2</version.junit>
-    <version.junit.platform>1.0.2</version.junit.platform>
-
+    <version.junit>5.3.2</version.junit>
     <!-- Core Maven Plugins -->
     <version.antrun.plugin>1.8</version.antrun.plugin>
     <version.archetype.plugin>3.0.1</version.archetype.plugin>
@@ -96,9 +94,6 @@
 
 
   <build>
-    <plugins>
-    </plugins>
-
     <pluginManagement>
       <plugins>
         <!-- All core Maven plugins ordered by shortname (antrun, assembly ...) -->
