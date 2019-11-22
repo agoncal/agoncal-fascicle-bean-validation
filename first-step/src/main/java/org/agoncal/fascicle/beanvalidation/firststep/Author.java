@@ -4,6 +4,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+// TODO add   private LocalDate dateOfBirth; like JSON
+
 // @formatter:off
 // tag::adocSnippet[]
 public class Author {
