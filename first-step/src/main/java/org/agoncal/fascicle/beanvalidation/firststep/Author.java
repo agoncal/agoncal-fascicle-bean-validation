@@ -4,8 +4,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-// TODO add   private LocalDate dateOfBirth; like JSON
-
+/**
+ * @author Antonio Goncalves
+ * http://www.antoniogoncalves.org
+ * --
+ */
 // @formatter:off
 // tag::adocSnippet[]
 public class Author {
@@ -22,6 +25,11 @@ public class Author {
   // Constructors, getters, setters
   // tag::adocSkip[]
   // @formatter:on
+
+  // ======================================
+  // =          Getters & Setters         =
+  // ======================================
+
   public String getFirstName() {
     return firstName;
   }
