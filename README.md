@@ -1,4 +1,4 @@
-# AGoncal Fascicle: Bean Validation
+# AGoncal Fascicle: Understanding Bean Validation 2.0
 
 Code of my [Bean Validation Fascicle](https://www.amazon.com/Understanding-Bean-Validation-2-0-fascicle-ebook/dp/B07B2KJ41R).
 
