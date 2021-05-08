@@ -56,3 +56,8 @@ And thanks to my proof-reader team:
 * [Gunnar Morling](https://twitter.com/gunnarmorling)
 * [Youness Teimouri](http://www.youness-teimouri.com)
 * [Guillaume Smet](http://in.relation.to/guillaume-smet)
+
+## References
+
+* [agoncal fascicles e-book format](https://agoncal.teachable.com)
+* [agoncal fascicles paper book format](https://www.amazon.com/author/agoncal)
