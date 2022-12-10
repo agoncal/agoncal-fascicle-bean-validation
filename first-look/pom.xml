@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.agoncal.fascicle.bean-validation</groupId>
-  <artifactId>first-step</artifactId>
+  <artifactId>first-look</artifactId>
   <version>3.0</version>
-  <name>Bean Validation :: First Step</name>
+  <name>Bean Validation :: First Look</name>
 
   <parent>
     <groupId>org.agoncal.fascicle</groupId>

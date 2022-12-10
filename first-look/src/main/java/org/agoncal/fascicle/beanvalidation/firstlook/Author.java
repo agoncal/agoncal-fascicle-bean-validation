@@ -1,9 +1,11 @@
 package org.agoncal.fascicle.beanvalidation.firststep;
 
+// tag::adocSnippet[]
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+// end::adocSnippet[]
 /**
  * @author Antonio Goncalves
  * http://www.antoniogoncalves.org
