@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex05;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.net.MalformedURLException;
 
 /**

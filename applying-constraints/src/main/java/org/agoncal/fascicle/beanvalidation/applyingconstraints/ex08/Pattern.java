@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex08;
 
-import javax.validation.Constraint;
+import jakarta.validation.Constraint;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;

@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex01;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
@@ -24,7 +24,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 public @interface Size {
 
-  String message() default "{javax.validation.constraints.Size.message}";
+  String message() default "{jakarta.validation.constraints.Size.message}";
   Class<?>[] groups() default {};
   Class<? extends Payload>[] payload() default {};
 

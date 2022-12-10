@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex07;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Positive;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Positive;
 import java.util.Optional;
 
 /**

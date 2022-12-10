@@ -4,10 +4,10 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import java.time.Instant;
 import java.util.Set;
 
@@ -109,7 +109,7 @@ public class ItemServerConnectionTest {
     ItemServerConnection itemServer = new ItemServerConnection("http://www.cdbookstore.com/book/123", "http://www.cdbookstore.com/book/1234", "ftp://www.cdbookstore.com:21");
     itemServer.setLastConnectionDate(Instant.now());
 
-    assertThrows(javax.validation.ValidationException.class, () -> {
+    assertThrows(jakarta.validation.ValidationException.class, () -> {
       validator.validate(itemServer, Error.class);
     });
   }

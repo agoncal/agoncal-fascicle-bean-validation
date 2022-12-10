@@ -5,14 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.agoncal.fascicle.bean-validation</groupId>
   <artifactId>integrating</artifactId>
-  <version>2.0</version>
+  <version>3.0</version>
   <packaging>pom</packaging>
   <name>Bean Validation :: Integrating other Technologies</name>
 
   <parent>
     <groupId>org.agoncal.fascicle</groupId>
     <artifactId>bean-validation</artifactId>
-    <version>2.0</version>
+    <version>3.0</version>
   </parent>
 
   <modules>
@@ -20,6 +20,6 @@
     <module>jaxrs</module>
     <module>jpa</module>
     <module>jsf</module>
-    <module>spring</module>
+<!--  TODO  <module>spring</module>-->
   </modules>
 </project>

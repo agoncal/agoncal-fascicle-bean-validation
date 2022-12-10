@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.integrating.jpa;
 
-import javax.persistence.Persistence;
+import jakarta.persistence.Persistence;
 
 /**
  * @author Antonio Goncalves

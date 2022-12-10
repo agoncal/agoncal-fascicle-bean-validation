@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.advanced.ex02;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * @author Antonio Goncalves

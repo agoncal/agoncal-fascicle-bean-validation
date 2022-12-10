@@ -1,8 +1,8 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex01;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.Size;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.constraints.Size;
 
 public class SizeValidatorForArray implements ConstraintValidator<Size, Object[]> {
   private int min;

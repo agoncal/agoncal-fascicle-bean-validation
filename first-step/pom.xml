@@ -6,13 +6,13 @@
 
   <groupId>org.agoncal.fascicle.bean-validation</groupId>
   <artifactId>first-step</artifactId>
-  <version>2.0</version>
+  <version>3.0</version>
   <name>Bean Validation :: First Step</name>
 
   <parent>
     <groupId>org.agoncal.fascicle</groupId>
     <artifactId>bean-validation</artifactId>
-    <version>2.0</version>
+    <version>3.0</version>
   </parent>
 
   <properties>
@@ -27,8 +27,8 @@
       <artifactId>hibernate-validator</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>javax.el</artifactId>
+      <groupId>org.glassfish.expressly</groupId>
+      <artifactId>expressly</artifactId>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

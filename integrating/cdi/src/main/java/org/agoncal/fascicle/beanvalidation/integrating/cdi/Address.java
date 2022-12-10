@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.integrating.cdi;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author Antonio Goncalves

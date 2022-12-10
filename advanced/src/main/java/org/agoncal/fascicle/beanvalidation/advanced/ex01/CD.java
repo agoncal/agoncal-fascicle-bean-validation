@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.advanced.ex01;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Pattern;
 
 /**
  * @author Antonio Goncalves

@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex05;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * @author Antonio Goncalves

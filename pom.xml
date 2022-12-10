@@ -5,7 +5,7 @@
 
   <groupId>org.agoncal.fascicle</groupId>
   <artifactId>bean-validation</artifactId>
-  <version>2.0</version>
+  <version>3.0</version>
   <packaging>pom</packaging>
   <name>Bean Validation</name>
 
@@ -23,10 +23,13 @@
   <properties>
     <version.java>11</version.java>
     <!-- Bean Validation -->
-    <version.hibernate.validator>6.2.0.Final</version.hibernate.validator>
-    <version.el>3.0.1-b12</version.el>
+    <version.hibernate.validator>7.0.5.Final</version.hibernate.validator>
+    <version.el>5.0.0</version.el>
+    <!-- Other -->
+    <version.hibernate>6.1.1.Final</version.hibernate>
+    <version.h2>2.1.214</version.h2>
     <!-- Test -->
-    <version.junit>5.7.1</version.junit>
+    <version.junit>5.9.1</version.junit>
     <!-- Core Maven Plugins -->
     <version.antrun.plugin>3.0.0</version.antrun.plugin>
     <version.archetype.plugin>3.2.0</version.archetype.plugin>
@@ -77,9 +80,19 @@
 
       <!-- Other -->
       <dependency>
-        <groupId>org.glassfish</groupId>
-        <artifactId>javax.el</artifactId>
+        <groupId>org.glassfish.expressly</groupId>
+        <artifactId>expressly</artifactId>
         <version>${version.el}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>${version.hibernate}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>${version.h2}</version>
       </dependency>
 
       <!-- Test -->

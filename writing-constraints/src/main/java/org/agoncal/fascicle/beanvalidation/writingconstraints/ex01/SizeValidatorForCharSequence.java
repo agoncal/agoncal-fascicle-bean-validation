@@ -1,7 +1,7 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex01;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * Validate that the object is not {@code null}.

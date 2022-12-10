@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex04;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.Instant;
 
 /**

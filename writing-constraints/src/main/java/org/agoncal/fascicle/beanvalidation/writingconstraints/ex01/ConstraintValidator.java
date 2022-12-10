@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.writingconstraints.ex01;
 
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidatorContext;
 import java.lang.annotation.Annotation;
 
 // @formatter:off

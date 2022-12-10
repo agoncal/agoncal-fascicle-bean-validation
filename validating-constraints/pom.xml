@@ -6,14 +6,14 @@
 
   <groupId>org.agoncal.fascicle.bean-validation</groupId>
   <artifactId>validating-constraints</artifactId>
-  <version>2.0</version>
+  <version>3.0</version>
   <packaging>jar</packaging>
   <name>Bean Validation :: Validating Constraints</name>
 
   <parent>
     <groupId>org.agoncal.fascicle</groupId>
     <artifactId>bean-validation</artifactId>
-    <version>2.0</version>
+    <version>3.0</version>
   </parent>
 
   <dependencies>
@@ -22,8 +22,8 @@
       <artifactId>hibernate-validator</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.glassfish</groupId>
-      <artifactId>javax.el</artifactId>
+      <groupId>org.glassfish.expressly</groupId>
+      <artifactId>expressly</artifactId>
     </dependency>
 
     <!-- Test -->

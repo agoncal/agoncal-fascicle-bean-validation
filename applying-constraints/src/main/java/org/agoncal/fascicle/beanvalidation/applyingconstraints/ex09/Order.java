@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.applyingconstraints.ex09;
 
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Pattern;
 import java.time.Instant;
 import java.time.LocalDate;
 
