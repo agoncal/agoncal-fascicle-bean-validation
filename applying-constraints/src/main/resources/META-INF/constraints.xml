@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<constraint-mappings
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://xmlns.jcp.org/xml/ns/validation/mapping"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/validation/mapping http://xmlns.jcp.org/xml/ns/validation/configuration/validation-mapping-2.0.xsd"
-  version="2.0">
+<constraint-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     xmlns="https://jakarta.ee/xml/ns/validation/mapping"
+                     xsi:schemaLocation="https://jakarta.ee/xml/ns/validation/mapping https://jakarta.ee/xml/ns/validation/validation-mapping-3.0.xsd"
+                     version="3.0">
 
   <bean class="org.agoncal.fascicle.beanvalidation.applyingconstraints.Book" ignore-annotations="false">
     <field name="title">
