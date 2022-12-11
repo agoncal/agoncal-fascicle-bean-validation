@@ -3,13 +3,11 @@ package org.agoncal.fascicle.beanvalidation.integrating.spring;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  * @see AddressEndpoint
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = BVSpringApplication.class)
 public class AddressEndpointTest {
 
@@ -33,7 +30,7 @@ public class AddressEndpointTest {
 
   private MockMvc mockAddressEndpoint;
 
-  @Before
+  @BeforeEach
   public void setup() {
     MockitoAnnotations.initMocks(this);
     final AddressEndpoint addressEndpoint = new AddressEndpoint(addressRepository);

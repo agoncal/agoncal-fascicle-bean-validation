@@ -2,8 +2,8 @@ package org.agoncal.fascicle.beanvalidation.integrating.jsf;
 
 import org.hibernate.validator.constraints.Email;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
+import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 

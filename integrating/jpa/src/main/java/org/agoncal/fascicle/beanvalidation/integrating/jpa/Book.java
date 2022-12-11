@@ -1,13 +1,13 @@
 package org.agoncal.fascicle.beanvalidation.integrating.jpa;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 
 /**
  * @author Antonio Goncalves
@@ -19,15 +19,17 @@ import jakarta.persistence.Id;
 @Entity
 public class Book {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue
   private Long id;
   @NotNull
   private String title;
   @Digits(integer = 4, fraction = 2)
+  @Column(columnDefinition = "decimal(18,3)")
   private Float price;
   @Size(max = 2000)
   private String description;
-  @Size(min=10, max = 13)
+  @Size(min = 10, max = 13)
   private String isbn;
   @Positive
   private Integer nbOfPages;

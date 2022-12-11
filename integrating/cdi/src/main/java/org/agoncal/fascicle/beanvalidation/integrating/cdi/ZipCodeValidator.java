@@ -1,6 +1,6 @@
 package org.agoncal.fascicle.beanvalidation.integrating.cdi;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.regex.Matcher;

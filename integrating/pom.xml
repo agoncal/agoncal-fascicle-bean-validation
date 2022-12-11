@@ -20,6 +20,6 @@
     <module>jaxrs</module>
     <module>jpa</module>
     <module>jsf</module>
-<!--  TODO  <module>spring</module>-->
+    <module>spring</module>
   </modules>
 </project>

@@ -52,16 +52,14 @@
   </build>
 
   <dependencies>
-    <!-- Java EE 7 dependency -->
+    <!-- Jakarta EE dependency -->
     <dependency>
-      <groupId>javax</groupId>
-      <artifactId>javaee-api</artifactId>
-      <version>7.0</version>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-core-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    <!-- WildFly Swarm Fractions -->
     <dependency>
-      <groupId>org.wildfly.swarm</groupId>
+      <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
     </dependency>
     <dependency>

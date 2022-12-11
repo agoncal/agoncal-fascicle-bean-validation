@@ -26,6 +26,10 @@
     <version.hibernate.validator>7.0.5.Final</version.hibernate.validator>
     <version.el>5.0.0</version.el>
     <!-- Other -->
+    <version.javaee>10.0.0</version.javaee>
+    <version.cdi>4.0.1</version.cdi>
+    <version.weld>5.1.0.Final</version.weld>
+    <version.weld-junit5>4.0.0.Final</version.weld-junit5>
     <version.hibernate>6.1.1.Final</version.hibernate>
     <version.h2>2.1.214</version.h2>
     <!-- Test -->
@@ -79,6 +83,29 @@
       </dependency>
 
       <!-- Other -->
+      <dependency>
+        <groupId>jakarta.platform</groupId>
+        <artifactId>jakarta.jakartaee-core-api</artifactId>
+        <version>${version.javaee}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.enterprise</groupId>
+        <artifactId>jakarta.enterprise.cdi-api</artifactId>
+        <version>${version.cdi}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.weld</groupId>
+        <artifactId>weld-junit5</artifactId>
+        <version>${version.weld-junit5}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.weld.se</groupId>
+        <artifactId>weld-se-core</artifactId>
+        <version>${version.weld}</version>
+        <scope>runtime</scope>
+      </dependency>
       <dependency>
         <groupId>org.glassfish.expressly</groupId>
         <artifactId>expressly</artifactId>
@@ -303,6 +330,7 @@
           <artifactId>maven-war-plugin</artifactId>
           <version>${version.war.plugin}</version>
           <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
             <archive>
               <manifest>
                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
